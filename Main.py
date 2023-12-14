@@ -1,6 +1,8 @@
 import requests , json, hmac, hashlib, time
+import pandas as pd
+import csv
+import os
 from datetime import datetime, timezone
-import PySimpleGUI as sg
 
 
 
@@ -8,17 +10,22 @@ key = 'riimt7skcm5p7218itgprlsc8hsrd6f'
 secret = 'ctuiec4uo71brmco03145k6j0r4ig3rf' 
 api_url = 'https://printos.api.hp.com/printbeat'
 
+job_key = 'pke0g35sukrk21u9ase9k24mk1b95ct4'
+job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
 
 
-def get_request_real_data():
+press_list = ['47200165','60001071', '60001112']
+
+
+def get_request_real_data(press):
     path = '/externalApi/v1/RealTimeData'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers("GET", path, timestamp) 
 
     # Setting up the parameters need for the get request
     parameters = {
-        'devices' : ['47200165'],
-        'resolution' : 'Shift',
+        'devices' : [press],
+        'resolution' : 'Day',
         'unitSystem' : 'Metric'
     }
 
@@ -31,13 +38,34 @@ def get_request_real_data():
 
         # Check if the request was successful
         if response.status_code == 200:
-            print("Succesfully call the api")
-            data_file = open("impressions.txt", 'a')
+            print("Succesfully called to the api")
             data = response.json()
-            data_file.writelines("Impression: "+str(data["data"][0]["value"])+ " Press Status: "+str(data["data"][0]["pressState"])+'\n')
-            #print( data["data"][0]["value"])
-            #print("API response:", data)
-            return True
+            pressName = data['data'][0]['pressName']
+            #data_file = open(f'impressions_{pressName}.txt', 'a')
+            #json_file = open(f'Real_Time_Press_{pressName}.json','w')
+            #data_file.writelines(f'Impression: {str(data["data"][0]["value"])} Press Status: {str(data["data"][0]["pressState"])} {datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}\n')
+            #json.dump(data, json_file, indent=4)
+
+            totalImps = data['data'][0]['totalImpsSinceInstallation']
+            totalPrintedImps = data['data'][0]['totalPrintedImpsSinceInstallation']
+            totalPrintedSheets = data['data'][0]['totalPrintedSheetsSinceInstallation']
+            pressStatus = data['data'][0]['pressState']
+            csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond= 0).strftime("%Y_%m_%d %H-%M-%S")}'
+
+
+            if os.path.isfile(f'{csvFileName}.csv') == True:
+                with open(f'{csvFileName}.csv', 'a', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerow([totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, datetime.now().strftime('%Y-%m-%d %H:%M:%S')])
+                    print("Done writing to csv file.")
+            else:
+                with open(f'{csvFileName}.csv', 'w', newline='') as file:
+                    writer = csv.writer(file)
+                    field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 'totalPrintedSheetsSinceInstallation', 'Press Status', 'Time']
+                    writer.writerow(field)
+                    writer.writerow([totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, datetime.now().strftime('%Y-%m-%d %H:%M:%S')])
+                    print(f'File does not exists...Created file {csvFileName}')
+
         else:
             print("Request failed with status code:", response.status_code)
             print("Response content:", response.content)
@@ -84,6 +112,38 @@ def get_request_kpi():
     except Exception as e:
         print("An error occurred:", e)
 
+def get_request_jobs():
+    path = '/externalApi/jobs'
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    headers  = create_headers_job("GET", path, timestamp) 
+
+    parameters = {
+        'startMarker' : 156075288,
+        'devices' : ['47200165'],
+        'sortOrder' : 'DESC'
+    }
+
+    # Creating a url variable that is the finial url that is going to pass through the request
+    url = api_url + path
+
+
+    try:
+        # Make a GET request
+        response = requests.get(url, headers= headers, params=parameters)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            print("Succesfully call the api")
+            data = response.json()
+            data_file = open('Jobs_Api_File.json', 'a')
+            json.dump(data, data_file, indent=4)
+            #return True
+        else:
+            print("Request failed with status code:", response.status_code)
+            print("Response content:", response.content)
+
+    except Exception as e:
+        print("An error occurred:", e)
 # Creating as describe on the hp developers website
 def create_headers(method, path, timestamp):
     string_to_sign = method + ' ' + path + timestamp
@@ -99,5 +159,22 @@ def create_headers(method, path, timestamp):
             }
 
 
+def create_headers_job(method, path, timestamp):
+    string_to_sign = method + ' ' + path + timestamp
+    local_secret = job_secret.encode('utf-8')
+    string_to_sign = string_to_sign.encode('utf-8')
+    signature = hmac.new(local_secret, string_to_sign, hashlib.sha256).hexdigest()
+    auth = job_key + ':' + signature
+    return {
+        'content-type': 'application/json',
+            'x-hp-hmac-authentication': auth,
+            'x-hp-hmac-date': timestamp,
+            'x-hp-hmac-algorithm': 'SHA256'
+            }
+
 if __name__ == '__main__':
-    get_request_kpi()
+    for i in range(60):
+        for press in press_list:
+            get_request_real_data(press)
+        time.sleep(50)
+        print(i)
