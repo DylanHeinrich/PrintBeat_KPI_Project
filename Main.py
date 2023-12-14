@@ -99,26 +99,5 @@ def create_headers(method, path, timestamp):
             }
 
 
-def gui():
-
-    sg.theme('DarkBlue')
-    layout = [[sg.Text('This is a very basic PySimpleGUI layout')],
-              [sg.Input()],
-              [sg.Button('Button'), sg.Button('Exit')]
-              ]
-    window = sg.Window("My new window", layout)
-
-    while True:
-        event, values = window.read()
-        print(event, values)
-        if event == "Exit" or event == sg.WIN_CLOSED:
-            break
-        if event == 'Button':
-            print('You press the button')
-    window.close()
-    
-
-
-
 if __name__ == '__main__':
-    gui()
+    get_request_kpi()
