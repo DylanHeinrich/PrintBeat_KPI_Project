@@ -1,0 +1,71 @@
+{
+    "data": {
+        "kpiName": "Overall Performance",
+        "fromDate": "2023-08-21",
+        "toDate": "2023-08-22",
+        "resolution": "Day",
+        "unitEvents": [
+            {
+                "unitName": "Print volume",
+                "events": [
+                    {
+                        "date": "2023-08-21",
+                        "score": {
+                            "limit": 20,
+                            "value": 0.0
+                        }
+                    }
+                ]
+            },
+            {
+                "unitName": "Availability",
+                "events": [
+                    {
+                        "date": "2023-08-21",
+                        "score": {
+                            "limit": 20,
+                            "value": 0.0
+                        }
+                    }
+                ]
+            },
+            {
+                "unitName": "Restarts",
+                "events": [
+                    {
+                        "date": "2023-08-21",
+                        "score": {
+                            "limit": 20,
+                            "value": 0.0
+                        }
+                    }
+                ]
+            },
+            {
+                "unitName": "Supplies lifespan",
+                "events": [
+                    {
+                        "date": "2023-08-21",
+                        "score": {
+                            "limit": 20,
+                            "value": 0.0
+                        }
+                    }
+                ]
+            },
+            {
+                "unitName": "Technical issues",
+                "events": [
+                    {
+                        "date": "2023-08-21",
+                        "score": {
+                            "limit": 20,
+                            "value": 0.0
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "unitSystem": "Imperial"
+}

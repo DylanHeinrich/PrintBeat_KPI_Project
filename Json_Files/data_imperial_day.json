@@ -1,0 +1,114 @@
+{
+    "data": [
+        {
+            "pressName": "CHI - 7k",
+            "deviceSerialNumber": "47200165",
+            "pressState": "PRINTING",
+            "currentJob": "11744403_130017133_JDF",
+            "jobsInQueue": 2,
+            "substrates": [
+                {
+                    "Name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "Thickness": 220.0,
+                    "Weight": 258.0,
+                    "Length": 457.2,
+                    "Width": 304.8,
+                    "Gloss": "SemiMatte",
+                    "DefinedWeightUnit": "GSM",
+                    "MediaHasMfp": false,
+                    "CentrallyManaged": false
+                },
+                {
+                    "Name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "Thickness": 200.0,
+                    "Weight": 232.0,
+                    "Length": 457.2,
+                    "Width": 304.8,
+                    "Gloss": "Gloss",
+                    "DefinedWeightUnit": "GSM",
+                    "MediaHasMfp": false,
+                    "CentrallyManaged": false
+                },
+                {
+                    "Name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "Thickness": 220.0,
+                    "Weight": 258.0,
+                    "Length": 457.2,
+                    "Width": 304.8,
+                    "Gloss": "SemiMatte",
+                    "DefinedWeightUnit": "GSM",
+                    "MediaHasMfp": false,
+                    "CentrallyManaged": false
+                },
+                {
+                    "Name": "1302259_1309871_J711912 MFP",
+                    "Thickness": 110.0,
+                    "Weight": 148.0,
+                    "Length": 482.6,
+                    "Width": 331.0,
+                    "Gloss": "Gloss",
+                    "DefinedWeightUnit": "GSM",
+                    "MediaHasMfp": true,
+                    "CentrallyManaged": false
+                }
+            ],
+            "printedJobs": 154,
+            "sheets": 21361,
+            "timeToCompletePendingJobs": 60,
+            "operatorName": "Garret Garlick",
+            "shiftDataRespond": {
+                "startTime": "2023-08-20T22:00:00.000+00:00",
+                "endTime": "2023-08-21T22:00:00.000+00:00",
+                "shiftName": "DAY_DEFAULT_SHIFT"
+            },
+            "colorTestScore": null,
+            "maintenanceStatus": "RED",
+            "version": "V16.2.i32 I-Fix 2.i68",
+            "model": "HP Indigo 7K Digital Press",
+            "lastTimeStateChanged": "2023-08-22T02:10:27.000+00:00",
+            "value": 122924.0,
+            "totalImpsSinceInstallation": 26593032,
+            "totalPrintedImpsSinceInstallation": 22188845,
+            "totalPrintedSheetsSinceInstallation": 3974625,
+            "totalPrintedMetersSinceInstallation": 0.0,
+            "totalPrintedSquareMetersSinceInstallation": 0.0,
+            "meters": null,
+            "impressionsPerHour": 7300,
+            "sheetsPerHour": 1876,
+            "metersPerHour": null
+        },
+        {
+            "pressName": "selected",
+            "deviceSerialNumber": "Selected",
+            "pressState": null,
+            "currentJob": null,
+            "jobsInQueue": null,
+            "substrates": null,
+            "printedJobs": 154,
+            "sheets": 21361,
+            "timeToCompletePendingJobs": 0,
+            "operatorName": null,
+            "shiftDataRespond": {
+                "startTime": "2023-08-20T22:00:00.000+00:00",
+                "endTime": "2023-08-21T22:00:00.000+00:00",
+                "shiftName": "DAY_DEFAULT_SHIFT"
+            },
+            "colorTestScore": null,
+            "maintenanceStatus": null,
+            "version": null,
+            "model": null,
+            "lastTimeStateChanged": null,
+            "value": 122924.0,
+            "totalImpsSinceInstallation": null,
+            "totalPrintedImpsSinceInstallation": null,
+            "totalPrintedSheetsSinceInstallation": null,
+            "totalPrintedMetersSinceInstallation": null,
+            "totalPrintedSquareMetersSinceInstallation": null,
+            "meters": null,
+            "impressionsPerHour": null,
+            "sheetsPerHour": null,
+            "metersPerHour": null
+        }
+    ],
+    "unitSystem": "Metric"
+}
