@@ -16,8 +16,10 @@ job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
 
 press_list = ['47200165','60001071', '60001112']
 
+#def checkForSameJob(job):
 
-def get_request_real_data(press):
+
+def get_request_real_data(press, filePath):
     path = '/externalApi/v1/RealTimeData'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers("GET", path, timestamp) 
@@ -50,21 +52,27 @@ def get_request_real_data(press):
             totalPrintedImps = data['data'][0]['totalPrintedImpsSinceInstallation']
             totalPrintedSheets = data['data'][0]['totalPrintedSheetsSinceInstallation']
             pressStatus = data['data'][0]['pressState']
-            csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond= 0).strftime("%Y_%m_%d %H-%M-%S")}'
+            currentJob = data['data'][0]['currentJob']
+
+            csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y_%m_%d %H-%M-%S")}'
+            data = [totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, currentJob, datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
+            csvFilePath = f'{filePath}\\{csvFileName}.csv'
 
 
-            if os.path.isfile(f'{csvFileName}.csv') == True:
+            if os.path.exists(csvFilePath):
+                os.chdir(filePath)
                 with open(f'{csvFileName}.csv', 'a', newline='') as file:
                     writer = csv.writer(file)
-                    writer.writerow([totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, datetime.now().strftime('%Y-%m-%d %H:%M:%S')])
+                    writer.writerow(data)
                     print("Done writing to csv file.")
             else:
+                os.chdir(filePath)
                 with open(f'{csvFileName}.csv', 'w', newline='') as file:
                     writer = csv.writer(file)
-                    field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 'totalPrintedSheetsSinceInstallation', 'Press Status', 'Time']
+                    field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 'totalPrintedSheetsSinceInstallation', 'Press Status', 'currentJob', 'Time']
                     writer.writerow(field)
-                    writer.writerow([totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, datetime.now().strftime('%Y-%m-%d %H:%M:%S')])
-                    print(f'File does not exists...Created file {csvFileName}')
+                    writer.writerow(data)
+                    print(f'File did not exists...Created file {csvFileName}')
 
         else:
             print("Request failed with status code:", response.status_code)
@@ -173,8 +181,9 @@ def create_headers_job(method, path, timestamp):
             }
 
 if __name__ == '__main__':
-    for i in range(60):
+    folderPath = 'C:\\DylanH\\VSC_Projects\\Test'
+    for i in range(3):
         for press in press_list:
-            get_request_real_data(press)
+            get_request_real_data(press,folderPath)
         time.sleep(50)
         print(i)
