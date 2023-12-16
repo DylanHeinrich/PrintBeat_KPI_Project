@@ -16,10 +16,12 @@ job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
 
 press_list = ['47200165','60001071', '60001112']
 
+currnetRunningJob = ''
 #def checkForSameJob(job):
 
 
 def get_request_real_data(press, filePath):
+    global currnetRunningJob
     path = '/externalApi/v1/RealTimeData'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers("GET", path, timestamp) 
@@ -53,6 +55,11 @@ def get_request_real_data(press, filePath):
             totalPrintedSheets = data['data'][0]['totalPrintedSheetsSinceInstallation']
             pressStatus = data['data'][0]['pressState']
             currentJob = data['data'][0]['currentJob']
+
+            if currentJob == currnetRunningJob:
+                currentJob = ''
+            else:
+                currnetRunningJob = currentJob
 
             csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y_%m_%d %H-%M-%S")}'
             data = [totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, currentJob, datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
@@ -183,7 +190,6 @@ def create_headers_job(method, path, timestamp):
 if __name__ == '__main__':
     folderPath = 'C:\\DylanH\\VSC_Projects\\Test'
     for i in range(3):
-        for press in press_list:
-            get_request_real_data(press,folderPath)
+        get_request_real_data(press_list,folderPath)
         time.sleep(50)
         print(i)
