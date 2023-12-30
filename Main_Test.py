@@ -32,8 +32,10 @@ import threading
 import tkinter as tk
 import ctypes
 from tkinter.scrolledtext import ScrolledText
-from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W
+from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog
+import signal
 import logging
+import queue
 
 
 key = 'riimt7skcm5p7218itgprlsc8hsrd6f'
@@ -47,12 +49,209 @@ job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
 press_list = ['47200165','60001071', '60001112']
 
 currnetRunningJob = {}
-#def checkForSameJob(job):
 
 t1 = None
 t2 = None
+app = None
+configPath = None
 
 logger = logging.getLogger(__name__)
+
+
+class QueueHandler(logging.Handler):
+    """Class to send logging records to a queue
+
+    It can be used from different threads
+    The ConsoleUi class polls this queue to display records in a ScrolledText widget
+    """
+    # Example from Moshe Kaplan: https://gist.github.com/moshekaplan/c425f861de7bbf28ef06
+    # (https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget) is not thread safe!
+    # See https://stackoverflow.com/questions/43909849/tkinter-python-crashes-on-new-thread-trying-to-log-on-main-thread
+
+    def __init__(self, log_queue):
+        super().__init__()
+        self.log_queue = log_queue
+
+    def emit(self, record):
+        self.log_queue.put(record)
+
+
+class ConsoleUi:
+    """Poll messages from a logging queue and display them in a scrolled text widget"""
+
+    def __init__(self, frame):
+        self.frame = frame
+        # Create a ScrolledText wdiget
+        self.scrolled_text = ScrolledText(frame, state='disabled', height=12)
+        self.scrolled_text.grid(row=0, column=0, sticky="nswe")
+        self.scrolled_text.configure(font='TkFixedFont')
+        self.scrolled_text.tag_config('INFO', foreground='black')
+        self.scrolled_text.tag_config('DEBUG', foreground='gray')
+        self.scrolled_text.tag_config('WARNING', foreground='orange')
+        self.scrolled_text.tag_config('ERROR', foreground='red')
+        self.scrolled_text.tag_config('CRITICAL', foreground='red', underline=True)
+        # Create a logging handler using a queue
+        self.log_queue = queue.Queue()
+        self.queue_handler = QueueHandler(self.log_queue)
+        formatter = logging.Formatter('%(asctime)s: %(message)s', '%m/%d/%Y %H:%M:%S') #datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        self.queue_handler.setFormatter(formatter)
+        logger.addHandler(self.queue_handler)
+        # Start polling messages from the queue
+        self.frame.after(100, self.poll_log_queue)
+
+    def display(self, record):
+        msg = self.queue_handler.format(record)
+        self.scrolled_text.configure(state='normal')
+        self.scrolled_text.insert(tk.END, msg + '\n', record.levelname)
+        self.scrolled_text.configure(state='disabled')
+        # Autoscroll to the bottom
+        self.scrolled_text.yview(tk.END)
+
+    def poll_log_queue(self):
+        # Check every 100ms if there is a new message in the queue to display
+        while True:
+            try:
+                record = self.log_queue.get(block=False)
+            except queue.Empty:
+                break
+            else:
+                self.display(record)
+        self.frame.after(100, self.poll_log_queue)
+
+
+class FormUi:
+
+    def __init__(self, frame):
+        self.frame = frame
+        # Create a combobbox to select the logging level
+        values = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+        self.level = tk.StringVar()
+        ttk.Label(self.frame, text='Level:').grid(column=0, row=0, sticky=W)
+        self.combobox = ttk.Combobox(
+            self.frame,
+            textvariable=self.level,
+            width=25,
+            state='readonly',
+            values=values
+        )
+        self.combobox.current(0)
+        self.combobox.grid(column=1, row=0, sticky="we")
+        # Create a text field to enter a message
+        self.message = tk.StringVar()
+        ttk.Label(self.frame, text='Message:').grid(column=0, row=1, sticky=W)
+        ttk.Entry(self.frame, textvariable=self.message, width=25).grid(column=1, row=1, sticky="we")
+        # Add a button to log the message
+        self.button = ttk.Button(self.frame, text='Submit', command=self.submit_message)
+        self.button.grid(column=1, row=2, sticky=W)
+
+    def submit_message(self):
+        # Get the logging level numeric value
+        lvl = getattr(logging, self.level.get())
+        logger.log(lvl, self.message.get())
+
+
+class ThirdUi:
+
+    def __init__(self, frame, root):
+        self.frame = frame
+        self.style = ttk.Style()
+        self.style.configure('W.TButton', font = ('calibri', 10, 'bold', 'underline'),foreground = 'red')
+        button1 = ttk.Button(self.frame, text='Config Settings', width=25)
+        button1.bind("<Button>", lambda e: NewWindow(root))
+        button1.pack()
+        button2 = ttk.Button(self.frame, text='Start PrintBeat', width=25, command=buttonStart)
+        button2.pack()
+        button3 = ttk.Button(self.frame, text='Stop PrintBeat', width=25, command=stopPrintBeat)
+        button3.pack()
+        buttoon4 = ttk.Button(self.frame, text='Test Button', width=25, command=testButton)
+        buttoon4.pack()
+        #ttk.Label(self.frame, text='This is just an example of a third frame').grid(column=0, row=1, sticky=W)
+        #ttk.Label(self.frame, text='With another line here!').grid(column=0, row=4, sticky=W)
+
+class MenuTest:
+    def __init__(self,root):
+        menubar = Menu(root)
+        root.config(menu = menubar)
+        file = Menu(menubar, tearoff = 0)
+        menubar.add_cascade(label = 'File', menu = file)
+        file.add_command(label = 'New File', command = None)
+        file.add_command(label = 'Open...', command = None)
+        file.add_command(label = 'Save', command = None)
+        file.add_separator()
+        file.add_command(label = 'Exit', command = root.destroy)
+
+
+class NewWindow():
+
+    def __init__(self, root):
+        self.newWin = tk.Toplevel(root)
+        self.newWin.title('New Window')
+        self.newWin.geometry('200x200')
+        tk.Label(self.newWin, text = 'This is a new window').pack()
+        self.folderOpen = tk.Label(self.newWin, text='Folder Explorer', width=50, height=2, fg='white', bg='gray')
+        folderLocation = tk.Button(self.newWin, text='Browse Folder', width=25, command=self.browseFolder)
+        self.saveButton = tk.Button(self.newWin, text= 'Save', command=self.save)
+        self.saveButton.pack()
+        self.folderOpen.pack()
+        folderLocation.pack()
+
+
+    def browseFolder(self, *args):
+        self.folderPath = filedialog.askdirectory(title='Path Location')
+        logger.log(logging.INFO, self.folderPath)
+        self.folderOpen.configure(text="Folder path: "+self.folderPath)
+
+    def save(self, *args):
+        global configPath
+
+        configPath = self.folderPath
+        logger.log(logging.INFO, msg='Config path saved')
+        self.saveButton.bind('<Button>', self.quit)
+        signal.signal(signal.SIGINT, self.quit)
+
+    def quit(self, *args):
+        #self.clock.stop()
+        self.newWin.destroy
+
+class App:
+
+    def __init__(self, root):
+        self.root = root
+        root.title('Logging Handler')
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
+        # Create the panes and frames
+        vertical_pane = ttk.PanedWindow(self.root, orient=VERTICAL)
+        vertical_pane.grid(row=0, column=0, sticky="nsew")
+        horizontal_pane = ttk.PanedWindow(vertical_pane, orient=HORIZONTAL)
+        vertical_pane.add(horizontal_pane)
+        #form_frame = ttk.Labelframe(horizontal_pane, text="MyForm")
+        #form_frame.columnconfigure(1, weight=1)
+        #horizontal_pane.add(form_frame, weight=1)
+        console_frame = ttk.Labelframe(vertical_pane, text="Console")
+        console_frame.columnconfigure(0, weight=1)
+        console_frame.rowconfigure(0, weight=1)
+        vertical_pane.add(console_frame, weight=1)
+        third_frame = ttk.Labelframe(horizontal_pane, text="PrintBeat Controls")
+        horizontal_pane.add(third_frame, weight=1)
+
+        #MenuBar
+
+        # Initialize all frames
+
+        #self.form = FormUi(form_frame)
+        self.console = ConsoleUi(console_frame)
+        self.third = ThirdUi(third_frame, root)
+        self.menubar = MenuTest(root)
+        self.root.protocol('WM_DELETE_WINDOW', self.quit)
+        self.root.bind('<Control-q>', self.quit)
+        signal.signal(signal.SIGINT, self.quit)
+
+    def quit(self, *args):
+        #self.clock.stop()
+        self.root.destroy()
+
+
 
 def RealTimeDataProcess(data, filePath):
     global currnetRunningJob
@@ -88,7 +287,8 @@ def RealTimeDataProcess(data, filePath):
             with open(f'{csvFileName}.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow(pressData)
-                print("Done writing to csv file.")
+                msg = "Done writing to csv file."
+                logger.log(logging.INFO, msg)
         else:
             os.chdir(filePath)
             with open(f'{csvFileName}.csv', 'w', newline='') as file:
@@ -104,7 +304,7 @@ def RealTimeDataProcess(data, filePath):
 
 def get_request_real_data(press, filePath):
     global currnetRunningJob
-    path = '/externalApi/v1/RealTimeData'
+    path = '/externalApi/v1/RealTimeDate'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers("GET", path, timestamp) 
 
@@ -127,12 +327,12 @@ def get_request_real_data(press, filePath):
             print("Succesfully called to the api")
             data = response.json()
             RealTimeDataProcess(data, filePath)
-            logger.log(logging,'Done')
+            logger.log(logging.INFO,'Done')
             
 
         else:
-            logger.log(logging.ERROR,"Request failed with status code:", response.status_code)
-            logger.log(logging.ERROR, "Response content:", response.content)
+            logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
+            logger.log(logging.ERROR, f"Response content:{response.content}")
 
     except Exception as e:
         print("An error occurred:", e)
@@ -248,7 +448,7 @@ class thread_with_exception(threading.Thread):
             while True:
                 printBeatStart()
         finally:
-            print('ended')
+            logger.log(logging.INFO, 'Process has been stopped')
           
     def get_id(self):
  
@@ -285,28 +485,30 @@ def printBeatStart():
 
 def buttonStart():
     global t2
-
+    global app
     msg = 'Starting the printBeat program'
-    print(msg)
     logger.log(logging.INFO, msg= msg)
     t2 = thread_with_exception('PrintBeat Api')
     t2.start()
-    button2['state'] = 'disable'
+    app.third.frame.children['!button2']['state'] = 'disable'
     #time.sleep(2)
     #t2.raise_exception()
     #t2.join()
 
-def button1Command():
-    logger.log(logging.INFO, 'Button 1 is working')
-    print('Button 1 is working')
+def testButton():
+    global configPath
+    logger.log(level=logging.INFO, msg='This is a test button')
+    logger.log(level=logging.INFO, msg=configPath)
+
 
 def stopPrintBeat():
     msg = 'Stop button has been press.....Stopping thread'
     logger.log(logging.INFO, msg = msg)
     t2.raise_exception()
     t2.join()
-    button2['state'] = 'active'
+    app.third.frame.children['!button2']['state'] = 'normal'
 
+'''
 r = tk.Tk()
 r.title('PrintBeat Api GUI')
 r.geometry('300x300')
@@ -317,3 +519,16 @@ button1.pack()
 button2.pack()
 button3.pack()
 r.mainloop()
+'''
+
+def main():
+    global app
+    logging.basicConfig(level=logging.DEBUG)
+    root = tk.Tk()
+    app = App(root)
+
+    app.root.mainloop()
+
+
+if __name__ == '__main__':
+    main()
