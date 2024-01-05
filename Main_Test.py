@@ -32,30 +32,50 @@ import threading
 import tkinter as tk
 import ctypes
 from tkinter.scrolledtext import ScrolledText
-from tkinter import ttk, VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog
+from tkinter import VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog, font, PhotoImage
+import ttkbootstrap as ttk
 import signal
 import logging
 import queue
+from configparser import ConfigParser
 
+#key = 'riimt7skcm5p7218itgprlsc8hsrd6f'
+#secret = 'ctuiec4uo71brmco03145k6j0r4ig3rf' 
+#api_url = 'https://printos.api.hp.com/printbeat'
 
-key = 'riimt7skcm5p7218itgprlsc8hsrd6f'
-secret = 'ctuiec4uo71brmco03145k6j0r4ig3rf' 
-api_url = 'https://printos.api.hp.com/printbeat'
+#job_key = 'pke0g35sukrk21u9ase9k24mk1b95ct4'
+#job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
+key = None
+secret = None
+api_url = None
 
-job_key = 'pke0g35sukrk21u9ase9k24mk1b95ct4'
-job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
+job_key = None
+job_secret = None
 
+mainPath = None
+backUpPath = None
+waitTime = None
 
 press_list = ['47200165','60001071', '60001112']
+ml_press_list = ['60001073', '47200177']
+slc_press_list = ['47200304', '60001067', '60002010']
+
+
+chi_plant = None
+slc_plant = None
+ml_plant = None
 
 currnetRunningJob = {}
 
 t1 = None
 t2 = None
 app = None
-configPath = None
+
+programLocation = os.getcwd()
 
 logger = logging.getLogger(__name__)
+
+config = ConfigParser()
 
 
 class QueueHandler(logging.Handler):
@@ -64,9 +84,6 @@ class QueueHandler(logging.Handler):
     It can be used from different threads
     The ConsoleUi class polls this queue to display records in a ScrolledText widget
     """
-    # Example from Moshe Kaplan: https://gist.github.com/moshekaplan/c425f861de7bbf28ef06
-    # (https://stackoverflow.com/questions/13318742/python-logging-to-tkinter-text-widget) is not thread safe!
-    # See https://stackoverflow.com/questions/43909849/tkinter-python-crashes-on-new-thread-trying-to-log-on-main-thread
 
     def __init__(self, log_queue):
         super().__init__()
@@ -118,55 +135,169 @@ class ConsoleUi:
                 self.display(record)
         self.frame.after(100, self.poll_log_queue)
 
+class NewWindow():
+    def __init__(self, root):
+        #Grabbing global variables
+        global key, secret, api_url, job_key, job_secret, filePath, waitTime
+        self.sleepNumber = tk.IntVar(value= int(waitTime))
+        self.key = tk.StringVar()
+        self.secret = tk.StringVar()
+        self.job_key = tk.StringVar()
+        self.job_secret = tk.StringVar()
+        self.root = root
+        windowHeight = 500
+        windowWidth = 700
+        postion = root.winfo_geometry().split('+')
 
-class FormUi:
+        self.root.withdraw()
 
-    def __init__(self, frame):
-        self.frame = frame
-        # Create a combobbox to select the logging level
-        values = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
-        self.level = tk.StringVar()
-        ttk.Label(self.frame, text='Level:').grid(column=0, row=0, sticky=W)
-        self.combobox = ttk.Combobox(
-            self.frame,
-            textvariable=self.level,
-            width=25,
-            state='readonly',
-            values=values
-        )
-        self.combobox.current(0)
-        self.combobox.grid(column=1, row=0, sticky="we")
-        # Create a text field to enter a message
-        self.message = tk.StringVar()
-        ttk.Label(self.frame, text='Message:').grid(column=0, row=1, sticky=W)
-        ttk.Entry(self.frame, textvariable=self.message, width=25).grid(column=1, row=1, sticky="we")
-        # Add a button to log the message
-        self.button = ttk.Button(self.frame, text='Submit', command=self.submit_message)
-        self.button.grid(column=1, row=2, sticky=W)
+        self.newWin = tk.Toplevel(root)
 
-    def submit_message(self):
-        # Get the logging level numeric value
-        lvl = getattr(logging, self.level.get())
-        logger.log(lvl, self.message.get())
+        self.v = tk.StringVar(self.newWin)
+        self.v.set('PRESS')
 
+        self.newWin.lift()
+        self.newWin.title('Config settings')
+        self.newWin.geometry(f'{windowWidth}x{windowHeight}+{(int(postion[1]) +200)}+{postion[2]}')
+        self.newWin.resizable(False, False)
+        self.newWin.wm_iconbitmap(f'{programLocation}\\deluxe_logo.ico')
+        tk.Label(self.newWin, text = 'Config settings').pack()
+
+        self.landingLocationLabel = tk.Label(self.newWin, text= mainPath, width= 50, height=1, fg='white', bg='gray')
+        self.landingLocationLabel.place(x=225, y = 25)
+        tk.Button(self.newWin, text='File Location', width=25, command= lambda: self.browseFolder(self.landingLocationLabel, 'Main Location')).place(x=25, y = 25)
+
+        self.backUpLocationLabel = tk.Label(self.newWin, text= backUpPath, width= 50, height=1, fg='white', bg='gray')
+        self.backUpLocationLabel.place(x=225, y = 60)
+        tk.Button(self.newWin, text='Back-up Location', width=25, command= lambda: self.browseFolder(self.backUpLocationLabel, 'Back-up Location')).place(x=25, y = 60)
+
+        self.saveButton = tk.Button(self.newWin, text= 'Save', command=self.save).place(x = windowWidth - 50, y = windowHeight - 50)
+        self.cancelButton = tk.Button(self.newWin, text= 'Cancel', command = self.cancel).place(x = windowWidth - 100, y = windowHeight - 50)
+
+        tk.Label(self.newWin, text= 'Time interval (Seconds):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 95)
+        tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 95)
+        tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 130)
+        tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 130)
+        tk.Label(self.newWin, text= 'PrintBeat Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 165)
+        tk.Entry(self.newWin, textvariable = self.secret, width = 35).place(x= 225, y = 165)
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 200)
+        tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 200)
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
+        tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 235)
+        tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
+        
+        option = tk.OptionMenu(self.newWin, self.v, *press_list)
+        #ttk.Combobox(self.newWin, textvariable= self.v, values= press_list).place(x= 225, y = 270)
+        option.place(x= 225, y = 270)
+
+        self.newWin.protocol('WM_DELETE_WINDOW', self.quit)
+        self.newWin.bind('<Control-q>', self.quit)
+        signal.signal(signal.SIGINT, self.quit)
+
+    def browseFolder(self, label, locType):
+        if locType == 'Main Location':
+            self.mainPath = filedialog.askdirectory(title='Path Location')
+            logger.log(logging.DEBUG, msg = f'{locType} = {self.mainPath}')
+            label.configure(text= self.mainPath)
+        else:
+            self.backUpPath = filedialog.askdirectory(title='Path Location')
+            logger.log(logging.DEBUG, msg = f'{locType} = {self.backUpPath}')
+            label.configure(text= self.backUpPath)
+
+    def cancel(self, *args):
+        self.newWin.destroy()
+        self.root.deiconify()
+
+    def save(self, *args):
+        global mainPath, backUpPath, waitTime, key, secret, job_secret, job_key
+        try:
+            mainPath = self.mainPath
+            backUpPath = self.backUpPath
+        except AttributeError:
+            logger.log(logging.DEBUG, msg='A path was not seleted')
+            pass
+
+        waitTime = str(self.sleepNumber.get())
+        api_key = str(self.key.get())
+        api_secret = str(self.secret.get())
+        api_job_key = str(self.job_key.get())
+        api_job_secret = str(self.job_secret.get())
+
+        if api_key == '':
+            pass
+        else:
+            key = api_key
+            logger.log(logging.DEBUG, msg= 'New API key = '+ api_key)
+
+        if api_secret == '':
+            pass
+        else:
+            secret = api_secret
+            logger.log(logging.DEBUG, msg= 'New API Secret = ' + api_secret)
+        
+        if api_job_key == '':
+            pass
+        else:
+            job_key = api_job_key
+            logger.log(logging.DEBUG, msg= 'New API Job key = '+ api_job_key)
+
+        if api_secret == '':
+            pass
+        else:
+            job_secret = api_job_secret
+            logger.log(logging.DEBUG, msg= 'New API Job Secret = ' + api_job_secret)
+        
+        logger.log(logging.DEBUG, msg= 'Wait Time = ' + waitTime)
+        logger.log(logging.INFO, msg='Config settings saved')
+        self.newWin.destroy()
+        self.root.deiconify()
+    
+    def quit(self, *args):
+        self.newWin.destroy()
+        self.root.deiconify()
 
 class ThirdUi:
 
     def __init__(self, frame, root):
         self.frame = frame
         self.style = ttk.Style()
+
+        self.chi = tk.BooleanVar()
+        self.ml = tk.BooleanVar()
+        self.slc = tk.BooleanVar()
+
         self.style.configure('W.TButton', font = ('calibri', 10, 'bold', 'underline'),foreground = 'red')
-        button1 = ttk.Button(self.frame, text='Config Settings', width=25)
+        button1 = ttk.Button(frame, text='Config Settings', width=25, bootstyle = 'outline')
         button1.bind("<Button>", lambda e: NewWindow(root))
         button1.pack()
-        button2 = ttk.Button(self.frame, text='Start PrintBeat', width=25, command=buttonStart)
-        button2.pack()
-        button3 = ttk.Button(self.frame, text='Stop PrintBeat', width=25, command=stopPrintBeat)
+        self.button2 = ttk.Button(frame, text='Start PrintBeat', width=25, command=buttonStart, state= 'disable', bootstyle = 'outline')
+        self.button2.pack()
+        button3 = ttk.Button(frame, text='Stop PrintBeat', width=25, command=stopPrintBeat, bootstyle = 'outline')
         button3.pack()
-        buttoon4 = ttk.Button(self.frame, text='Test Button', width=25, command=testButton)
+        buttoon4 = ttk.Button(frame, text='Test Button', width=25, command=testButton, bootstyle = 'outline')
         buttoon4.pack()
+
+        checkbox1 = ttk.Checkbutton(frame, text= 'Chicago', variable=self.chi, onvalue= True, offvalue= False, command= self.plant, bootstyle='round-toggle')
+        checkbox1.place(x = 550, y =2)
+        checkbox1.invoke()
+        ttk.Checkbutton(frame, text= 'Mountine Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
+        ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
         #ttk.Label(self.frame, text='This is just an example of a third frame').grid(column=0, row=1, sticky=W)
         #ttk.Label(self.frame, text='With another line here!').grid(column=0, row=4, sticky=W)
+
+
+    def plant(self, *args):
+        global chi_plant, ml_plant, slc_plant
+        logger.log(logging.INFO, msg = f'Chi Valuse = {self.chi.get()}')
+        logger.log(logging.INFO, msg = f'ML Valuse = {self.ml.get()}')
+        logger.log(logging.INFO, msg = f'SLC Valuse = {self.slc.get()}\n')
+
+        if self.chi.get() or self.slc.get() or self.ml.get():
+            self.button2['state'] = 'normal'
+        else:
+            self.button2['state'] = 'disable'
+        chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()
+
 
 class MenuTest:
     def __init__(self,root):
@@ -180,44 +311,17 @@ class MenuTest:
         file.add_separator()
         file.add_command(label = 'Exit', command = root.destroy)
 
-
-class NewWindow():
-
-    def __init__(self, root):
-        self.newWin = tk.Toplevel(root)
-        self.newWin.title('New Window')
-        self.newWin.geometry('200x200')
-        tk.Label(self.newWin, text = 'This is a new window').pack()
-        self.folderOpen = tk.Label(self.newWin, text='Folder Explorer', width=50, height=2, fg='white', bg='gray')
-        folderLocation = tk.Button(self.newWin, text='Browse Folder', width=25, command=self.browseFolder)
-        self.saveButton = tk.Button(self.newWin, text= 'Save', command=self.save)
-        self.saveButton.pack()
-        self.folderOpen.pack()
-        folderLocation.pack()
-
-
-    def browseFolder(self, *args):
-        self.folderPath = filedialog.askdirectory(title='Path Location')
-        logger.log(logging.INFO, self.folderPath)
-        self.folderOpen.configure(text="Folder path: "+self.folderPath)
-
-    def save(self, *args):
-        global configPath
-
-        configPath = self.folderPath
-        logger.log(logging.INFO, msg='Config path saved')
-        self.saveButton.bind('<Button>', self.quit)
-        signal.signal(signal.SIGINT, self.quit)
-
-    def quit(self, *args):
-        #self.clock.stop()
-        self.newWin.destroy
-
 class App:
 
     def __init__(self, root):
         self.root = root
-        root.title('Logging Handler')
+        if os.path.exists(f'{programLocation}\\myapp.conf'):
+            with open(f'{programLocation}\\myapp.conf', 'r') as file:
+                postion = file.read()
+            file.close()
+        self.root.geometry(postion)
+        root.resizable(False, False)
+        root.title('PrintBeat API App')
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
         # Create the panes and frames
@@ -228,11 +332,13 @@ class App:
         #form_frame = ttk.Labelframe(horizontal_pane, text="MyForm")
         #form_frame.columnconfigure(1, weight=1)
         #horizontal_pane.add(form_frame, weight=1)
-        console_frame = ttk.Labelframe(vertical_pane, text="Console")
+        console_frame = ttk.Labelframe(vertical_pane, text="Log Console")
         console_frame.columnconfigure(0, weight=1)
         console_frame.rowconfigure(0, weight=1)
         vertical_pane.add(console_frame, weight=1)
         third_frame = ttk.Labelframe(horizontal_pane, text="PrintBeat Controls")
+        third_frame.columnconfigure(0, weight=1)
+        third_frame.rowconfigure(0, weight=1)
         horizontal_pane.add(third_frame, weight=1)
 
         #MenuBar
@@ -247,13 +353,42 @@ class App:
         self.root.bind('<Control-q>', self.quit)
         signal.signal(signal.SIGINT, self.quit)
 
+    def retrieve_window_position(self, *args):
+        if os.path.exists(f'{programLocation}\\myapp.conf'):
+            with open(f'{programLocation}\\myapp.conf', 'rb') as file:
+                postion = file.read()
+            file.close()
+        self.root.geometry(postion)
+
+    def saveConfig(self, *args):
+        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
+
+        config.read(f'{programLocation}\\config.ini')
+
+        config['printBeatAPI']['key'] = key
+        config['printBeatAPI']['secret'] =  secret
+
+        config['printBeatJobAPI']['job_key'] = job_key
+        config['printBeatJobAPI']['job_secret'] = job_secret
+
+        config['configSettings']['main_location'] = mainPath
+        config['configSettings']['back-up_location'] = backUpPath
+        config['configSettings']['wait_time'] = waitTime
+
+        with open(f'{programLocation}\\config.ini', 'w') as file:
+            config.write(file)
+
     def quit(self, *args):
         #self.clock.stop()
+        self.saveConfig()
+        with open(f"{programLocation}\\myapp.conf", "w") as conf:
+            conf.write(self.root.winfo_geometry()) # Assuming root is the root window
+        conf.close()
         self.root.destroy()
 
 
 
-def RealTimeDataProcess(data, filePath):
+def RealTimeDataProcess(data):
     global currnetRunningJob
 
     for i in range(len(data['data'])-1):
@@ -277,20 +412,25 @@ def RealTimeDataProcess(data, filePath):
             currentJob = ''
 
 
-        csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y_%m_%d %H-%M-%S")}'
+        csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y_%m_%d %H-%M-%S")}.csv'
         pressData = [totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, currentJob, datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
-        csvFilePath = f'{filePath}\\{csvFileName}.csv'
+        csvFilePath = f'{mainPath}/{csvFileName}'
+        backUpCsvPath = f'{backUpPath}/{csvFileName}'
+        
+        createCsvFile(filePath=mainPath, csvFilePath=csvFilePath, csvFileName=csvFileName, pressData=pressData)
+        os.chdir(programLocation)
+        createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvFileName, pressData=pressData)
 
-
+        '''
         if os.path.exists(csvFilePath):
-            os.chdir(filePath)
+            os.chdir(mainPath)
             with open(f'{csvFileName}.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow(pressData)
-                msg = "Done writing to csv file."
+                msg = f'Updated {csvFileName}.....'
                 logger.log(logging.INFO, msg)
         else:
-            os.chdir(filePath)
+            os.chdir(mainPath)
             with open(f'{csvFileName}.csv', 'w', newline='') as file:
                 writer = csv.writer(file)
                 field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
@@ -301,16 +441,41 @@ def RealTimeDataProcess(data, filePath):
                 writer.writerow(pressData)
                 log = f'File did not exists...Created file {csvFileName}'
                 logger.log(logging.INFO, log)
+        '''
 
-def get_request_real_data(press, filePath):
+def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
+    if os.path.exists(csvFilePath):
+            os.chdir(filePath)
+            with open(f'{csvFileName}', 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(pressData)
+                msg = f'Updated: {csvFilePath}'
+                logger.log(logging.INFO, msg)
+    else:
+        os.chdir(filePath)
+        with open(f'{csvFileName}', 'w', newline='') as file:
+            writer = csv.writer(file)
+            field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
+                        'totalPrintedSheetsSinceInstallation', 'Press Status', 
+                        'currentJob', 'Time']
+            
+            writer.writerow(field)
+            writer.writerow(pressData)
+            log = f'File did not exists at {filePath}...Creating file at {filePath}'
+            logger.log(logging.INFO, log)
+
+
+
+
+def get_request_real_data(press):
     global currnetRunningJob
-    path = '/externalApi/v1/RealTimeDate'
+    path = '/externalApi/v1/RealTimeData' #'/externalApi/v1/RealTimeData'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers("GET", path, timestamp) 
 
     # Setting up the parameters need for the get request
     parameters = {
-        'devices' : [press],
+        'devices' : press,
         'resolution' : 'Day',
         'unitSystem' : 'Metric'
     }
@@ -326,16 +491,18 @@ def get_request_real_data(press, filePath):
         if response.status_code == 200:
             print("Succesfully called to the api")
             data = response.json()
-            RealTimeDataProcess(data, filePath)
+            RealTimeDataProcess(data)
             logger.log(logging.INFO,'Done')
             
 
         else:
             logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
             logger.log(logging.ERROR, f"Response content:{response.content}")
+            stopPrintBeat()
 
     except Exception as e:
-        print("An error occurred:", e)
+        logger.log(logging.ERROR, msg= e)
+        logger.log(logging.INFO, msg= 'Stopping')
 
 def get_request_kpi():
     path = '/externalApi/v1/Historic/OverallPerformance'
@@ -468,14 +635,24 @@ class thread_with_exception(threading.Thread):
             print('Exception raise failure')
 
 def printBeatStart():
-    folderPath = 'C:\\DylanH\\VSC_Projects\\PrintBeat_KPI_Project'
+    global mainPath, backUpPath, waitTime, app
     timer = 0
+    sleepTimer = waitTime
+    combineList = []
+    if chi_plant:
+        combineList = combineList + press_list
+    if slc_plant:
+        combineList = combineList + slc_press_list
+    if ml_plant:
+        combineList = combineList + ml_press_list
+
     while True:
-        if timer >= 60:
-            get_request_real_data(press_list, folderPath)
+        if timer >= int(sleepTimer):
+            get_request_real_data(combineList)
             timer = 0
+            sleepTimer = waitTime
         else:
-            msg = f'Next pull in....{60-timer} seconds'
+            msg = f'Next pull in....{int(sleepTimer)-timer} seconds'
             logger.log(logging.INFO, msg= msg)
             time.sleep(5)
             timer += 5
@@ -491,44 +668,52 @@ def buttonStart():
     t2 = thread_with_exception('PrintBeat Api')
     t2.start()
     app.third.frame.children['!button2']['state'] = 'disable'
-    #time.sleep(2)
-    #t2.raise_exception()
-    #t2.join()
+    app.third.frame.children['!checkbutton']['state'] = 'disable'
+    app.third.frame.children['!checkbutton2']['state'] = 'disable'
+    app.third.frame.children['!checkbutton3']['state'] = 'disable'
 
 def testButton():
-    global configPath
+    global mainPath
     logger.log(level=logging.INFO, msg='This is a test button')
-    logger.log(level=logging.INFO, msg=configPath)
+    logger.log(level=logging.INFO, msg=mainPath)
 
 
 def stopPrintBeat():
     msg = 'Stop button has been press.....Stopping thread'
     logger.log(logging.INFO, msg = msg)
+    app.third.frame.children['!button2']['state'] = 'normal'
+    app.third.frame.children['!checkbutton']['state'] = 'normal'
+    app.third.frame.children['!checkbutton2']['state'] = 'normal'
+    app.third.frame.children['!checkbutton3']['state'] = 'normal'
     t2.raise_exception()
     t2.join()
-    app.third.frame.children['!button2']['state'] = 'normal'
 
-'''
-r = tk.Tk()
-r.title('PrintBeat Api GUI')
-r.geometry('300x300')
-button1 = tk.Button(r, text='Button 1', width=25, command=button1Command)
-button2 = tk.Button(r, text='Start PrintBeat', width=25, command=buttonStart)
-button3 = tk.Button(r, text='Stop PrintBeat', width=25, command=stopPrintBeat)
-button1.pack()
-button2.pack()
-button3.pack()
-r.mainloop()
-'''
+
+def startUpSettings():
+    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
+    config.read(f'{programLocation}\\config.ini')
+    key = config['printBeatAPI']['key']
+    secret = config['printBeatAPI']['secret']
+    api_url = config['printBeatAPI']['api_url']
+
+    job_key = config['printBeatJobAPI']['job_key']
+    job_secret = config['printBeatJobAPI']['job_secret']
+
+    mainPath = config['configSettings']['main_location']
+    backUpPath = config['configSettings']['back-up_location']
+    waitTime = config['configSettings']['wait_time']
+
 
 def main():
     global app
     logging.basicConfig(level=logging.DEBUG)
     root = tk.Tk()
     app = App(root)
-
+    #app.root.iconbitmap('deluxe_logo.ico')
+    app.root.wm_iconbitmap(f'{programLocation}\\deluxe_logo.ico')
     app.root.mainloop()
 
 
 if __name__ == '__main__':
+    startUpSettings()
     main()
