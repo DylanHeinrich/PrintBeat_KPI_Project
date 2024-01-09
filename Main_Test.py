@@ -32,7 +32,7 @@ import threading
 import tkinter as tk
 import ctypes
 from tkinter.scrolledtext import ScrolledText
-from tkinter import VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog, font, PhotoImage
+from tkinter import VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog, font, PhotoImage, END
 import ttkbootstrap as ttk
 import signal
 import logging
@@ -56,9 +56,10 @@ mainPath = None
 backUpPath = None
 waitTime = None
 
-press_list = ['47200165','60001071', '60001112']
-ml_press_list = ['60001073', '47200177']
-slc_press_list = ['47200304', '60001067', '60002010']
+plants = ['Chicago', 'Mountain Lakes', 'Salt Lake City']
+press_list = {} #['47200165','60001071', '60001112']
+ml_press_list = {} #['60001073', '47200177']
+slc_press_list = {} #['47200304', '60001067', '60002010']
 
 
 chi_plant = None
@@ -76,8 +77,7 @@ programLocation = os.getcwd()
 logger = logging.getLogger(__name__)
 
 config = ConfigParser()
-
-
+config.read('config_2.ini')
 class QueueHandler(logging.Handler):
     """Class to send logging records to a queue
 
@@ -138,12 +138,13 @@ class ConsoleUi:
 class NewWindow():
     def __init__(self, root):
         #Grabbing global variables
-        global key, secret, api_url, job_key, job_secret, filePath, waitTime
+        global key, secret, api_url, job_key, job_secret, waitTime, plants
         self.sleepNumber = tk.IntVar(value= int(waitTime))
         self.key = tk.StringVar()
         self.secret = tk.StringVar()
         self.job_key = tk.StringVar()
         self.job_secret = tk.StringVar()
+        self.pressId = tk.StringVar()
         self.root = root
         windowHeight = 500
         windowWidth = 700
@@ -155,6 +156,8 @@ class NewWindow():
 
         self.v = tk.StringVar(self.newWin)
         self.v.set('PRESS')
+        self.plant = tk.StringVar()
+        self.plant.set('Plant')
 
         self.newWin.lift()
         self.newWin.title('Config settings')
@@ -184,15 +187,81 @@ class NewWindow():
         tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 200)
         tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
         tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 235)
-        tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
+        #tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
+        plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant))
+        plantLocation.place(x=80, y = 270)
         
-        option = tk.OptionMenu(self.newWin, self.v, *press_list)
-        #ttk.Combobox(self.newWin, textvariable= self.v, values= press_list).place(x= 225, y = 270)
-        option.place(x= 225, y = 270)
+        self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 35)
+        self.pressEntry.place(x= 275, y = 270)
+
+
+        self.sumbitButton = tk.Button(self.newWin, text= 'Submit', command= lambda: self.deletePress(self.plant.get()))
+        self.sumbitButton.place(x = 495, y = 270)
 
         self.newWin.protocol('WM_DELETE_WINDOW', self.quit)
         self.newWin.bind('<Control-q>', self.quit)
         signal.signal(signal.SIGINT, self.quit)
+
+
+    def pressChange(self, location):
+        global press_list, ml_press_list, slc_press_list
+
+        if location.get() == 'Chicago':
+            self.v.set('Press')
+            self.chi_option = tk.OptionMenu(self.newWin, self.v, *press_list, command= lambda e: self.setEntery(press_list[self.v.get()]))
+            self.chi_option.place(x= 185, y = 270)
+        elif location.get() == 'Mountain Lakes':
+            self.v.set('Press')
+            self.ml_option = tk.OptionMenu(self.newWin, self.v, *ml_press_list, command= lambda e: self.setEntery(ml_press_list[self.v.get()]))
+            self.ml_option.place(x= 185, y = 270)
+        elif location.get() == 'Salt Lake City':
+            self.v.set('Press')
+            self.slc_option = tk.OptionMenu(self.newWin, self.v, *slc_press_list, command= lambda e: self.setEntery(slc_press_list[self.v.get()]))
+            self.slc_option.place(x= 185, y = 270)
+    
+
+    def submitPress(self, location):
+        global press_list, ml_press_list, slc_press_list
+
+        if location == 'Chicago':
+            press_list[self.v.get()] = self.pressId.get()
+        elif location == 'Mountain Lakes':
+            ml_press_list[self.v.get()] = self.pressId.get()
+        elif location == 'Salt Lake City':
+            slc_press_list[self.v.get()] = self.pressId.get()
+
+    def deletePress(self, location):
+        global press_list, ml_press_list, slc_press_list, config
+        try:
+            if location == 'Chicago':
+                del press_list[self.v.get()]
+                config.remove_option('chicagoPlant', self.v.get())
+                index = self.chi_option['menu'].index(self.v.get())
+                self.chi_option['menu'].delete(index)
+                self.v.set(self.chi_option['menu'].entrycget(0,'label'))
+                self.setEntery(press_list[self.v.get()])
+
+            elif location == 'Mountain Lakes':
+                del ml_press_list[self.v.get()]
+                config.remove_option('chicagoPlant', self.v.get())
+                index = self.ml_option['menu'].index(self.v.get())
+                self.ml_option['menu'].delete(index)
+                self.v.set(self.ml_option['menu'].entrycget(0,'label'))
+                self.setEntery(ml_press_list[self.v.get()])
+
+            elif location == 'Salt Lake City':
+                del slc_press_list[self.v.get()]
+                config.remove_option('chicagoPlant', self.v.get())
+                index = self.slc_option['menu'].index(self.v.get())
+                self.slc_option['menu'].delete(index)
+                self.v.set(self.slc_option['menu'].entrycget(0,'label'))
+                self.setEntery(slc_press_list[self.v.get()])
+        except KeyError:
+            logger.log(logging.ERROR, msg= 'You have deleted all the options')
+            pass
+    def setEntery(self, pressNumber):
+        self.pressEntry.delete(0, END)
+        self.pressEntry.insert(0, pressNumber)
 
     def browseFolder(self, label, locType):
         if locType == 'Main Location':
@@ -249,6 +318,7 @@ class NewWindow():
         
         logger.log(logging.DEBUG, msg= 'Wait Time = ' + waitTime)
         logger.log(logging.INFO, msg='Config settings saved')
+        logger.log(logging.DEBUG, msg = f'Press Id Change to {self.pressId.get()}')
         self.newWin.destroy()
         self.root.deiconify()
     
@@ -280,7 +350,7 @@ class ThirdUi:
         checkbox1 = ttk.Checkbutton(frame, text= 'Chicago', variable=self.chi, onvalue= True, offvalue= False, command= self.plant, bootstyle='round-toggle')
         checkbox1.place(x = 550, y =2)
         checkbox1.invoke()
-        ttk.Checkbutton(frame, text= 'Mountine Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
+        ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
         ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
         #ttk.Label(self.frame, text='This is just an example of a third frame').grid(column=0, row=1, sticky=W)
         #ttk.Label(self.frame, text='With another line here!').grid(column=0, row=4, sticky=W)
@@ -363,7 +433,7 @@ class App:
     def saveConfig(self, *args):
         global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
 
-        config.read(f'{programLocation}\\config.ini')
+        #config.read(f'{programLocation}\\config.ini')
 
         config['printBeatAPI']['key'] = key
         config['printBeatAPI']['secret'] =  secret
@@ -375,7 +445,7 @@ class App:
         config['configSettings']['back-up_location'] = backUpPath
         config['configSettings']['wait_time'] = waitTime
 
-        with open(f'{programLocation}\\config.ini', 'w') as file:
+        with open(f'{programLocation}\\config_2.ini', 'w') as file:
             config.write(file)
 
     def quit(self, *args):
@@ -393,10 +463,6 @@ def RealTimeDataProcess(data):
 
     for i in range(len(data['data'])-1):
         pressName = data['data'][i]['pressName']
-        #data_file = open(f'impressions_{pressName}.txt', 'a')
-        #json_file = open(f'Real_Time_Press_{pressName}.json','w')
-        #data_file.writelines(f'Impression: {str(data["data"][0]["value"])} Press Status: {str(data["data"][0]["pressState"])} {datetime.now().strftime('%Y-%m-%dT%H:%M:%S')}\n')
-        #json.dump(data, json_file, indent=4)
 
         totalImps = data['data'][i]['totalImpsSinceInstallation']
         totalPrintedImps = data['data'][i]['totalPrintedImpsSinceInstallation']
@@ -418,30 +484,9 @@ def RealTimeDataProcess(data):
         backUpCsvPath = f'{backUpPath}/{csvFileName}'
         
         createCsvFile(filePath=mainPath, csvFilePath=csvFilePath, csvFileName=csvFileName, pressData=pressData)
-        os.chdir(programLocation)
+        #os.chdir(programLocation)
         createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvFileName, pressData=pressData)
 
-        '''
-        if os.path.exists(csvFilePath):
-            os.chdir(mainPath)
-            with open(f'{csvFileName}.csv', 'a', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow(pressData)
-                msg = f'Updated {csvFileName}.....'
-                logger.log(logging.INFO, msg)
-        else:
-            os.chdir(mainPath)
-            with open(f'{csvFileName}.csv', 'w', newline='') as file:
-                writer = csv.writer(file)
-                field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
-                         'totalPrintedSheetsSinceInstallation', 'Press Status', 
-                         'currentJob', 'Time']
-                
-                writer.writerow(field)
-                writer.writerow(pressData)
-                log = f'File did not exists...Created file {csvFileName}'
-                logger.log(logging.INFO, log)
-        '''
 
 def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
     if os.path.exists(csvFilePath):
@@ -640,11 +685,14 @@ def printBeatStart():
     sleepTimer = waitTime
     combineList = []
     if chi_plant:
-        combineList = combineList + press_list
+        for press in press_list:
+            combineList.append(press_list[press])
     if slc_plant:
-        combineList = combineList + slc_press_list
+        for press in slc_press_list:
+            combineList.append(slc_press_list[press])
     if ml_plant:
-        combineList = combineList + ml_press_list
+        for press in ml_press_list:
+            combineList.append(ml_press_list[press])
 
     while True:
         if timer >= int(sleepTimer):
@@ -691,7 +739,7 @@ def stopPrintBeat():
 
 def startUpSettings():
     global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
-    config.read(f'{programLocation}\\config.ini')
+    config.read(f'{programLocation}\\config_2.ini')
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
     api_url = config['printBeatAPI']['api_url']
@@ -702,6 +750,14 @@ def startUpSettings():
     mainPath = config['configSettings']['main_location']
     backUpPath = config['configSettings']['back-up_location']
     waitTime = config['configSettings']['wait_time']
+
+    #print(len(config['chicagoPlant']))
+    for press in config['chicagoPlant']:
+        press_list[press] = config['chicagoPlant'][press]
+    for press in config['mountainLakesPlant']:
+        ml_press_list[press] = config['chicagoPlant'][press]
+    for press in config['saltLakeCityPlant']:
+        slc_press_list[press] = config['chicagoPlant'][press]
 
 
 def main():
