@@ -1,19 +1,19 @@
 '''
 TODO LIST:
     API TODO LIST:
-    - [] Find the best way to do a pull every minute
-    - [] Set up multithreading
-    - [] 
+    - [x] Find the best way to do a pull every minute
+    - [x] Set up multithreading
+    - [] If using a SQL database, if code to be able to connect to the sql server
     UI TODO LIST:
-    - [] Create a file explorer so it easer for the user to pick the location for the file to be created in.
-    - [] Have it create a config file to use when the program is close
-    - [] Had errors in with error inputs and explain on what is wrong
-    - [] Have a stop and start button
-    - [] ? Have a refresh button if the config file has been update/ Have it check to see if the config file has been updated
-    - [] Have a status box on what it is doing/ report out any errors
-    - [] Have it print a log on when it incouters a error
-    - [] Be able to update api key and secret
-    - []
+    - [x] Create a file explorer so it easer for the user to pick the location for the file to be created in.
+    - [x] Have it create a config file to use when the program is close
+    - [x] Have a stop and start button
+    - [x] ? Have a refresh button if the config file has been update/ Have it check to see if the config file has been updated
+    - [x] Have a status box on what it is doing/ report out any errors
+    - [x] Have it print a log on when it incouters a error
+    - [x] Be able to update api key and secret
+    - [x] Have a way to select each plant
+    - [x] Add a way to update or delete presses
 
 
 '''
@@ -39,12 +39,7 @@ import logging
 import queue
 from configparser import ConfigParser
 
-#key = 'riimt7skcm5p7218itgprlsc8hsrd6f'
-#secret = 'ctuiec4uo71brmco03145k6j0r4ig3rf' 
-#api_url = 'https://printos.api.hp.com/printbeat'
 
-#job_key = 'pke0g35sukrk21u9ase9k24mk1b95ct4'
-#job_secret = 'v254bg7n6iqnmhaq110pojel42tj7lne'
 key = None
 secret = None
 api_url = None
@@ -136,6 +131,7 @@ class ConsoleUi:
         self.frame.after(100, self.poll_log_queue)
 
 class NewWindow():
+    
     def __init__(self, root):
         #Grabbing global variables
         global key, secret, api_url, job_key, job_secret, waitTime, plants
@@ -168,14 +164,14 @@ class NewWindow():
 
         self.landingLocationLabel = tk.Label(self.newWin, text= mainPath, width= 50, height=1, fg='white', bg='gray')
         self.landingLocationLabel.place(x=225, y = 25)
-        tk.Button(self.newWin, text='File Location', width=25, command= lambda: self.browseFolder(self.landingLocationLabel, 'Main Location')).place(x=25, y = 25)
+        ttk.Button(self.newWin, text='File Location', width=25, command= lambda: self.browseFolder(self.landingLocationLabel, 'Main Location'), bootstyle = 'outline').place(x=25, y = 25)
 
         self.backUpLocationLabel = tk.Label(self.newWin, text= backUpPath, width= 50, height=1, fg='white', bg='gray')
         self.backUpLocationLabel.place(x=225, y = 60)
-        tk.Button(self.newWin, text='Back-up Location', width=25, command= lambda: self.browseFolder(self.backUpLocationLabel, 'Back-up Location')).place(x=25, y = 60)
+        ttk.Button(self.newWin, text='Back-up Location', width=25, command= lambda: self.browseFolder(self.backUpLocationLabel, 'Back-up Location'), bootstyle = 'outline').place(x=25, y = 60)
 
-        self.saveButton = tk.Button(self.newWin, text= 'Save', command=self.save).place(x = windowWidth - 50, y = windowHeight - 50)
-        self.cancelButton = tk.Button(self.newWin, text= 'Cancel', command = self.cancel).place(x = windowWidth - 100, y = windowHeight - 50)
+        self.saveButton = ttk.Button(self.newWin, text= 'Save', command=self.save, bootstyle = 'outline').place(x = windowWidth - 65, y = windowHeight - 50)
+        self.cancelButton = ttk.Button(self.newWin, text= 'Cancel', command = self.cancel, bootstyle = 'outline').place(x = windowWidth - 130, y = windowHeight - 50)
 
         tk.Label(self.newWin, text= 'Time interval (Seconds):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 95)
         tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 95)
@@ -191,12 +187,19 @@ class NewWindow():
         plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant))
         plantLocation.place(x=80, y = 270)
         
-        self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 35)
-        self.pressEntry.place(x= 275, y = 270)
+        self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 20)
+        self.pressEntry.place(x= 320, y = 270)
 
 
-        self.sumbitButton = tk.Button(self.newWin, text= 'Submit', command= lambda: self.deletePress(self.plant.get()))
-        self.sumbitButton.place(x = 495, y = 270)
+        self.savePressButton = ttk.Button(self.newWin, text= 'Save', command= lambda e: self.savePress(self.plant.get()), bootstyle = 'outline')
+        self.savePressButton.place(x = 320, y = 300)
+        self.deletePressButton = ttk.Button(self.newWin, text= 'Delete', command= lambda: self.deletePress(self.plant.get()), bootstyle = 'outline')
+        self.deletePressButton.place(x = 380, y = 300)
+        
+        self.listBox = tk.Listbox(self.newWin, height=3)
+        self.listBox.place(x = 190, y =270)
+        self.listBox.bind('<<ListboxSelect>>', self.setEntery)
+        self.v.set(self.listBox.curselection())
 
         self.newWin.protocol('WM_DELETE_WINDOW', self.quit)
         self.newWin.bind('<Control-q>', self.quit)
@@ -207,20 +210,17 @@ class NewWindow():
         global press_list, ml_press_list, slc_press_list
 
         if location.get() == 'Chicago':
-            self.v.set('Press')
-            self.chi_option = tk.OptionMenu(self.newWin, self.v, *press_list, command= lambda e: self.setEntery(press_list[self.v.get()]))
-            self.chi_option.place(x= 185, y = 270)
+            self.listBox.delete(0,END)
+            self.listBox.insert(1, *press_list.values())
         elif location.get() == 'Mountain Lakes':
-            self.v.set('Press')
-            self.ml_option = tk.OptionMenu(self.newWin, self.v, *ml_press_list, command= lambda e: self.setEntery(ml_press_list[self.v.get()]))
-            self.ml_option.place(x= 185, y = 270)
+            self.listBox.delete(0,END)
+            self.listBox.insert(1, *ml_press_list.values())
         elif location.get() == 'Salt Lake City':
-            self.v.set('Press')
-            self.slc_option = tk.OptionMenu(self.newWin, self.v, *slc_press_list, command= lambda e: self.setEntery(slc_press_list[self.v.get()]))
-            self.slc_option.place(x= 185, y = 270)
+            self.listBox.delete(0,END)
+            self.listBox.insert(1, *slc_press_list.values())
     
 
-    def submitPress(self, location):
+    def savePress(self, location):
         global press_list, ml_press_list, slc_press_list
 
         if location == 'Chicago':
@@ -259,9 +259,15 @@ class NewWindow():
         except KeyError:
             logger.log(logging.ERROR, msg= 'You have deleted all the options')
             pass
-    def setEntery(self, pressNumber):
-        self.pressEntry.delete(0, END)
-        self.pressEntry.insert(0, pressNumber)
+    def setEntery(self, event):
+        selection = event.widget.curselection()
+        if selection:
+            index = selection[0]
+            data = event.widget.get(index)
+            self.pressEntry.delete(0, END)
+            self.pressEntry.insert(0, data)
+        else:
+            pass
 
     def browseFolder(self, label, locType):
         if locType == 'Main Location':
@@ -755,9 +761,9 @@ def startUpSettings():
     for press in config['chicagoPlant']:
         press_list[press] = config['chicagoPlant'][press]
     for press in config['mountainLakesPlant']:
-        ml_press_list[press] = config['chicagoPlant'][press]
+        ml_press_list[press] = config['mountainLakesPlant'][press]
     for press in config['saltLakeCityPlant']:
-        slc_press_list[press] = config['chicagoPlant'][press]
+        slc_press_list[press] = config['saltLakeCityPlant'][press]
 
 
 def main():
@@ -765,8 +771,7 @@ def main():
     logging.basicConfig(level=logging.DEBUG)
     root = tk.Tk()
     app = App(root)
-    #app.root.iconbitmap('deluxe_logo.ico')
-    app.root.wm_iconbitmap(f'{programLocation}\\deluxe_logo.ico')
+    app.root.wm_iconbitmap(default=f'{programLocation}\\deluxe_logo.ico')
     app.root.mainloop()
 
 
