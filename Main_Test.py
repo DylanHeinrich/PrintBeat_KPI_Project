@@ -3,7 +3,7 @@ TODO LIST:
     API TODO LIST:
     - [x] Find the best way to do a pull every minute
     - [x] Set up multithreading
-    - [] If using a SQL database, if code to be able to connect to the sql server
+    
     UI TODO LIST:
     - [x] Create a file explorer so it easer for the user to pick the location for the file to be created in.
     - [x] Have it create a config file to use when the program is close
@@ -105,7 +105,7 @@ class ConsoleUi:
         # Create a logging handler using a queue
         self.log_queue = queue.Queue()
         self.queue_handler = QueueHandler(self.log_queue)
-        formatter = logging.Formatter('%(asctime)s: %(message)s', '%m/%d/%Y %H:%M:%S') #datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        formatter = logging.Formatter('%(asctime)s: %(message)s', '%m/%d/%Y %H:%M:%S')
         self.queue_handler.setFormatter(formatter)
         logger.addHandler(self.queue_handler)
         # Start polling messages from the queue
@@ -184,14 +184,14 @@ class NewWindow():
         tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
         tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 235)
         #tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
-        plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant))
+        plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant.get()))
         plantLocation.place(x=80, y = 270)
         
         self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 20)
         self.pressEntry.place(x= 320, y = 270)
 
 
-        self.savePressButton = ttk.Button(self.newWin, text= 'Save', command= lambda e: self.savePress(self.plant.get()), bootstyle = 'outline')
+        self.savePressButton = ttk.Button(self.newWin, text= 'Save', command= lambda: self.savePress(self.plant.get()), bootstyle = 'outline')
         self.savePressButton.place(x = 320, y = 300)
         self.deletePressButton = ttk.Button(self.newWin, text= 'Delete', command= lambda: self.deletePress(self.plant.get()), bootstyle = 'outline')
         self.deletePressButton.place(x = 380, y = 300)
@@ -209,38 +209,49 @@ class NewWindow():
     def pressChange(self, location):
         global press_list, ml_press_list, slc_press_list
 
-        if location.get() == 'Chicago':
+        if location == 'Chicago':
             self.listBox.delete(0,END)
             self.listBox.insert(1, *press_list.values())
-        elif location.get() == 'Mountain Lakes':
+        elif location == 'Mountain Lakes':
             self.listBox.delete(0,END)
             self.listBox.insert(1, *ml_press_list.values())
-        elif location.get() == 'Salt Lake City':
+        elif location == 'Salt Lake City':
             self.listBox.delete(0,END)
             self.listBox.insert(1, *slc_press_list.values())
     
 
     def savePress(self, location):
         global press_list, ml_press_list, slc_press_list
-
+        testVariable = self.v.get()
+        testVariable2 = self.pressId.get()
         if location == 'Chicago':
-            press_list[self.v.get()] = self.pressId.get()
+            for press in press_list:
+                if press_list[press] == self.v.get():
+                    press_list[press] = self.pressId.get()
+                    self.pressChange(location)
+                    break
         elif location == 'Mountain Lakes':
-            ml_press_list[self.v.get()] = self.pressId.get()
+            for press in ml_press_list:
+                if ml_press_list[press] == self.v.get():
+                    ml_press_list[press] = self.pressId.get()
+                    self.pressChange(location)
+                    break
         elif location == 'Salt Lake City':
-            slc_press_list[self.v.get()] = self.pressId.get()
+            for press in slc_press_list:
+                if slc_press_list[press] == self.v.get():
+                    slc_press_list[press] = self.pressId.get()
+                    self.pressChange(location)
+                    break
 
     def deletePress(self, location):
         global press_list, ml_press_list, slc_press_list, config
         try:
             if location == 'Chicago':
                 del press_list[self.v.get()]
-                config.remove_option('chicagoPlant', self.v.get())
-                index = self.chi_option['menu'].index(self.v.get())
-                self.chi_option['menu'].delete(index)
-                self.v.set(self.chi_option['menu'].entrycget(0,'label'))
-                self.setEntery(press_list[self.v.get()])
-
+                #config.remove_option('chicagoPlant', self.v.get())
+                test = self.v.get()
+                self.listBox.delete(self.v.get())
+                self.pressChange(location)
             elif location == 'Mountain Lakes':
                 del ml_press_list[self.v.get()]
                 config.remove_option('chicagoPlant', self.v.get())
@@ -266,6 +277,7 @@ class NewWindow():
             data = event.widget.get(index)
             self.pressEntry.delete(0, END)
             self.pressEntry.insert(0, data)
+            self.v.set(data)
         else:
             pass
 
@@ -324,7 +336,6 @@ class NewWindow():
         
         logger.log(logging.DEBUG, msg= 'Wait Time = ' + waitTime)
         logger.log(logging.INFO, msg='Config settings saved')
-        logger.log(logging.DEBUG, msg = f'Press Id Change to {self.pressId.get()}')
         self.newWin.destroy()
         self.root.deiconify()
     
@@ -358,8 +369,7 @@ class ThirdUi:
         checkbox1.invoke()
         ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
         ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
-        #ttk.Label(self.frame, text='This is just an example of a third frame').grid(column=0, row=1, sticky=W)
-        #ttk.Label(self.frame, text='With another line here!').grid(column=0, row=4, sticky=W)
+
 
 
     def plant(self, *args):
@@ -405,9 +415,6 @@ class App:
         vertical_pane.grid(row=0, column=0, sticky="nsew")
         horizontal_pane = ttk.PanedWindow(vertical_pane, orient=HORIZONTAL)
         vertical_pane.add(horizontal_pane)
-        #form_frame = ttk.Labelframe(horizontal_pane, text="MyForm")
-        #form_frame.columnconfigure(1, weight=1)
-        #horizontal_pane.add(form_frame, weight=1)
         console_frame = ttk.Labelframe(vertical_pane, text="Log Console")
         console_frame.columnconfigure(0, weight=1)
         console_frame.rowconfigure(0, weight=1)
@@ -421,7 +428,6 @@ class App:
 
         # Initialize all frames
 
-        #self.form = FormUi(form_frame)
         self.console = ConsoleUi(console_frame)
         self.third = ThirdUi(third_frame, root)
         self.menubar = MenuTest(root)
@@ -439,7 +445,7 @@ class App:
     def saveConfig(self, *args):
         global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
 
-        #config.read(f'{programLocation}\\config.ini')
+        #config.read(f'{programLocation}\\config_2.ini')
 
         config['printBeatAPI']['key'] = key
         config['printBeatAPI']['secret'] =  secret
@@ -451,6 +457,18 @@ class App:
         config['configSettings']['back-up_location'] = backUpPath
         config['configSettings']['wait_time'] = waitTime
 
+        i = 0
+        i2 = 0 
+        i3 = 0
+        for press in press_list:
+            i+= 1
+            config['chicagoPlant'][f'press_{i}'] = press_list[press]
+        for press in ml_press_list:
+            i2+=1
+            config['mountainLakesPlant'][f'press_{i2}'] = ml_press_list[press]
+        for press in slc_press_list:
+            i3+=1
+            config['saltLakeCityPlant'][f'press_{i3}'] = slc_press_list[press] 
         with open(f'{programLocation}\\config_2.ini', 'w') as file:
             config.write(file)
 
@@ -708,8 +726,8 @@ def printBeatStart():
         else:
             msg = f'Next pull in....{int(sleepTimer)-timer} seconds'
             logger.log(logging.INFO, msg= msg)
-            time.sleep(5)
-            timer += 5
+            time.sleep(2)
+            timer += 2
         #schedule.every(1).minutes.do(lambda: get_request_real_data(press_list, folderPath))
         #schedule.run_pending()
 
@@ -745,7 +763,7 @@ def stopPrintBeat():
 
 def startUpSettings():
     global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
-    config.read(f'{programLocation}\\config_2.ini')
+    #config.read(f'{programLocation}\\config_2.ini')
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
     api_url = config['printBeatAPI']['api_url']
