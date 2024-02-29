@@ -72,7 +72,7 @@ programLocation = os.getcwd()
 logger = logging.getLogger(__name__)
 
 config = ConfigParser()
-config.read('config.ini')
+config.read('config_2.ini')
 class QueueHandler(logging.Handler):
     """Class to send logging records to a queue
 
@@ -105,7 +105,7 @@ class ConsoleUi:
         # Create a logging handler using a queue
         self.log_queue = queue.Queue()
         self.queue_handler = QueueHandler(self.log_queue)
-        formatter = logging.Formatter('%(asctime)s: %(message)s', '%m/%d/%Y %H:%M:%S') #datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        formatter = logging.Formatter('%(asctime)s: %(message)s', '%m/%d/%Y %H:%M:%S')
         self.queue_handler.setFormatter(formatter)
         logger.addHandler(self.queue_handler)
         # Start polling messages from the queue
@@ -369,8 +369,7 @@ class ThirdUi:
         checkbox1.invoke()
         ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
         ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
-        #ttk.Label(self.frame, text='This is just an example of a third frame').grid(column=0, row=1, sticky=W)
-        #ttk.Label(self.frame, text='With another line here!').grid(column=0, row=4, sticky=W)
+
 
 
     def plant(self, *args):
@@ -416,9 +415,6 @@ class App:
         vertical_pane.grid(row=0, column=0, sticky="nsew")
         horizontal_pane = ttk.PanedWindow(vertical_pane, orient=HORIZONTAL)
         vertical_pane.add(horizontal_pane)
-        #form_frame = ttk.Labelframe(horizontal_pane, text="MyForm")
-        #form_frame.columnconfigure(1, weight=1)
-        #horizontal_pane.add(form_frame, weight=1)
         console_frame = ttk.Labelframe(vertical_pane, text="Log Console")
         console_frame.columnconfigure(0, weight=1)
         console_frame.rowconfigure(0, weight=1)
@@ -432,7 +428,6 @@ class App:
 
         # Initialize all frames
 
-        #self.form = FormUi(form_frame)
         self.console = ConsoleUi(console_frame)
         self.third = ThirdUi(third_frame, root)
         self.menubar = MenuTest(root)
@@ -450,7 +445,7 @@ class App:
     def saveConfig(self, *args):
         global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
 
-        #config.read(f'{programLocation}\\config.ini')
+        #config.read(f'{programLocation}\\config_2.ini')
 
         config['printBeatAPI']['key'] = key
         config['printBeatAPI']['secret'] =  secret
@@ -474,7 +469,7 @@ class App:
         for press in slc_press_list:
             i3+=1
             config['saltLakeCityPlant'][f'press_{i3}'] = slc_press_list[press] 
-        with open(f'{programLocation}\\config.ini', 'w') as file:
+        with open(f'{programLocation}\\config_2.ini', 'w') as file:
             config.write(file)
 
     def quit(self, *args):
@@ -731,8 +726,8 @@ def printBeatStart():
         else:
             msg = f'Next pull in....{int(sleepTimer)-timer} seconds'
             logger.log(logging.INFO, msg= msg)
-            time.sleep(5)
-            timer += 5
+            time.sleep(2)
+            timer += 2
         #schedule.every(1).minutes.do(lambda: get_request_real_data(press_list, folderPath))
         #schedule.run_pending()
 
@@ -768,7 +763,6 @@ def stopPrintBeat():
 
 def startUpSettings():
     global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
-    #config.read(f'{programLocation}\\config.ini')
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
     api_url = config['printBeatAPI']['api_url']
