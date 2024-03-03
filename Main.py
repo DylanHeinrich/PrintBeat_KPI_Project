@@ -61,6 +61,8 @@ chi_plant = None
 slc_plant = None
 ml_plant = None
 
+autoRun = None
+
 currnetRunningJob = {}
 
 t1 = None
@@ -72,7 +74,7 @@ programLocation = os.getcwd()
 logger = logging.getLogger(__name__)
 
 config = ConfigParser()
-config.read('config_2.ini')
+config.read('config.ini')
 class QueueHandler(logging.Handler):
     """Class to send logging records to a queue
 
@@ -344,7 +346,7 @@ class NewWindow():
         self.root.deiconify()
 
 class ThirdUi:
-
+    global autoRun
     def __init__(self, frame, root):
         self.frame = frame
         self.style = ttk.Style()
@@ -352,6 +354,7 @@ class ThirdUi:
         self.chi = tk.BooleanVar()
         self.ml = tk.BooleanVar()
         self.slc = tk.BooleanVar()
+        self.autoStart = tk.BooleanVar()
 
         self.style.configure('W.TButton', font = ('calibri', 10, 'bold', 'underline'),foreground = 'red')
         button1 = ttk.Button(frame, text='Config Settings', width=25, bootstyle = 'outline')
@@ -369,9 +372,12 @@ class ThirdUi:
         checkbox1.invoke()
         ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
         ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
-
-
-
+        autoStartCheck = ttk.Checkbutton(frame, text= 'Auto Start', variable=self.autoStart, onvalue=True, offvalue=False,command= self.autoCheck, bootstyle="round-toggle")
+        autoStartCheck.place(x = 200, y=2)
+        if autoRun:
+            autoStartCheck.invoke()
+            
+        
     def plant(self, *args):
         global chi_plant, ml_plant, slc_plant
         logger.log(logging.INFO, msg = f'Chi Valuse = {self.chi.get()}')
@@ -383,6 +389,11 @@ class ThirdUi:
         else:
             self.button2['state'] = 'disable'
         chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()
+    def autoCheck(self):
+        global autoRun
+        logger.log(logging.INFO, msg=f'Auto start is: {self.autoStart.get()}')
+        autoRun = self.autoStart.get()
+        
 
 
 class MenuTest:
@@ -443,7 +454,7 @@ class App:
         self.root.geometry(postion)
 
     def saveConfig(self, *args):
-        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
+        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun
 
         #config.read(f'{programLocation}\\config_2.ini')
 
@@ -456,6 +467,7 @@ class App:
         config['configSettings']['main_location'] = mainPath
         config['configSettings']['back-up_location'] = backUpPath
         config['configSettings']['wait_time'] = waitTime
+        config['autoStartOnBootUp']['autoStart'] = str(autoRun)
 
         i = 0
         i2 = 0 
@@ -469,7 +481,7 @@ class App:
         for press in slc_press_list:
             i3+=1
             config['saltLakeCityPlant'][f'press_{i3}'] = slc_press_list[press] 
-        with open(f'{programLocation}\\config_2.ini', 'w') as file:
+        with open(f'{programLocation}\\config.ini', 'w') as file:
             config.write(file)
 
     def quit(self, *args):
@@ -502,22 +514,22 @@ def RealTimeDataProcess(data):
             currentJob = ''
 
 
-        csvFileName = f'impressions_{pressName}_{datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y_%m_%d %H-%M-%S")}.csv'
+        csvName = f'impressions_{pressName}.csv'
         pressData = [totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, currentJob, datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
-        csvFilePath = f'{mainPath}/{csvFileName}'
-        backUpCsvPath = f'{backUpPath}/{csvFileName}'
+        csvPath = f'{mainPath}/{csvName}'
+        backUpCsvPath = f'{backUpPath}/{csvName}'
         
-        createCsvFile(filePath=mainPath, csvFilePath=csvFilePath, csvFileName=csvFileName, pressData=pressData)
+        createCsvFile(filePath=mainPath, csvFilePath=csvPath, csvFileName=csvName, data=pressData)
         #os.chdir(programLocation)
-        createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvFileName, pressData=pressData)
+        createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvName, data=pressData)
 
 
-def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
+def createCsvFile(filePath, csvFilePath, csvFileName, data):
     if os.path.exists(csvFilePath):
             os.chdir(filePath)
             with open(f'{csvFileName}', 'a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(pressData)
+                writer.writerow(data)
                 msg = f'Updated: {csvFilePath}'
                 logger.log(logging.INFO, msg)
     else:
@@ -529,7 +541,7 @@ def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
                         'currentJob', 'Time']
             
             writer.writerow(field)
-            writer.writerow(pressData)
+            writer.writerow(data)
             log = f'File did not exists at {filePath}...Creating file at {filePath}'
             logger.log(logging.INFO, log)
 
@@ -567,7 +579,6 @@ def get_request_real_data(press):
         else:
             logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
             logger.log(logging.ERROR, f"Response content:{response.content}")
-            stopPrintBeat()
 
     except Exception as e:
         logger.log(logging.ERROR, msg= e)
@@ -744,6 +755,18 @@ def buttonStart():
     app.third.frame.children['!checkbutton2']['state'] = 'disable'
     app.third.frame.children['!checkbutton3']['state'] = 'disable'
 
+def autoStartProcess():
+    global t2
+    global app
+    msg = 'Auto Starting the printBeat program'
+    logger.log(logging.INFO, msg= msg)
+    t2 = thread_with_exception('PrintBeat Api')
+    t2.start()
+    app.third.frame.children['!button2']['state'] = 'disable'
+    app.third.frame.children['!checkbutton']['state'] = 'disable'
+    app.third.frame.children['!checkbutton2']['state'] = 'disable'
+    app.third.frame.children['!checkbutton3']['state'] = 'disable'
+
 def testButton():
     global mainPath
     logger.log(level=logging.INFO, msg='This is a test button')
@@ -751,7 +774,7 @@ def testButton():
 
 
 def stopPrintBeat():
-    msg = 'Stop button has been press.....Stopping thread'
+    msg = 'Stop button has been press.....Stopping'
     logger.log(logging.INFO, msg = msg)
     app.third.frame.children['!button2']['state'] = 'normal'
     app.third.frame.children['!checkbutton']['state'] = 'normal'
@@ -762,7 +785,7 @@ def stopPrintBeat():
 
 
 def startUpSettings():
-    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath
+    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
     api_url = config['printBeatAPI']['api_url']
@@ -773,6 +796,12 @@ def startUpSettings():
     mainPath = config['configSettings']['main_location']
     backUpPath = config['configSettings']['back-up_location']
     waitTime = config['configSettings']['wait_time']
+    
+    autoRun = config['autoStartOnBootUp']['autoStart']
+    if autoRun == 'False':
+        autoRun = False
+    else:
+        autoRun = True
 
     #print(len(config['chicagoPlant']))
     for press in config['chicagoPlant']:
@@ -784,11 +813,13 @@ def startUpSettings():
 
 
 def main():
-    global app
+    global app, autoRun
     logging.basicConfig(level=logging.DEBUG)
     root = tk.Tk()
     app = App(root)
     app.root.wm_iconbitmap(default=f'{programLocation}\\deluxe_logo.ico')
+    if autoRun:
+        autoStartProcess()
     app.root.mainloop()
 
 
