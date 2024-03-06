@@ -1,0 +1,5017 @@
+{
+    "total": 83,
+    "attempts": [
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787793_130016592_JDF",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T07:48:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T07:49:30.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T07:48:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T07:49:30.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704809_1709623579000_1709623579000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211444709,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 32,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787793_130016592_JDF",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T07:59:27.000+00:00",
+            "jobCompleteTime": "2024-03-05T07:59:59.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T07:59:27.000",
+            "jobCompleteTimeLocalized": "2024-03-05T07:59:59.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704809_1709623579000_1709623579000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211451035,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 32,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 50,
+            "impressions": 200,
+            "printedSheets": 50,
+            "jobSubmitTime": "2024-03-05T08:09:37.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:10:36.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:09:37.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:10:36.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211471664,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 200,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 59,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "50",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 50
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787793_130016592_JDF",
+            "siteName": "Chicago",
+            "copies": 21,
+            "impressions": 162,
+            "printedSheets": 21,
+            "jobSubmitTime": "2024-03-05T08:08:20.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:09:44.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:08:20.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:09:44.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704809_1709623579000_1709623579000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211471665,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 161,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 84,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "21",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016592-14pt C2S Gloss Cover",
+                    "amountUsed": 21
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 40,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 40,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787590_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T08:12:59.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:13:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:12:59.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:13:32.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1703820_1709610060000_1709610060000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211471669,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 33,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 5,
+            "impressions": 18,
+            "printedSheets": 5,
+            "jobSubmitTime": "2024-03-05T08:12:13.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:12:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:12:13.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:12:32.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211471670,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 17,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 19,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "5",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 5
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 5,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 5,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787590_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 40,
+            "impressions": 320,
+            "printedSheets": 40,
+            "jobSubmitTime": "2024-03-05T08:15:32.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:17:20.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:15:32.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:17:20.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1703820_1709610060000_1709610060000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211491605,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 320,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 108,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "40",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 40
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787590_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T08:42:40.000+00:00",
+            "jobCompleteTime": "2024-03-05T08:43:12.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T08:42:40.000",
+            "jobCompleteTimeLocalized": "2024-03-05T08:43:12.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1703820_1709610060000_1709610060000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211491606,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 32,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787590_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:00:24.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:00:57.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:00:24.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:00:57.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1703820_1709610060000_1709610060000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211510637,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 33,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "5832249_8707942.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:08:41.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:09:15.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:08:41.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:09:15.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705178_1709629755000_1709629755000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211516673,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 34,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "1302259_1309871_J711912 MFP",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:36:10.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:36:41.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:36:10.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:36:41.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211534619,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 31,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "5832249_8707942.pdf",
+            "siteName": "Chicago",
+            "copies": 521,
+            "impressions": 4162,
+            "printedSheets": 521,
+            "jobSubmitTime": "2024-03-05T09:11:55.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:29:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:11:55.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:29:32.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705178_1709629755000_1709629755000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540406,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 4161,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 1057,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "521",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "1302259_1309871_J711912 MFP",
+                    "amountUsed": 521
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 1040,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 1040,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 1041,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 1041,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012328_Spanish_back_cover_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 26,
+            "impressions": 202,
+            "printedSheets": 26,
+            "jobSubmitTime": "2024-03-05T09:30:15.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:31:26.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:30:15.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:31:26.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705336_1709631086000_1709631086000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540407,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 201,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 71,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "26",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016592-14pt C2S Gloss Cover",
+                    "amountUsed": 26
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 51,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 51,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012328_English_back_cover.pdf",
+            "siteName": "Chicago",
+            "copies": 11,
+            "impressions": 82,
+            "printedSheets": 11,
+            "jobSubmitTime": "2024-03-05T09:29:47.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:30:19.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:29:47.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:30:19.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705322_1709631019000_1709631019000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540408,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 81,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 32,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "11",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016592-14pt C2S Gloss Cover",
+                    "amountUsed": 11
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 20,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 20,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 21,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 21,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787590_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 105,
+            "impressions": 834,
+            "printedSheets": 105,
+            "jobSubmitTime": "2024-03-05T09:32:11.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:35:52.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:32:11.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:35:52.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1703820_1709610060000_1709610060000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540409,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 833,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 221,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "105",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 105
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 208,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 208,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 209,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 209,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEN77_130016126_JDF",
+            "siteName": "Chicago",
+            "copies": 21,
+            "impressions": 82,
+            "printedSheets": 21,
+            "jobSubmitTime": "2024-03-05T09:29:25.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:29:53.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:29:25.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:29:53.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705311_1709630993000_1709630993000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540410,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 81,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 28,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "21",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016126- 3.4 mil Removable Vinyl",
+                    "amountUsed": 21
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 20,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 20,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 21,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 21,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 1,
+            "impressions": 2,
+            "printedSheets": 1,
+            "jobSubmitTime": "2024-03-05T09:38:00.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:38:10.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:38:00.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:38:10.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540411,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 10,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "1",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 1
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Magenta",
+                    "amountUsed": 1,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 1,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012328_Spanish_front_cover_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 16,
+            "impressions": 122,
+            "printedSheets": 16,
+            "jobSubmitTime": "2024-03-05T09:31:21.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:32:04.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:31:21.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:32:04.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705345_1709631124000_1709631124000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540412,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 121,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 43,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "16",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016592-14pt C2S Gloss Cover",
+                    "amountUsed": 16
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 31,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 31,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787571_130016197_2_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:07:25.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:07:58.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:07:25.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:07:58.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704251_1709616345000_1709616345000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540413,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 33,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "1302259_1309871_J711912 MFP",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012328_English_front_cover_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 6,
+            "impressions": 42,
+            "printedSheets": 6,
+            "jobSubmitTime": "2024-03-05T09:31:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:32:17.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:31:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:32:17.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705352_1709631137000_1709631137000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540414,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 41,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 19,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "6",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130016592-14pt C2S Gloss Cover",
+                    "amountUsed": 6
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 11,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 11,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345894_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 20,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:40:19.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:40:54.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:40:19.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:40:54.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705444_1709631654000_1709631654000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211540417,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 20,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 35,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-724912- 100# velvet cover 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 52,
+            "impressions": 260,
+            "printedSheets": 52,
+            "jobSubmitTime": "2024-03-05T09:51:23.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:53:10.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:51:23.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:53:10.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211552250,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 260,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 107,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "52",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 52
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 52,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 52,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 52,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 104,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012294_TENCATE352_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 32,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:54:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:55:23.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:54:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:55:23.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705578_1709632523000_1709632523000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211552251,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 32,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 25,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015965-16pt Coated Gloss Cover",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 8,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 8,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 8,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 8,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345894_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 156,
+            "impressions": 1552,
+            "printedSheets": 156,
+            "jobSubmitTime": "2024-03-05T09:42:31.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:51:00.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:42:31.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:51:00.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705444_1709631654000_1709631654000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211552252,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1551,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 509,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "156",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-724912- 100# velvet cover 13x19",
+                    "amountUsed": 156
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 310,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 310,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 311,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 311,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 310,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787820_130014887_JDF",
+            "siteName": "Chicago",
+            "copies": 1,
+            "impressions": 2,
+            "printedSheets": 1,
+            "jobSubmitTime": "2024-03-05T09:53:48.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:53:55.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:53:48.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:53:55.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1704952_1709626236000_1709626236000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211552253,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 7,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "1",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1307398-15pt Velvet",
+                    "amountUsed": 1
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Magenta",
+                    "amountUsed": 1,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 1,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012294_TENCATE352_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 20,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:57:22.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:57:57.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:57:22.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:57:57.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705578_1709632523000_1709632523000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211552254,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 20,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 35,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015965-16pt Coated Gloss Cover",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 8,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "1012294_TENCATE352_imp.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T09:58:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T09:59:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T09:58:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T09:59:32.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705578_1709632523000_1709632523000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211557641,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 34,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015965-16pt Coated Gloss Cover",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBF3BO_130017219_JDF",
+            "siteName": "Chicago",
+            "copies": 16,
+            "impressions": 122,
+            "printedSheets": 16,
+            "jobSubmitTime": "2024-03-05T10:06:24.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:07:04.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:06:24.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:07:04.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705655_1709633224000_1709633224000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569122,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 121,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 40,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "16",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726913-100# Uncoated Cover 13x19",
+                    "amountUsed": 16
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 31,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 31,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787822_130015163_JDF",
+            "siteName": "Chicago",
+            "copies": 53,
+            "impressions": 418,
+            "printedSheets": 53,
+            "jobSubmitTime": "2024-03-05T10:04:10.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:06:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:04:10.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:06:32.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705648_1709633192000_1709633192000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569123,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 417,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 142,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "53",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015163 - 13pt Matte Cover Recycled",
+                    "amountUsed": 53
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 104,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 104,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 105,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 105,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBF06L_130015163_JDF",
+            "siteName": "Chicago",
+            "copies": 28,
+            "impressions": 218,
+            "printedSheets": 28,
+            "jobSubmitTime": "2024-03-05T10:02:34.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:04:17.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:02:34.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:04:17.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705630_1709633057000_1709633057000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569124,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 217,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 103,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "28",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015163 - 13pt Matte Cover Recycled",
+                    "amountUsed": 28
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 54,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 54,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 55,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 55,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345934.pdf",
+            "siteName": "Chicago",
+            "copies": 46,
+            "impressions": 362,
+            "printedSheets": 46,
+            "jobSubmitTime": "2024-03-05T10:06:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:08:35.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:06:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:08:35.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1702516_1709596397000_1709596397000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569125,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 361,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 97,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "46",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726913-100# Uncoated Cover 13x19",
+                    "amountUsed": 46
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 90,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 90,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 91,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 91,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBF0T3_130017219_JDF",
+            "siteName": "Chicago",
+            "copies": 8,
+            "impressions": 58,
+            "printedSheets": 8,
+            "jobSubmitTime": "2024-03-05T10:00:55.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:01:43.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:00:55.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:01:43.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705610_1709632903000_1709632903000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569126,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 57,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 48,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "8",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130015163 - 13pt Matte Cover Recycled",
+                    "amountUsed": 8
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 14,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 14,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 15,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 15,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345936.pdf",
+            "siteName": "Chicago",
+            "copies": 89,
+            "impressions": 706,
+            "printedSheets": 89,
+            "jobSubmitTime": "2024-03-05T10:08:29.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:11:37.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:08:29.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:11:37.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1702490_1709596056000_1709596056000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211569127,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 705,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 188,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "89",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726913-100# Uncoated Cover 13x19",
+                    "amountUsed": 89
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 176,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 176,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 177,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 177,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEN6I_130015214_JDF",
+            "siteName": "Chicago",
+            "copies": 18,
+            "impressions": 148,
+            "printedSheets": 55,
+            "jobSubmitTime": "2024-03-05T10:15:33.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:17:31.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:15:33.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:17:31.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705763_1709633851000_1709633851000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211574677,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 148,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 118,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "55",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1316567 Multiloft 120lb White   *FRONT*",
+                    "amountUsed": 37
+                },
+                {
+                    "name": "PSP-13165XX - Multiloft core",
+                    "amountUsed": 18
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 37,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 37,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 37,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 37,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEN6I_130015214_JDF",
+            "siteName": "Chicago",
+            "copies": 1,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T10:19:37.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:19:49.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:19:37.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:19:49.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705763_1709633851000_1709633851000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211574678,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 12,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1316567 Multiloft 120lb White   *FRONT*",
+                    "amountUsed": 1
+                },
+                {
+                    "name": "PSP-13165XX - Multiloft core",
+                    "amountUsed": 1
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEN6I_130015214_JDF",
+            "siteName": "Chicago",
+            "copies": 5,
+            "impressions": 40,
+            "printedSheets": 15,
+            "jobSubmitTime": "2024-03-05T10:23:40.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:24:39.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:23:40.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:24:39.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705763_1709633851000_1709633851000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211574680,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 40,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 59,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "15",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1316567 Multiloft 120lb White   *FRONT*",
+                    "amountUsed": 10
+                },
+                {
+                    "name": "PSP-13165XX - Multiloft core",
+                    "amountUsed": 5
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2343537.pdf",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T10:26:43.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:27:17.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:26:43.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:27:17.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705812_1709634437000_1709634437000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211574681,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 34,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2343537.pdf",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T10:27:42.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:27:50.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:27:42.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:27:50.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705812_1709634437000_1709634437000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211586678,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 8,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2343537.pdf",
+            "siteName": "Chicago",
+            "copies": 24,
+            "impressions": 94,
+            "printedSheets": 24,
+            "jobSubmitTime": "2024-03-05T10:29:24.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:30:17.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:29:24.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:30:17.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705812_1709634437000_1709634437000",
+            "height": 470.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211586679,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 93,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 53,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "24",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-1316567 Multiloft 120lb White   *FRONT*",
+                    "amountUsed": 24
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 23,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 23,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 24,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 24,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787602_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T10:35:01.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:35:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:35:01.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:35:32.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705854_1709634932000_1709634932000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211592091,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 31,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787867_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 103,
+            "impressions": 410,
+            "printedSheets": 103,
+            "jobSubmitTime": "2024-03-05T10:46:07.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:48:06.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:46:07.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:48:06.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705954_1709635686000_1709635686000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211597541,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 409,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 119,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "103",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 103
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 102,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 102,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 103,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 103,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787866_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 170,
+            "impressions": 678,
+            "printedSheets": 170,
+            "jobSubmitTime": "2024-03-05T10:48:00.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:51:13.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:48:00.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:51:13.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705993_1709635873000_1709635873000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211597542,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 677,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 193,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "170",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 170
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 169,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 169,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 170,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 170,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787600_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T10:51:07.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:51:31.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:51:07.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:51:31.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706011_1709635891000_1709635891000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211597543,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 24,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787602_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 51,
+            "impressions": 202,
+            "printedSheets": 51,
+            "jobSubmitTime": "2024-03-05T10:44:38.000+00:00",
+            "jobCompleteTime": "2024-03-05T10:46:13.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:44:38.000",
+            "jobCompleteTimeLocalized": "2024-03-05T10:46:13.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1705854_1709634932000_1709634932000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211597544,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 201,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 95,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "51",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 51
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 50,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 51,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 51,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787600_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 340,
+            "impressions": 1360,
+            "printedSheets": 340,
+            "jobSubmitTime": "2024-03-05T10:54:02.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:00:53.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T10:54:02.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:00:53.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706011_1709635891000_1709635891000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211609041,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 1360,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 411,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "340",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 340
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 340,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 340,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 340,
+                    "inkSerialNumber": "EF033Y5936A8O7"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 340,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787600_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 921,
+            "impressions": 3682,
+            "printedSheets": 921,
+            "jobSubmitTime": "2024-03-05T11:02:12.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:19:38.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:02:12.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:19:38.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706011_1709635891000_1709635891000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211624648,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 3681,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 1046,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "921",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 921
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 920,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 920,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 921,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 921,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787601_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 253,
+            "impressions": 1010,
+            "printedSheets": 253,
+            "jobSubmitTime": "2024-03-05T11:19:31.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:24:21.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:19:31.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:24:21.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706374_1709637861000_1709637861000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211624649,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1009,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 290,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "253",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 253
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2347877_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 1,
+            "impressions": 10,
+            "printedSheets": 1,
+            "jobSubmitTime": "2024-03-05T11:24:15.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:24:31.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:24:15.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:24:31.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706387_1709637871000_1709637871000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211624650,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 10,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 16,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "1",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726110-130# Uncoated Cover 12x18",
+                    "amountUsed": 1
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2347877_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T11:26:05.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:26:22.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:26:05.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:26:22.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706387_1709637871000_1709637871000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211624651,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 17,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEEY7_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 10,
+            "impressions": 38,
+            "printedSheets": 10,
+            "jobSubmitTime": "2024-03-05T11:31:23.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:31:39.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:31:23.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:31:39.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706481_1709638299000_1709638299000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629868,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 37,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 16,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "10",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 10
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 9,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 9,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345802.pdf",
+            "siteName": "Chicago",
+            "copies": 0,
+            "impressions": 0,
+            "printedSheets": 0,
+            "jobSubmitTime": "2024-03-05T11:33:12.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:33:21.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:33:12.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:33:21.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706543_1709638401000_1709638401000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629869,
+            "repeatLength": -1,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 9,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": null,
+                "unit": null
+            },
+            "substrates": [],
+            "inks": []
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEEY8_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 10,
+            "impressions": 38,
+            "printedSheets": 10,
+            "jobSubmitTime": "2024-03-05T11:31:12.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:31:29.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:31:12.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:31:29.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706471_1709638289000_1709638289000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629870,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 37,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 17,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "10",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 10
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 9,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 9,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 10,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "DBEEY6_130017133_JDF",
+            "siteName": "Chicago",
+            "copies": 42,
+            "impressions": 166,
+            "printedSheets": 42,
+            "jobSubmitTime": "2024-03-05T11:31:33.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:32:26.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:31:33.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:32:26.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706498_1709638346000_1709638346000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629871,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 165,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 53,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "42",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017133-Gloss Sticker Paper (No UV)",
+                    "amountUsed": 42
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 42,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 42,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2344251.pdf",
+            "siteName": "Chicago",
+            "copies": 13,
+            "impressions": 98,
+            "printedSheets": 13,
+            "jobSubmitTime": "2024-03-05T11:30:41.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:31:18.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:30:41.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:31:18.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706464_1709638278000_1709638278000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629872,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 97,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 37,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "13",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726110-130# Uncoated Cover 12x18",
+                    "amountUsed": 13
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 24,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 24,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 25,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 25,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2347877_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 64,
+            "impressions": 632,
+            "printedSheets": 64,
+            "jobSubmitTime": "2024-03-05T11:26:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:30:48.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:26:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:30:48.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706387_1709637871000_1709637871000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629873,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 631,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 230,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "64",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726110-130# Uncoated Cover 12x18",
+                    "amountUsed": 64
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 126,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 126,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 127,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 127,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 126,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345802.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T11:34:39.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:35:10.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:34:39.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:35:10.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706543_1709638401000_1709638401000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211629874,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 31,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345802.pdf",
+            "siteName": "Chicago",
+            "copies": 253,
+            "impressions": 1010,
+            "printedSheets": 253,
+            "jobSubmitTime": "2024-03-05T11:35:38.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:40:34.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:35:38.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:40:34.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706543_1709638401000_1709638401000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211640027,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1009,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 296,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "253",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 253
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345810.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 16,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T11:42:01.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:42:34.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:42:01.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:42:34.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706607_1709638954000_1709638954000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211640034,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 16,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 33,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 4,
+                    "inkSerialNumber": "EF073Y6567PKLG"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2344989.pdf",
+            "siteName": "Chicago",
+            "copies": 465,
+            "impressions": 3720,
+            "printedSheets": 465,
+            "jobSubmitTime": "2024-03-05T11:56:17.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:12:30.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:56:17.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:12:30.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706815_1709640750000_1709640750000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211660513,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 3720,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 973,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "465",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 465
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 930,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 930,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 930,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 930,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "GG_Maintenance List.pdf",
+            "siteName": "Chicago",
+            "copies": 106,
+            "impressions": 107,
+            "printedSheets": 106,
+            "jobSubmitTime": "2024-03-05T12:12:24.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:13:30.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:12:24.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:13:30.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706833_1709640810000_1709640810000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211675925,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 105,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 66,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "106",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 106
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Magenta",
+                    "amountUsed": 1,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 106,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2344989.pdf",
+            "siteName": "Chicago",
+            "copies": 123,
+            "impressions": 984,
+            "printedSheets": 123,
+            "jobSubmitTime": "2024-03-05T12:13:24.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:17:49.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:13:24.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:17:49.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706815_1709640750000_1709640750000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211675926,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 984,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 265,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "123",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 123
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 246,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 246,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 246,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 246,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345810.pdf",
+            "siteName": "Chicago",
+            "copies": 331,
+            "impressions": 2642,
+            "printedSheets": 331,
+            "jobSubmitTime": "2024-03-05T11:44:50.000+00:00",
+            "jobCompleteTime": "2024-03-05T11:56:24.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T11:44:50.000",
+            "jobCompleteTimeLocalized": "2024-03-05T11:56:24.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706607_1709638954000_1709638954000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211675927,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 2641,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 694,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "331",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 331
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 660,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 660,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 661,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 661,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2344989.pdf",
+            "siteName": "Chicago",
+            "copies": 82,
+            "impressions": 656,
+            "printedSheets": 82,
+            "jobSubmitTime": "2024-03-05T12:30:21.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:33:44.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:30:21.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:33:44.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706815_1709640750000_1709640750000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211675930,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 656,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 203,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "82",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 82
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 164,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 164,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 164,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 164,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787599_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T12:51:14.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:51:24.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:51:14.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:51:24.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707058_1709643084000_1709643084000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211691430,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 10,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787624_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 91,
+            "impressions": 362,
+            "printedSheets": 91,
+            "jobSubmitTime": "2024-03-05T12:57:45.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:59:27.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:57:45.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:59:27.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707140_1709643567000_1709643567000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696809,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 361,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 102,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "91",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 91
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 90,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 90,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 91,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 91,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2348168.pdf",
+            "siteName": "Chicago",
+            "copies": 255,
+            "impressions": 1018,
+            "printedSheets": 255,
+            "jobSubmitTime": "2024-03-05T12:38:30.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:43:01.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:38:30.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:43:01.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706957_1709642581000_1709642581000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696810,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1017,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 271,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "255",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 255
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 254,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 254,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 255,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 255,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787830_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 80,
+            "impressions": 318,
+            "printedSheets": 80,
+            "jobSubmitTime": "2024-03-05T12:56:20.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:57:51.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:56:20.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:57:51.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707125_1709643471000_1709643471000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696811,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 317,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 91,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "80",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 80
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 79,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 79,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 80,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2344989.pdf",
+            "siteName": "Chicago",
+            "copies": 111,
+            "impressions": 882,
+            "printedSheets": 111,
+            "jobSubmitTime": "2024-03-05T12:34:21.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:38:36.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:34:21.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:38:36.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1706815_1709640750000_1709640750000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696812,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 881,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 255,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "111",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 111
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 220,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 220,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 221,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 221,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2347007.pdf",
+            "siteName": "Chicago",
+            "copies": 253,
+            "impressions": 1010,
+            "printedSheets": 253,
+            "jobSubmitTime": "2024-03-05T12:44:04.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:48:21.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:44:04.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:48:21.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707027_1709642901000_1709642901000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696813,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1009,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 257,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "253",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 253
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "R2345068_PRINT.pdf",
+            "siteName": "Chicago",
+            "copies": 160,
+            "impressions": 638,
+            "printedSheets": 160,
+            "jobSubmitTime": "2024-03-05T12:48:17.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:51:10.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:48:17.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:51:10.000",
+            "epmImpressions": 0,
+            "width": 330,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707048_1709643070000_1709643070000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696814,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 637,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 173,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "160",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP-130017036  70# Uncoated Text 13x19",
+                    "amountUsed": 160
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 159,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 159,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 160,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 160,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787598_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 72,
+            "impressions": 286,
+            "printedSheets": 72,
+            "jobSubmitTime": "2024-03-05T12:55:02.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:56:26.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:55:02.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:56:26.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707109_1709643386000_1709643386000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696815,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 285,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 84,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "72",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 72
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 71,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 71,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 72,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 72,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787699_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 59,
+            "impressions": 236,
+            "printedSheets": 59,
+            "jobSubmitTime": "2024-03-05T12:59:21.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:00:32.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:59:21.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:00:32.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707159_1709643632000_1709643632000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696816,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 236,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 71,
+            "jobProgress": "ABORTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "59",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 59
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 59,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 59,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 59,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 59,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787599_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 30,
+            "impressions": 118,
+            "printedSheets": 30,
+            "jobSubmitTime": "2024-03-05T12:54:09.000+00:00",
+            "jobCompleteTime": "2024-03-05T12:55:08.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T12:54:09.000",
+            "jobCompleteTimeLocalized": "2024-03-05T12:55:08.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707058_1709643084000_1709643084000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211696817,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 117,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 59,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "30",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 30
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 29,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 29,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 30,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11786084_chp.pdf",
+            "siteName": "Chicago",
+            "copies": 701,
+            "impressions": 2802,
+            "printedSheets": 701,
+            "jobSubmitTime": "2024-03-05T13:04:43.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:17:04.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:04:43.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:17:04.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707298_1709644624000_1709644624000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712678,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 2801,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 741,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "701",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 701
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 700,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 700,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 701,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 701,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345883_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 23,
+            "impressions": 222,
+            "printedSheets": 23,
+            "jobSubmitTime": "2024-03-05T13:16:58.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:18:17.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:16:58.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:18:17.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707316_1709644697000_1709644697000",
+            "height": 457.2,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712679,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": true,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 221,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 79,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "23",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-726110-130# Uncoated Cover 12x18",
+                    "amountUsed": 23
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 44,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 44,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 45,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 45,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 44,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787597_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 130,
+            "impressions": 518,
+            "printedSheets": 130,
+            "jobSubmitTime": "2024-03-05T13:02:27.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:04:49.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:02:27.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:04:49.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707209_1709643889000_1709643889000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712680,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 517,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 142,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "130",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 130
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 129,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 129,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 130,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 130,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "11787699_130016693_JDF",
+            "siteName": "Chicago",
+            "copies": 42,
+            "impressions": 166,
+            "printedSheets": 42,
+            "jobSubmitTime": "2024-03-05T13:01:18.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:02:34.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:01:18.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:02:34.000",
+            "epmImpressions": 0,
+            "width": 305,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707159_1709643632000_1709643632000",
+            "height": 456.7,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712681,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 165,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 76,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "42",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "PSP- 130016693-Vinyl Sticker (UV Coating)",
+                    "amountUsed": 42
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 41,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 42,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 42,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345989.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T13:19:31.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:20:02.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:19:31.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:20:02.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707334_1709644802000_1709644802000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712682,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 8,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 31,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-716613- 60# Uncoated Text 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345989.pdf",
+            "siteName": "Chicago",
+            "copies": 101,
+            "impressions": 402,
+            "printedSheets": 101,
+            "jobSubmitTime": "2024-03-05T13:21:08.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:23:19.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:21:08.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:23:19.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707334_1709644802000_1709644802000",
+            "height": 483.0,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712683,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 402,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 0,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 131,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "101",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-716613- 60# Uncoated Text 13x19",
+                    "amountUsed": 101
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 100,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 100,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 101,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 101,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2348250_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 10,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T13:23:50.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:24:21.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:23:50.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:24:21.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707362_1709645061000_1709645061000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211712686,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 10,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 31,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-716809- 80# Uncoated Text 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2348343_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 253,
+            "impressions": 1262,
+            "printedSheets": 253,
+            "jobSubmitTime": "2024-03-05T13:34:45.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:40:12.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:34:45.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:40:12.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707444_1709646012000_1709646012000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211727108,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1261,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 327,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "253",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-716809- 80# Uncoated Text 13x19",
+                    "amountUsed": 253
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2345907.pdf",
+            "siteName": "Chicago",
+            "copies": 2,
+            "impressions": 8,
+            "printedSheets": 2,
+            "jobSubmitTime": "2024-03-05T13:40:16.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:40:26.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:40:16.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:40:26.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707454_1709646026000_1709646026000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211727109,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 0,
+            "impressionsNColors": 8,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 10,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "2",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-724912- 100# velvet cover 13x19",
+                    "amountUsed": 2
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 2,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                }
+            ]
+        },
+        {
+            "pressSerialNumber": "47200165",
+            "jobName": "IMP_2348250_PS.pdf",
+            "siteName": "Chicago",
+            "copies": 253,
+            "impressions": 1262,
+            "printedSheets": 253,
+            "jobSubmitTime": "2024-03-05T13:28:56.000+00:00",
+            "jobCompleteTime": "2024-03-05T13:34:51.000+00:00",
+            "jobSubmitTimeLocalized": "2024-03-05T13:28:56.000",
+            "jobCompleteTimeLocalized": "2024-03-05T13:34:51.000",
+            "epmImpressions": 0,
+            "width": 331,
+            "useOfVDP": "No",
+            "printedJobId": "47200165_1707362_1709645061000_1709645061000",
+            "height": 482.6,
+            "deviceId": "62773841-83fc-4251-aa11-864a43545e15",
+            "marker": 211727110,
+            "repeatLength": 0,
+            "impressionsType": "A3",
+            "duplex": false,
+            "oneShotImpressions": 0,
+            "impressions1Color": 0,
+            "impressions2Colors": 1,
+            "impressionsNColors": 1261,
+            "inkUnits": "IMPRESSIONS",
+            "jobElapseTime": 355,
+            "jobProgress": "PRINTED",
+            "jobCollation": null,
+            "substrateUnits": {
+                "value": "253",
+                "unit": "SHEETS"
+            },
+            "substrates": [
+                {
+                    "name": "RLM-716809- 80# Uncoated Text 13x19",
+                    "amountUsed": 253
+                }
+            ],
+            "inks": [
+                {
+                    "color": "Yellow",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF052Y8413KTK2"
+                },
+                {
+                    "color": "P425CR",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "None"
+                },
+                {
+                    "color": "Black",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef073y6567j3t2"
+                },
+                {
+                    "color": "Magenta",
+                    "amountUsed": 253,
+                    "inkSerialNumber": "ef033y5936w3gk"
+                },
+                {
+                    "color": "Cyan",
+                    "amountUsed": 252,
+                    "inkSerialNumber": "EF013Y9797TCGM"
+                }
+            ]
+        }
+    ]
+}
