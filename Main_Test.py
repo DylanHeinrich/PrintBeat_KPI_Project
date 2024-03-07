@@ -793,6 +793,61 @@ def main():
     app.root.mainloop()
 
 
+def test():
+    with open('Jobs_Api_File.json') as f:
+        json_data = json.load(f)
+        
+    csvFile = open('jsoncsvoutput.csv', 'w', newline='')
+    csv_writer = csv.writer(csvFile)
+    
+    count = 0
+    
+    for data in json_data['attempts']:
+        if count == 0:
+            header = data.keys()
+            csv_writer.writerow(header)
+            count += 1
+        csv_writer.writerow(data.values())
+
+def test2():
+    with open('Jobs_Api_File.json') as f:
+        json_data = json.load(f)
+    
+    dataList = json_data['attempts']    
+
+
+    
+    df = pd.json_normalize(dataList)
+    df.to_csv('Test2.csv')
+
+def flatten_json(json_data, prefix=''):
+    flattened_dict = {}
+    for key, value in json_data.items():
+        if isinstance(value, dict):
+            flattened_dict.update(flatten_json(value, prefix + key + '_'))
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                flattened_dict.update(flatten_json(item, prefix + key + '_' + str(i) + '_'))
+        else:
+            flattened_dict[prefix + key] = value
+    return flattened_dict
+
+def json_to_csv(json_file, csv_file):
+    # Load JSON data from file
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+
+    data = data['attempts']   
+
+    # Flatten the JSON data
+    flattened_data = [flatten_json(item) for item in data]
+
+    # Convert to DataFrame
+    df = pd.DataFrame(flattened_data)
+
+    # Write DataFrame to CSV file
+    df.to_csv(csv_file, index=False)
 if __name__ == '__main__':
-    startUpSettings()
-    main()
+    #startUpSettings()
+    #main()
+    json_to_csv('Jobs_Api_File.json', 'output.csv')
