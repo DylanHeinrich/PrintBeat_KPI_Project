@@ -186,9 +186,9 @@ class NewWindow():
         self.saveButton = ttk.Button(self.newWin, text= 'Save', command=self.save, bootstyle = 'outline').place(x = windowWidth - 65, y = windowHeight - 50)
         self.cancelButton = ttk.Button(self.newWin, text= 'Cancel', command = self.cancel, bootstyle = 'outline').place(x = windowWidth - 130, y = windowHeight - 50)
 
-        tk.Label(self.newWin, text= 'Time interval (Seconds):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
+        tk.Label(self.newWin, text= 'Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
         tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 130)
-        tk.Label(self.newWin, text= 'Job\'s Time interval (Seconds):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
+        tk.Label(self.newWin, text= 'Job\'s Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
         tk.Entry(self.newWin, textvariable = self.jobsSleepNumber, width = 5).place(x= 225, y = 165)
         tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 200)
         tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 200)
@@ -806,7 +806,7 @@ class printBeat_thread_with_exception(threading.Thread):
 def printBeatStart():
     global mainPath, backUpPath, waitTime, app
     timer = 0
-    sleepTimer = waitTime
+    sleepTimer = int(waitTime) * 60
     combineList = []
     if chi_plant:
         for press in press_list:
@@ -819,15 +819,15 @@ def printBeatStart():
             combineList.append(ml_press_list[press])
 
     while True:
-        if timer >= int(sleepTimer):
+        if timer >= sleepTimer:
             get_request_real_data(combineList)
             timer = 0
-            sleepTimer = waitTime
+            sleepTimer = int(waitTime) * 60
         else:
-            msg = f'Next pull in....{int(sleepTimer)-timer} seconds'
+            msg = f'Print Beat - Next pull in....{int(sleepTimer)-timer} seconds'
             logger.log(logging.INFO, msg= msg)
-            time.sleep(2)
-            timer += 2
+            time.sleep(10)
+            timer += 10
         #schedule.every(1).minutes.do(lambda: get_request_real_data(press_list, folderPath))
         #schedule.run_pending()
 
@@ -872,15 +872,15 @@ def testButton():
 
 def jobStart():
     global mainPath, backUpPath, job_wait_time, app, job_data
-    timer = 0
-    sleepTimer = job_wait_time
+    job_timer = 0
+    sleepTimer = int(job_wait_time) * 60
     combineList = []
     if chi_plant:
         for press in press_list:
             combineList.append(press_list[press])
     
     while True:
-        if timer >= int(sleepTimer):
+        if job_timer >= sleepTimer:
                 get_request_jobs(combineList, chi_last_marker)
                 jobs_data_processing(job_data)
                 data_size = len(job_data['attempts'])
@@ -890,13 +890,15 @@ def jobStart():
                         get_request_jobs(combineList, chi_last_marker)
                         jobs_data_processing(job_data)
 
-                sleepTimer = job_wait_time
-                timer = 0
+                sleepTimer = int(job_wait_time) * 60
+                job_timer = 0
         else:
-            msg = f'Jobs - Next pull in....{int(sleepTimer)-timer} seconds'
-            logger.log(logging.INFO, msg= msg)
+            test = (1200 % 60)
+            if (job_timer % 60) == 0:
+                msg = f'Jobs - Next pull in....{int((int(sleepTimer)-job_timer)/60)} Minutes'
+                logger.log(logging.INFO, msg= msg)
             time.sleep(2)
-            timer += 2
+            job_timer += 2
                 
 
 def stopPrintBeat():
