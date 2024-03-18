@@ -65,8 +65,14 @@ autoRun = None
 
 currnetRunningJob = {}
 
+chi_last_marker = None
+jobs_main_path = None
+job_data = None
+job_wait_time = None
+
 t1 = None
 t2 = None
+t3 = None
 app = None
 
 programLocation = os.getcwd()
@@ -136,8 +142,9 @@ class NewWindow():
     
     def __init__(self, root):
         #Grabbing global variables
-        global key, secret, api_url, job_key, job_secret, waitTime, plants
+        global key, secret, api_url, job_key, job_secret, waitTime, plants, job_wait_time
         self.sleepNumber = tk.IntVar(value= int(waitTime))
+        self.jobsSleepNumber = tk.IntVar(value= int(job_wait_time))
         self.key = tk.StringVar()
         self.secret = tk.StringVar()
         self.job_key = tk.StringVar()
@@ -172,34 +179,40 @@ class NewWindow():
         self.backUpLocationLabel.place(x=225, y = 60)
         ttk.Button(self.newWin, text='Back-up Location', width=25, command= lambda: self.browseFolder(self.backUpLocationLabel, 'Back-up Location'), bootstyle = 'outline').place(x=25, y = 60)
 
+        self.job_file_location_label = tk.Label(self.newWin, text= jobs_main_path, width= 50, height=1, fg='white', bg='gray')
+        self.job_file_location_label.place(x=225, y = 95)
+        ttk.Button(self.newWin, text='Job\'s File Location', width=25, command= lambda: self.browseFolder(self.job_file_location_label, 'Job\'s Main Path'), bootstyle = 'outline').place(x=25, y = 95)
+
         self.saveButton = ttk.Button(self.newWin, text= 'Save', command=self.save, bootstyle = 'outline').place(x = windowWidth - 65, y = windowHeight - 50)
         self.cancelButton = ttk.Button(self.newWin, text= 'Cancel', command = self.cancel, bootstyle = 'outline').place(x = windowWidth - 130, y = windowHeight - 50)
 
-        tk.Label(self.newWin, text= 'Time interval (Seconds):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 95)
-        tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 95)
-        tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 130)
-        tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 130)
-        tk.Label(self.newWin, text= 'PrintBeat Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 165)
-        tk.Entry(self.newWin, textvariable = self.secret, width = 35).place(x= 225, y = 165)
-        tk.Label(self.newWin, text= 'PrintBeat Job Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 200)
-        tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 200)
-        tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
-        tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 235)
+        tk.Label(self.newWin, text= 'Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
+        tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 130)
+        tk.Label(self.newWin, text= 'Job\'s Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
+        tk.Entry(self.newWin, textvariable = self.jobsSleepNumber, width = 5).place(x= 225, y = 165)
+        tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 200)
+        tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 200)
+        tk.Label(self.newWin, text= 'PrintBeat Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
+        tk.Entry(self.newWin, textvariable = self.secret, width = 35).place(x= 225, y = 235)
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
+        tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 270)
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 305)
+        tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 305)
         #tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
         plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant.get()))
-        plantLocation.place(x=80, y = 270)
+        plantLocation.place(x=80, y = 340)
         
         self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 20)
-        self.pressEntry.place(x= 320, y = 270)
+        self.pressEntry.place(x= 320, y = 340)
 
 
         self.savePressButton = ttk.Button(self.newWin, text= 'Save', command= lambda: self.savePress(self.plant.get()), bootstyle = 'outline')
-        self.savePressButton.place(x = 320, y = 300)
+        self.savePressButton.place(x = 320, y = 365)
         self.deletePressButton = ttk.Button(self.newWin, text= 'Delete', command= lambda: self.deletePress(self.plant.get()), bootstyle = 'outline')
-        self.deletePressButton.place(x = 380, y = 300)
+        self.deletePressButton.place(x = 380, y = 365)
         
         self.listBox = tk.Listbox(self.newWin, height=3)
-        self.listBox.place(x = 190, y =270)
+        self.listBox.place(x = 190, y =340)
         self.listBox.bind('<<ListboxSelect>>', self.setEntery)
         self.v.set(self.listBox.curselection())
 
@@ -284,10 +297,17 @@ class NewWindow():
             pass
 
     def browseFolder(self, label, locType):
+        self.mainPath = mainPath
+        self.backUpPath = backUpPath
+        self.jobs_main_path = jobs_main_path
         if locType == 'Main Location':
             self.mainPath = filedialog.askdirectory(title='Path Location')
             logger.log(logging.DEBUG, msg = f'{locType} = {self.mainPath}')
             label.configure(text= self.mainPath)
+        elif 'Job\'s' in locType:
+            self.jobs_main_path = filedialog.askdirectory(title='Path Location')
+            logger.log(logging.DEBUG, msg = f'{locType} = {self.jobs_main_path}')
+            label.configure(text = self.jobs_main_path)
         else:
             self.backUpPath = filedialog.askdirectory(title='Path Location')
             logger.log(logging.DEBUG, msg = f'{locType} = {self.backUpPath}')
@@ -298,10 +318,21 @@ class NewWindow():
         self.root.deiconify()
 
     def save(self, *args):
-        global mainPath, backUpPath, waitTime, key, secret, job_secret, job_key
+        global mainPath, backUpPath, waitTime, key, secret, job_secret, job_key, jobs_main_path, job_wait_time
         try:
             mainPath = self.mainPath
+        except AttributeError:
+            logger.log(logging.DEBUG, msg='A path was not seleted')
+            pass
+
+        try:
             backUpPath = self.backUpPath
+        except AttributeError:
+            logger.log(logging.DEBUG, msg='A path was not seleted')
+            pass
+
+        try:
+            jobs_main_path = self.jobs_main_path
         except AttributeError:
             logger.log(logging.DEBUG, msg='A path was not seleted')
             pass
@@ -311,6 +342,9 @@ class NewWindow():
         api_secret = str(self.secret.get())
         api_job_key = str(self.job_key.get())
         api_job_secret = str(self.job_secret.get())
+        job_wait_time = str(self.jobsSleepNumber.get())
+
+
 
         if api_key == '':
             pass
@@ -360,12 +394,19 @@ class ThirdUi:
         button1 = ttk.Button(frame, text='Config Settings', width=25, bootstyle = 'outline')
         button1.bind("<Button>", lambda e: NewWindow(root))
         button1.pack()
-        self.button2 = ttk.Button(frame, text='Start PrintBeat', width=25, command=buttonStart, state= 'disable', bootstyle = 'outline')
-        self.button2.pack()
-        button3 = ttk.Button(frame, text='Stop PrintBeat', width=25, command=stopPrintBeat, bootstyle = 'outline')
-        button3.pack()
+        self.printBeat_start_button = ttk.Button(frame, text='Start PrintBeat', width=25, command=buttonStart, state= 'disable', bootstyle = 'outline')
+        self.printBeat_start_button.pack()
+
+        printBeat_stop_button = ttk.Button(frame, text='Stop PrintBeat', width=25, command=stopPrintBeat, bootstyle = 'outline')
+        printBeat_stop_button.pack()
+        
+        self.jobStartButton = ttk.Button(frame, text='Start Jobs', width=25, command=job_start_button, bootstyle = 'outline')
+        self.jobStartButton.pack()
+
+        job_stop_button = ttk.Button(frame, text= 'Stop Jobs', width=25, command= stop_job, bootstyle = 'outline')
+        job_stop_button.pack()
+
         buttoon4 = ttk.Button(frame, text='Test Button', width=25, command=testButton, bootstyle = 'outline')
-        buttoon4.pack()
 
         checkbox1 = ttk.Checkbutton(frame, text= 'Chicago', variable=self.chi, onvalue= True, offvalue= False, command= self.plant, bootstyle='round-toggle')
         checkbox1.place(x = 550, y =2)
@@ -377,7 +418,8 @@ class ThirdUi:
         if autoRun:
             autoStartCheck.invoke()
             
-        
+
+
     def plant(self, *args):
         global chi_plant, ml_plant, slc_plant
         logger.log(logging.INFO, msg = f'Chi Valuse = {self.chi.get()}')
@@ -385,9 +427,9 @@ class ThirdUi:
         logger.log(logging.INFO, msg = f'SLC Valuse = {self.slc.get()}\n')
 
         if self.chi.get() or self.slc.get() or self.ml.get():
-            self.button2['state'] = 'normal'
+            self.printBeat_start_button['state'] = 'normal'
         else:
-            self.button2['state'] = 'disable'
+            self.printBeat_start_button['state'] = 'disable'
         chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()
     def autoCheck(self):
         global autoRun
@@ -454,7 +496,7 @@ class App:
         self.root.geometry(postion)
 
     def saveConfig(self, *args):
-        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun
+        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun, chi_last_marker, jobs_main_path, job_wait_time
 
         #config.read(f'{programLocation}\\config_2.ini')
 
@@ -468,6 +510,10 @@ class App:
         config['configSettings']['back-up_location'] = backUpPath
         config['configSettings']['wait_time'] = waitTime
         config['autoStartOnBootUp']['autoStart'] = str(autoRun)
+
+        config['jobsSetting']['marker'] = chi_last_marker
+        config['jobsSetting']['file_path'] = jobs_main_path
+        config['jobsSetting']['wait_time'] = job_wait_time
 
         i = 0
         i2 = 0 
@@ -516,34 +562,40 @@ def RealTimeDataProcess(data):
 
         csvName = f'impressions_{pressName}.csv'
         pressData = [totalImps, totalPrintedImps, totalPrintedSheets, pressStatus, currentJob, datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
-        csvPath = f'{mainPath}/{csvName}'
+        csvFilePath = f'{mainPath}/{csvName}'
         backUpCsvPath = f'{backUpPath}/{csvName}'
         
-        createCsvFile(filePath=mainPath, csvFilePath=csvPath, csvFileName=csvName, data=pressData)
+        createCsvFile(filePath=mainPath, csvFilePath=csvFilePath, csvFileName=csvName, pressData=pressData)
         #os.chdir(programLocation)
-        createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvName, data=pressData)
+        createCsvFile(filePath=backUpPath, csvFilePath=backUpCsvPath, csvFileName=csvName, pressData=pressData)
 
 
-def createCsvFile(filePath, csvFilePath, csvFileName, data):
-    if os.path.exists(csvFilePath):
+def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
+    
+    try:
+        if os.path.exists(csvFilePath):
+                os.chdir(filePath)
+                with open(f'{csvFileName}', 'a', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerow(pressData)
+                    msg = f'Updated: {csvFilePath}'
+                    logger.log(logging.INFO, msg)
+        else:
             os.chdir(filePath)
-            with open(f'{csvFileName}', 'a', newline='') as file:
+            with open(f'{csvFileName}', 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(data)
-                msg = f'Updated: {csvFilePath}'
-                logger.log(logging.INFO, msg)
-    else:
-        os.chdir(filePath)
-        with open(f'{csvFileName}', 'w', newline='') as file:
-            writer = csv.writer(file)
-            field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
-                        'totalPrintedSheetsSinceInstallation', 'Press Status', 
-                        'currentJob', 'Time']
-            
-            writer.writerow(field)
-            writer.writerow(data)
-            log = f'File did not exists at {filePath}...Creating file at {filePath}'
-            logger.log(logging.INFO, log)
+                field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
+                            'totalPrintedSheetsSinceInstallation', 'Press Status', 
+                            'currentJob', 'Time']
+                
+                writer.writerow(field)
+                writer.writerow(pressData)
+                log = f'File did not exists at {filePath}...Creating file at {filePath}'
+                logger.log(logging.INFO, log)
+    except FileNotFoundError or PermissionError:
+        logger.log(logging.ERROR, msg= f'Sorry the path {filePath}....Could not be accessed or does not exist. Please enter in another path.')
+        stopPrintBeat()
+        
 
 
 
@@ -579,6 +631,7 @@ def get_request_real_data(press):
         else:
             logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
             logger.log(logging.ERROR, f"Response content:{response.content}")
+            stopPrintBeat()
 
     except Exception as e:
         logger.log(logging.ERROR, msg= e)
@@ -623,16 +676,26 @@ def get_request_kpi():
     except Exception as e:
         print("An error occurred:", e)
 
-def get_request_jobs():
+def get_request_jobs(pressName, marker):
+    global job_data
     path = '/externalApi/jobs'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers_job("GET", path, timestamp) 
 
-    parameters = {
-        'startMarker' : 156075288,
-        'devices' : ['47200165'],
+
+    if marker == None:
+        #ASC = Ascending order 
+        #DESC = Descending order
+        parameters = {
+        'devices' : [pressName],
         'sortOrder' : 'DESC'
-    }
+        }
+    else:
+        parameters = {
+        'startMarker': marker,
+        'devices' : [pressName],
+        'sortOrder' : 'ASC'
+        }
 
     # Creating a url variable that is the finial url that is going to pass through the request
     url = api_url + path
@@ -644,10 +707,10 @@ def get_request_jobs():
 
         # Check if the request was successful
         if response.status_code == 200:
-            print("Succesfully call the api")
-            data = response.json()
-            data_file = open('Jobs_Api_File.json', 'a')
-            json.dump(data, data_file, indent=4)
+            print("Job Api call...Seccesful")
+            job_data = response.json()
+            #data_file = open('Jobs_Api_File.json', 'w')
+            #json.dump(job_data, data_file, indent=4)
             #return True
         else:
             print("Request failed with status code:", response.status_code)
@@ -683,7 +746,38 @@ def create_headers_job(method, path, timestamp):
             'x-hp-hmac-algorithm': 'SHA256'
             }
 
-class thread_with_exception(threading.Thread):
+class jobsApi_thread_with_exception(threading.Thread):
+    def __init__(self, name):
+        threading.Thread.__init__(self)
+        self.name = name
+             
+    def run(self):
+ 
+        # target function of the thread class
+        try:
+            while True:
+                jobStart()
+        finally:
+            logger.log(logging.INFO, 'Process has been stopped')
+          
+    def get_id(self):
+ 
+        # returns id of the respective thread
+        if hasattr(self, '_thread_id'):
+            return self._thread_id
+        for id, thread in threading._active.items():
+            if thread is self:
+                return id
+  
+    def raise_exception(self):
+        thread_id = self.get_id()
+        res = ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id,
+              ctypes.py_object(SystemExit))
+        if res > 1:
+            ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, 0)
+            print('Exception raise failure')
+
+class printBeat_thread_with_exception(threading.Thread):
     def __init__(self, name):
         threading.Thread.__init__(self)
         self.name = name
@@ -714,10 +808,11 @@ class thread_with_exception(threading.Thread):
             ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, 0)
             print('Exception raise failure')
 
+
 def printBeatStart():
     global mainPath, backUpPath, waitTime, app
     timer = 0
-    sleepTimer = waitTime
+    sleepTimer = int(waitTime) * 60
     combineList = []
     if chi_plant:
         for press in press_list:
@@ -730,15 +825,15 @@ def printBeatStart():
             combineList.append(ml_press_list[press])
 
     while True:
-        if timer >= int(sleepTimer):
+        if timer >= sleepTimer:
             get_request_real_data(combineList)
             timer = 0
-            sleepTimer = waitTime
+            sleepTimer = int(waitTime) * 60
         else:
-            msg = f'Next pull in....{int(sleepTimer)-timer} seconds'
+            msg = f'Print Beat - Next pull in....{int(sleepTimer)-timer} seconds'
             logger.log(logging.INFO, msg= msg)
-            time.sleep(2)
-            timer += 2
+            time.sleep(10)
+            timer += 10
         #schedule.every(1).minutes.do(lambda: get_request_real_data(press_list, folderPath))
         #schedule.run_pending()
 
@@ -748,7 +843,7 @@ def buttonStart():
     global app
     msg = 'Starting the printBeat program'
     logger.log(logging.INFO, msg= msg)
-    t2 = thread_with_exception('PrintBeat Api')
+    t2 = printBeat_thread_with_exception('PrintBeat Api')
     t2.start()
     app.third.frame.children['!button2']['state'] = 'disable'
     app.third.frame.children['!checkbutton']['state'] = 'disable'
@@ -756,25 +851,65 @@ def buttonStart():
     app.third.frame.children['!checkbutton3']['state'] = 'disable'
 
 def autoStartProcess():
-    global t2
-    global app
-    msg = 'Auto Starting the printBeat program'
-    logger.log(logging.INFO, msg= msg)
-    t2 = thread_with_exception('PrintBeat Api')
-    t2.start()
-    app.third.frame.children['!button2']['state'] = 'disable'
-    app.third.frame.children['!checkbutton']['state'] = 'disable'
-    app.third.frame.children['!checkbutton2']['state'] = 'disable'
-    app.third.frame.children['!checkbutton3']['state'] = 'disable'
+    #global t2, app, t3
+    #msg = 'Auto Starting the printBeat program'
+    #logger.log(logging.INFO, msg= msg)
+    #t2 = printBeat_thread_with_exception('PrintBeat Api')
+    #t2.start()
+    #pp.third.frame.children['printBeat_start_button']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton2']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton3']['state'] = 'disable'
+    buttonStart()
+    job_start_button()
+
+
+def job_start_button():
+    global t3, app
+    msg = 'Starting up JobApi call'
+    logger.log(logging.INFO, msg=msg)
+    t3 = jobsApi_thread_with_exception('JobsApi')
+    t3.start()
+    app.third.frame.children['!button4']['state'] = 'disable'
 
 def testButton():
     global mainPath
     logger.log(level=logging.INFO, msg='This is a test button')
     logger.log(level=logging.INFO, msg=mainPath)
 
+def jobStart():
+    global mainPath, backUpPath, job_wait_time, app, job_data
+    job_timer = 0
+    sleepTimer = int(job_wait_time) * 60
+    combineList = []
+    if chi_plant:
+        for press in press_list:
+            combineList.append(press_list[press])
+    
+    while True:
+        if job_timer >= sleepTimer:
+                get_request_jobs(combineList, chi_last_marker)
+                jobs_data_processing(job_data)
+                data_size = len(job_data['attempts'])
+                if data_size >= 100:
+                    while data_size >= 100:
+                        logging.log(logger.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
+                        time.sleep(120)
+                        get_request_jobs(combineList, chi_last_marker)
+                        jobs_data_processing(job_data)
+
+                sleepTimer = int(job_wait_time) * 60
+                job_timer = 0
+        else:
+            if (job_timer % 60) == 0:
+                msg = f'Jobs - Next pull in....{int((int(sleepTimer)-job_timer)/60)} Minutes'
+                logger.log(logging.INFO, msg= msg)
+            time.sleep(2)
+            job_timer += 2
+                
 
 def stopPrintBeat():
-    msg = 'Stop button has been press.....Stopping'
+    msg = 'Stop button has been press.....Stopping thread'
     logger.log(logging.INFO, msg = msg)
     app.third.frame.children['!button2']['state'] = 'normal'
     app.third.frame.children['!checkbutton']['state'] = 'normal'
@@ -783,9 +918,16 @@ def stopPrintBeat():
     t2.raise_exception()
     t2.join()
 
+def stop_job():
+    msg = 'Jobs stop button has been press.....Stopping......'
+    logger.log(logging.INFO, msg = msg)
+    app.third.frame.children['!button4']['state'] = 'normal'
+    t3.raise_exception()
+    t3.join()
 
 def startUpSettings():
-    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun
+    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, jobs_main_path, chi_last_marker, autoRun, job_wait_time
+    #config.read(f'{programLocation}\\config_2.ini')
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
     api_url = config['printBeatAPI']['api_url']
@@ -796,12 +938,17 @@ def startUpSettings():
     mainPath = config['configSettings']['main_location']
     backUpPath = config['configSettings']['back-up_location']
     waitTime = config['configSettings']['wait_time']
-    
+
     autoRun = config['autoStartOnBootUp']['autoStart']
     if autoRun == 'False':
         autoRun = False
     else:
         autoRun = True
+
+
+    jobs_main_path = config['jobsSetting']['file_path']
+    chi_last_marker = config['jobsSetting']['marker']
+    job_wait_time = config['jobsSetting']['wait_time']
 
     #print(len(config['chicagoPlant']))
     for press in config['chicagoPlant']:
@@ -812,8 +959,103 @@ def startUpSettings():
         slc_press_list[press] = config['saltLakeCityPlant'][press]
 
 
+def jobs_data_processing(data_file):
+    global chi_last_marker
+    # Load JSON data from file
+    #with open(json_file, 'r') as file:
+        #data = json.load(file)
+    
+    csv_file_name = f'Jobs_{datetime.now().strftime("%Y_%m")}.csv'
+    jobs_csv_path = f'{jobs_main_path}/{csv_file_name}'
+    data = data_file['attempts']   
+
+    # Flatten the JSON data
+    flattened_data = [flatten_json(item) for item in data]
+    final_data = [addingExtraFields(item) for item in flattened_data]
+
+    # Convert to DataFrame
+    df = pd.DataFrame(final_data)
+
+    # Write DataFrame to CSV file
+    try:
+        if os.path.exists(jobs_csv_path):
+                logger.log(logging.INFO, msg= f'Successfully updated {csv_file_name}')
+                os.chdir(jobs_main_path)
+                df.to_csv(csv_file_name, index=False, header= False, mode='a')
+        else:
+            logger.log(logging.INFO, msg= 'successfully create Hp Jobs CSV file')
+            os.chdir(jobs_main_path)
+            df.to_csv(csv_file_name,index= False)
+        if len(final_data) > 0:
+            chi_last_marker = final_data[len(final_data)-1]['marker']
+        print(chi_last_marker)
+    except FileNotFoundError or PermissionError:
+        logger.log(logging.ERROR, msg= f'Sorry the path {jobs_main_path}....Could not be accessed or does not exist. Please enter in another path.')
+        stop_job()
+    
+def addingExtraFields(data_list):
+    newdict = {}
+    s = 0
+    i = 0
+    for key, value in data_list.items():
+        if 'substrates' in key:
+            if 'name' in key and str(int(s/2)+1) not in key:
+                newdict[f'substrates_{s+1}_name'] = None
+                newdict[f'substrates_{s+1}_amountUsed'] = None
+                s += 2
+            else:
+                newdict[key] = value
+                s+=1
+        elif 'inks' in key:
+            if 'color' in key and str(int(i/3)+1) not in key:
+                    newdict[f'inks_{i+1}_color'] = None
+                    newdict[f'inks_{i+1}_amountUsed'] = None
+                    newdict[f'inks_{i+1}_inkSerialNumber'] = None
+                    i += 3
+            else:
+                newdict[key] = value
+                i += 1
+        else:
+            newdict[key] = value
+    if len(newdict) < 49:
+        if s == 0 or i == 0:
+            while s < 4:
+                newdict[f'substrates_{s+1}_name'] = None
+                newdict[f'substrates_{s+1}_amountUsed'] = None
+                s += 1
+            while i < 4:
+                newdict[f'inks_{i+1}_color'] = None
+                newdict[f'inks_{i+1}_amountUsed'] = None
+                newdict[f'inks_{i+1}_inkSerialNumber'] = None
+                i += 1
+        else:
+            while int(s/2) < 4:
+                newdict[f'substrates_{int(s/2)+1}_name'] = None
+                newdict[f'substrates_{int(s/2)+1}_amountUsed'] = None
+                s += 2
+            while int(i/3) < 4:
+                newdict[f'inks_{int(i/3)+1}_color'] = None
+                newdict[f'inks_{int(i/3)+1}_amountUsed'] = None
+                newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = None
+                i += 3
+
+    return newdict
+
+
+def flatten_json(json_data, prefix=''):
+    flattened_dict = {}
+    for key, value in json_data.items():
+        if isinstance(value, dict):
+            flattened_dict.update(flatten_json(value, prefix + key + '_'))
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                flattened_dict.update(flatten_json(item, prefix + key + '_' + str(i+1) + '_'))
+        else:
+            flattened_dict[prefix + key] = value
+    return flattened_dict
+
 def main():
-    global app, autoRun
+    global app
     logging.basicConfig(level=logging.DEBUG)
     root = tk.Tk()
     app = App(root)
@@ -826,3 +1068,4 @@ def main():
 if __name__ == '__main__':
     startUpSettings()
     main()
+    

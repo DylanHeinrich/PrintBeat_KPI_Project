@@ -571,25 +571,31 @@ def RealTimeDataProcess(data):
 
 
 def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
-    if os.path.exists(csvFilePath):
+    
+    try:
+        if os.path.exists(csvFilePath):
+                os.chdir(filePath)
+                with open(f'{csvFileName}', 'a', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerow(pressData)
+                    msg = f'Updated: {csvFilePath}'
+                    logger.log(logging.INFO, msg)
+        else:
             os.chdir(filePath)
-            with open(f'{csvFileName}', 'a', newline='') as file:
+            with open(f'{csvFileName}', 'w', newline='') as file:
                 writer = csv.writer(file)
+                field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
+                            'totalPrintedSheetsSinceInstallation', 'Press Status', 
+                            'currentJob', 'Time']
+                
+                writer.writerow(field)
                 writer.writerow(pressData)
-                msg = f'Updated: {csvFilePath}'
-                logger.log(logging.INFO, msg)
-    else:
-        os.chdir(filePath)
-        with open(f'{csvFileName}', 'w', newline='') as file:
-            writer = csv.writer(file)
-            field = ['totalImpsSinceInstallation', 'totalPrintedImpsSinceInstallation', 
-                        'totalPrintedSheetsSinceInstallation', 'Press Status', 
-                        'currentJob', 'Time']
-            
-            writer.writerow(field)
-            writer.writerow(pressData)
-            log = f'File did not exists at {filePath}...Creating file at {filePath}'
-            logger.log(logging.INFO, log)
+                log = f'File did not exists at {filePath}...Creating file at {filePath}'
+                logger.log(logging.INFO, log)
+    except FileNotFoundError or PermissionError:
+        logger.log(logging.ERROR, msg= f'Sorry the path {filePath}....Could not be accessed or does not exist. Please enter in another path.')
+        stopPrintBeat()
+        
 
 
 
@@ -701,7 +707,7 @@ def get_request_jobs(pressName, marker):
 
         # Check if the request was successful
         if response.status_code == 200:
-            print("Succesfully call the api")
+            print("Job Api call...Seccesful")
             job_data = response.json()
             #data_file = open('Jobs_Api_File.json', 'w')
             #json.dump(job_data, data_file, indent=4)
@@ -845,21 +851,22 @@ def buttonStart():
     app.third.frame.children['!checkbutton3']['state'] = 'disable'
 
 def autoStartProcess():
-    global t2
-    global app
-    msg = 'Auto Starting the printBeat program'
-    logger.log(logging.INFO, msg= msg)
-    t2 = printBeat_thread_with_exception('PrintBeat Api')
-    t2.start()
-    app.third.frame.children['printBeat_start_button']['state'] = 'disable'
-    app.third.frame.children['!checkbutton']['state'] = 'disable'
-    app.third.frame.children['!checkbutton2']['state'] = 'disable'
-    app.third.frame.children['!checkbutton3']['state'] = 'disable'
+    #global t2, app, t3
+    #msg = 'Auto Starting the printBeat program'
+    #logger.log(logging.INFO, msg= msg)
+    #t2 = printBeat_thread_with_exception('PrintBeat Api')
+    #t2.start()
+    #pp.third.frame.children['printBeat_start_button']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton2']['state'] = 'disable'
+    #app.third.frame.children['!checkbutton3']['state'] = 'disable'
+    buttonStart()
+    job_start_button()
 
 
 def job_start_button():
     global t3, app
-    msg = 'Start up JobApi call'
+    msg = 'Starting up JobApi call'
     logger.log(logging.INFO, msg=msg)
     t3 = jobsApi_thread_with_exception('JobsApi')
     t3.start()
@@ -886,14 +893,14 @@ def jobStart():
                 data_size = len(job_data['attempts'])
                 if data_size >= 100:
                     while data_size >= 100:
-                        time.sleep(10)
+                        logging.log(logger.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
+                        time.sleep(120)
                         get_request_jobs(combineList, chi_last_marker)
                         jobs_data_processing(job_data)
 
                 sleepTimer = int(job_wait_time) * 60
                 job_timer = 0
         else:
-            test = (1200 % 60)
             if (job_timer % 60) == 0:
                 msg = f'Jobs - Next pull in....{int((int(sleepTimer)-job_timer)/60)} Minutes'
                 logger.log(logging.INFO, msg= msg)
@@ -952,29 +959,40 @@ def startUpSettings():
         slc_press_list[press] = config['saltLakeCityPlant'][press]
 
 
-def main():
-    global app
-    logging.basicConfig(level=logging.DEBUG)
-    root = tk.Tk()
-    app = App(root)
-    app.root.wm_iconbitmap(default=f'{programLocation}\\deluxe_logo.ico')
-    if autoRun:
-        autoStartProcess()
-    app.root.mainloop()
+def jobs_data_processing(data_file):
+    global chi_last_marker
+    # Load JSON data from file
+    #with open(json_file, 'r') as file:
+        #data = json.load(file)
+    
+    csv_file_name = f'Jobs_{datetime.now().strftime("%Y_%m")}.csv'
+    jobs_csv_path = f'{jobs_main_path}/{csv_file_name}'
+    data = data_file['attempts']   
 
-def flatten_json(json_data, prefix=''):
-    flattened_dict = {}
-    for key, value in json_data.items():
-        if isinstance(value, dict):
-            flattened_dict.update(flatten_json(value, prefix + key + '_'))
-        elif isinstance(value, list):
-            for i, item in enumerate(value):
-                flattened_dict.update(flatten_json(item, prefix + key + '_' + str(i+1) + '_'))
+    # Flatten the JSON data
+    flattened_data = [flatten_json(item) for item in data]
+    final_data = [addingExtraFields(item) for item in flattened_data]
+
+    # Convert to DataFrame
+    df = pd.DataFrame(final_data)
+
+    # Write DataFrame to CSV file
+    try:
+        if os.path.exists(jobs_csv_path):
+                logger.log(logging.INFO, msg= f'Successfully updated {csv_file_name}')
+                os.chdir(jobs_main_path)
+                df.to_csv(csv_file_name, index=False, header= False, mode='a')
         else:
-            flattened_dict[prefix + key] = value
-    return flattened_dict
-
-
+            logger.log(logging.INFO, msg= 'successfully create Hp Jobs CSV file')
+            os.chdir(jobs_main_path)
+            df.to_csv(csv_file_name,index= False)
+        if len(final_data) > 0:
+            chi_last_marker = final_data[len(final_data)-1]['marker']
+        print(chi_last_marker)
+    except FileNotFoundError or PermissionError:
+        logger.log(logging.ERROR, msg= f'Sorry the path {jobs_main_path}....Could not be accessed or does not exist. Please enter in another path.')
+        stop_job()
+    
 def addingExtraFields(data_list):
     newdict = {}
     s = 0
@@ -1024,39 +1042,30 @@ def addingExtraFields(data_list):
     return newdict
 
 
+def flatten_json(json_data, prefix=''):
+    flattened_dict = {}
+    for key, value in json_data.items():
+        if isinstance(value, dict):
+            flattened_dict.update(flatten_json(value, prefix + key + '_'))
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                flattened_dict.update(flatten_json(item, prefix + key + '_' + str(i+1) + '_'))
+        else:
+            flattened_dict[prefix + key] = value
+    return flattened_dict
 
-
-def jobs_data_processing(data_file):
-    global chi_last_marker
-    # Load JSON data from file
-    #with open(json_file, 'r') as file:
-        #data = json.load(file)
-    
-    csv_file_name = f'Jobs_{datetime.now().strftime("%Y_%m")}.csv'
-    jobs_csv_path = f'{jobs_main_path}/{csv_file_name}'
-    data = data_file['attempts']   
-
-    # Flatten the JSON data
-    flattened_data = [flatten_json(item) for item in data]
-    final_data = [addingExtraFields(item) for item in flattened_data]
-
-    # Convert to DataFrame
-    df = pd.DataFrame(final_data)
-
-    # Write DataFrame to CSV file
-    if os.path.exists(jobs_csv_path):
-            os.chdir(jobs_main_path)
-            df.to_csv(csv_file_name, index=False, header= False, mode='a')
-    else:
-        os.chdir(jobs_main_path)
-        df.to_csv(csv_file_name,index= False)
-    if len(final_data) > 0:
-        chi_last_marker = final_data[len(final_data)-1]['marker']
-    print(chi_last_marker)
-    
+def main():
+    global app
+    logging.basicConfig(level=logging.DEBUG)
+    root = tk.Tk()
+    app = App(root)
+    app.root.wm_iconbitmap(default=f'{programLocation}\\deluxe_logo.ico')
+    if autoRun:
+        autoStartProcess()
+    app.root.mainloop()
 
 
 if __name__ == '__main__':
     startUpSettings()
     main()
-    #json_to_csv('Jobs_Api_File.json', 'output.csv')
+    
