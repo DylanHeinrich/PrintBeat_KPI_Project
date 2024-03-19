@@ -75,6 +75,7 @@ t2 = None
 t3 = None
 app = None
 
+
 programLocation = os.getcwd()
 
 logger = logging.getLogger(__name__)
@@ -418,13 +419,14 @@ class ThirdUi:
         if autoRun:
             autoStartCheck.invoke()
             
+        #jobTimerFrame = tk.LabelFrame(root, text= 'Job Timer').place(x= 100, y=100)
+        ttk.Label(frame, text=None).place(x= 5, y=10)
+        ttk.Label(frame, text=None).place(x= 5, y=35)
+            
 
 
     def plant(self, *args):
-        global chi_plant, ml_plant, slc_plant
-        logger.log(logging.INFO, msg = f'Chi Valuse = {self.chi.get()}')
-        logger.log(logging.INFO, msg = f'ML Valuse = {self.ml.get()}')
-        logger.log(logging.INFO, msg = f'SLC Valuse = {self.slc.get()}\n')
+        global chi_plant, ml_plant, slc_plants
 
         if self.chi.get() or self.slc.get() or self.ml.get():
             self.printBeat_start_button['state'] = 'normal'
@@ -435,7 +437,6 @@ class ThirdUi:
         global autoRun
         logger.log(logging.INFO, msg=f'Auto start is: {self.autoStart.get()}')
         autoRun = self.autoStart.get()
-        
 
 
 class MenuTest:
@@ -511,7 +512,7 @@ class App:
         config['configSettings']['wait_time'] = waitTime
         config['autoStartOnBootUp']['autoStart'] = str(autoRun)
 
-        config['jobsSetting']['marker'] = chi_last_marker
+        config['jobsSetting']['marker'] = str(chi_last_marker)
         config['jobsSetting']['file_path'] = jobs_main_path
         config['jobsSetting']['wait_time'] = job_wait_time
 
@@ -758,7 +759,7 @@ class jobsApi_thread_with_exception(threading.Thread):
             while True:
                 jobStart()
         finally:
-            logger.log(logging.INFO, 'Process has been stopped')
+            logger.log(logging.WARNING, 'Jobs process has been stopped')
           
     def get_id(self):
  
@@ -789,7 +790,7 @@ class printBeat_thread_with_exception(threading.Thread):
             while True:
                 printBeatStart()
         finally:
-            logger.log(logging.INFO, 'Process has been stopped')
+            logger.log(logging.WARNING, 'Print Beat process has been stopped')
           
     def get_id(self):
  
@@ -830,13 +831,10 @@ def printBeatStart():
             timer = 0
             sleepTimer = int(waitTime) * 60
         else:
-            msg = f'Print Beat - Next pull in....{int(sleepTimer)-timer} seconds'
-            logger.log(logging.INFO, msg= msg)
-            time.sleep(10)
-            timer += 10
-        #schedule.every(1).minutes.do(lambda: get_request_real_data(press_list, folderPath))
-        #schedule.run_pending()
-
+            printbeat_minutes, printbeat_seconds = divmod(sleepTimer - timer, 60)
+            app.third.frame.children['!label']['text'] = f'PrintBeat Timer: %02d:%02d' % (printbeat_minutes, printbeat_seconds)
+            time.sleep(1)
+            timer += 1
 
 def buttonStart():
     global t2
@@ -878,7 +876,7 @@ def testButton():
     logger.log(level=logging.INFO, msg=mainPath)
 
 def jobStart():
-    global mainPath, backUpPath, job_wait_time, app, job_data
+    global mainPath, backUpPath, job_wait_time, app, job_data, job_timer
     job_timer = 0
     sleepTimer = int(job_wait_time) * 60
     combineList = []
@@ -892,20 +890,28 @@ def jobStart():
                 jobs_data_processing(job_data)
                 data_size = len(job_data['attempts'])
                 if data_size >= 100:
+                    job_timer = 0
+                    logger.log(logging.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
                     while data_size >= 100:
-                        logging.log(logger.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
-                        time.sleep(120)
-                        get_request_jobs(combineList, chi_last_marker)
-                        jobs_data_processing(job_data)
+                        data_size = len(job_data['attempts'])
+                        if job_timer >= sleepTimer:
+                            sleepTimer = 120
+                            get_request_jobs(combineList, chi_last_marker)
+                            jobs_data_processing(job_data)
+                            job_timer = 0
+                        else:
+                            time.sleep(1)
+                            job_minutes, job_seconds = divmod(sleepTimer - job_timer, 60)
+                            app.third.frame.children['!label2']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
+                            job_timer += 1
 
                 sleepTimer = int(job_wait_time) * 60
                 job_timer = 0
         else:
-            if (job_timer % 60) == 0:
-                msg = f'Jobs - Next pull in....{int((int(sleepTimer)-job_timer)/60)} Minutes'
-                logger.log(logging.INFO, msg= msg)
-            time.sleep(2)
-            job_timer += 2
+            time.sleep(1)
+            job_minutes, job_seconds = divmod(sleepTimer - job_timer, 60)
+            app.third.frame.children['!label2']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
+            job_timer += 1
                 
 
 def stopPrintBeat():
