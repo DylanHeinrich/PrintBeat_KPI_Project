@@ -710,8 +710,9 @@ def get_request_jobs(pressName, marker):
         if response.status_code == 200:
             print("Job Api call...Seccesful")
             job_data = response.json()
-            #data_file = open('Jobs_Api_File.json', 'w')
-            #json.dump(job_data, data_file, indent=4)
+            pass
+            data_file = open('Jobs_Api_File.json', 'w')
+            json.dump(job_data, data_file, indent=4)
             #return True
         else:
             print("Request failed with status code:", response.status_code)
@@ -977,7 +978,9 @@ def jobs_data_processing(data_file):
 
     # Flatten the JSON data
     flattened_data = [flatten_json(item) for item in data]
-    final_data = [addingExtraFields(item) for item in flattened_data]
+    extra_data = [addingExtraFields(item) for item in flattened_data]
+    final_data = [addingNone(item) for item in extra_data]
+
 
     # Convert to DataFrame
     df = pd.DataFrame(final_data)
@@ -1006,17 +1009,17 @@ def addingExtraFields(data_list):
     for key, value in data_list.items():
         if 'substrates' in key:
             if 'name' in key and str(int(s/2)+1) not in key:
-                newdict[f'substrates_{s+1}_name'] = None
-                newdict[f'substrates_{s+1}_amountUsed'] = None
+                newdict[f'substrates_{s+1}_name'] = 'None'
+                newdict[f'substrates_{s+1}_amountUsed'] = 'None'
                 s += 2
             else:
                 newdict[key] = value
                 s+=1
         elif 'inks' in key:
             if 'color' in key and str(int(i/3)+1) not in key:
-                    newdict[f'inks_{i+1}_color'] = None
-                    newdict[f'inks_{i+1}_amountUsed'] = None
-                    newdict[f'inks_{i+1}_inkSerialNumber'] = None
+                    newdict[f'inks_{i+1}_color'] = 'None'
+                    newdict[f'inks_{i+1}_amountUsed'] = 'None'
+                    newdict[f'inks_{i+1}_inkSerialNumber'] = 'None'
                     i += 3
             else:
                 newdict[key] = value
@@ -1026,23 +1029,23 @@ def addingExtraFields(data_list):
     if len(newdict) < 49:
         if s == 0 or i == 0:
             while s < 4:
-                newdict[f'substrates_{s+1}_name'] = None
-                newdict[f'substrates_{s+1}_amountUsed'] = None
+                newdict[f'substrates_{s+1}_name'] = 'None'
+                newdict[f'substrates_{s+1}_amountUsed'] = 'None'
                 s += 1
-            while i < 4:
-                newdict[f'inks_{i+1}_color'] = None
-                newdict[f'inks_{i+1}_amountUsed'] = None
-                newdict[f'inks_{i+1}_inkSerialNumber'] = None
+            while i < 5:
+                newdict[f'inks_{i+1}_color'] = 'None'
+                newdict[f'inks_{i+1}_amountUsed'] = 'None'
+                newdict[f'inks_{i+1}_inkSerialNumber'] = 'None'
                 i += 1
         else:
             while int(s/2) < 4:
-                newdict[f'substrates_{int(s/2)+1}_name'] = None
-                newdict[f'substrates_{int(s/2)+1}_amountUsed'] = None
+                newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
+                newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
                 s += 2
-            while int(i/3) < 4:
-                newdict[f'inks_{int(i/3)+1}_color'] = None
-                newdict[f'inks_{int(i/3)+1}_amountUsed'] = None
-                newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = None
+            while int(i/3) < 5:
+                newdict[f'inks_{int(i/3)+1}_color'] = 'None'
+                newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
+                newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
                 i += 3
 
     return newdict
@@ -1059,6 +1062,17 @@ def flatten_json(json_data, prefix=''):
         else:
             flattened_dict[prefix + key] = value
     return flattened_dict
+
+
+def addingNone(data_list):
+    new_dict = {}
+    for key,value in data_list.items():
+        if value == None:
+            new_dict[key] = 'None'
+        else:
+            new_dict[key] = value
+    return new_dict
+
 
 def main():
     global app
