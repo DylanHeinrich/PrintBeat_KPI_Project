@@ -373,6 +373,7 @@ class NewWindow():
         
         logger.log(logging.DEBUG, msg= 'Wait Time = ' + waitTime)
         logger.log(logging.INFO, msg='Config settings saved')
+        saveConfig()
         self.newWin.destroy()
         self.root.deiconify()
     
@@ -437,6 +438,7 @@ class ThirdUi:
         global autoRun
         logger.log(logging.INFO, msg=f'Auto start is: {self.autoStart.get()}')
         autoRun = self.autoStart.get()
+        saveAutoStart()
 
 
 class MenuTest:
@@ -496,50 +498,47 @@ class App:
             file.close()
         self.root.geometry(postion)
 
-    def saveConfig(self, *args):
-        global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, autoRun, chi_last_marker, jobs_main_path, job_wait_time
-
-        #config.read(f'{programLocation}\\config_2.ini')
-
-        config['printBeatAPI']['key'] = key
-        config['printBeatAPI']['secret'] =  secret
-
-        config['printBeatJobAPI']['job_key'] = job_key
-        config['printBeatJobAPI']['job_secret'] = job_secret
-
-        config['configSettings']['main_location'] = mainPath
-        config['configSettings']['back-up_location'] = backUpPath
-        config['configSettings']['wait_time'] = waitTime
-        config['autoStartOnBootUp']['autoStart'] = str(autoRun)
-
-        config['jobsSetting']['marker'] = str(chi_last_marker)
-        config['jobsSetting']['file_path'] = jobs_main_path
-        config['jobsSetting']['wait_time'] = job_wait_time
-
-        i = 0
-        i2 = 0 
-        i3 = 0
-        for press in press_list:
-            i+= 1
-            config['chicagoPlant'][f'press_{i}'] = press_list[press]
-        for press in ml_press_list:
-            i2+=1
-            config['mountainLakesPlant'][f'press_{i2}'] = ml_press_list[press]
-        for press in slc_press_list:
-            i3+=1
-            config['saltLakeCityPlant'][f'press_{i3}'] = slc_press_list[press] 
-        with open(f'{programLocation}\\config.ini', 'w') as file:
-            config.write(file)
-
     def quit(self, *args):
         #self.clock.stop()
-        self.saveConfig()
+        saveConfig()
         with open(f"{programLocation}\\myapp.conf", "w") as conf:
             conf.write(self.root.winfo_geometry()) # Assuming root is the root window
         conf.close()
         self.root.destroy()
 
+def saveAutoStart():
+    config['autoStartOnBootUp']['autoStart'] = str(autoRun)
 
+def saveConfig():
+    config['printBeatAPI']['key'] = key
+    config['printBeatAPI']['secret'] =  secret
+
+    config['printBeatJobAPI']['job_key'] = job_key
+    config['printBeatJobAPI']['job_secret'] = job_secret
+
+    config['configSettings']['main_location'] = mainPath
+    config['configSettings']['back-up_location'] = backUpPath
+    config['configSettings']['wait_time'] = waitTime
+    config['autoStartOnBootUp']['autoStart'] = str(autoRun)
+
+    config['jobsSetting']['marker'] = str(chi_last_marker)
+    config['jobsSetting']['file_path'] = jobs_main_path
+    config['jobsSetting']['wait_time'] = job_wait_time
+
+    i = 0
+    i2 = 0 
+    i3 = 0
+    for press in press_list:
+        i+= 1
+        config['chicagoPlant'][f'press_{i}'] = press_list[press]
+    for press in ml_press_list:
+        i2+=1
+        config['mountainLakesPlant'][f'press_{i2}'] = ml_press_list[press]
+    for press in slc_press_list:
+        i3+=1
+        config['saltLakeCityPlant'][f'press_{i3}'] = slc_press_list[press] 
+    with open(f'{programLocation}\\config.ini', 'w') as file:
+        config.write(file)
 
 def RealTimeDataProcess(data):
     global currnetRunningJob
@@ -1006,48 +1005,36 @@ def addingExtraFields(data_list):
     newdict = {}
     s = 0
     i = 0
+    sub_cout = 0
+    ink_count = 0
     for key, value in data_list.items():
         if 'substrates' in key:
-            if 'name' in key and str(int(s/2)+1) not in key:
-                newdict[f'substrates_{s+1}_name'] = 'None'
-                newdict[f'substrates_{s+1}_amountUsed'] = 'None'
-                s += 2
-            else:
-                newdict[key] = value
-                s+=1
+            sub_cout += 1
         elif 'inks' in key:
-            if 'color' in key and str(int(i/3)+1) not in key:
-                    newdict[f'inks_{i+1}_color'] = 'None'
-                    newdict[f'inks_{i+1}_amountUsed'] = 'None'
-                    newdict[f'inks_{i+1}_inkSerialNumber'] = 'None'
-                    i += 3
-            else:
-                newdict[key] = value
-                i += 1
-        else:
-            newdict[key] = value
-    if len(newdict) < 49:
-        if s == 0 or i == 0:
-            while s < 4:
-                newdict[f'substrates_{s+1}_name'] = 'None'
-                newdict[f'substrates_{s+1}_amountUsed'] = 'None'
-                s += 1
-            while i < 5:
-                newdict[f'inks_{i+1}_color'] = 'None'
-                newdict[f'inks_{i+1}_amountUsed'] = 'None'
-                newdict[f'inks_{i+1}_inkSerialNumber'] = 'None'
-                i += 1
-        else:
-            while int(s/2) < 4:
-                newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
-                newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
-                s += 2
-            while int(i/3) < 5:
-                newdict[f'inks_{int(i/3)+1}_color'] = 'None'
-                newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
-                newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
-                i += 3
+            ink_count += 1
 
+
+    for key, value in data_list.items():
+        if len(newdict) < 30:
+            newdict[key] = value
+        else:
+            if s < sub_cout:
+                    newdict[key] = value
+                    s += 1
+            elif int(s/2) < 4:
+                while int(s/2) < 4:
+                    newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
+                    newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
+                    s += 2
+            elif i < ink_count:
+                    newdict[key] = value
+                    i += 1
+            elif int(i/3) < 5:
+                while int(i/3) < 5:
+                    newdict[f'inks_{int(i/3)+1}_color'] = 'None'
+                    newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
+                    newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
+                    i += 3
     return newdict
 
 
@@ -1067,7 +1054,7 @@ def flatten_json(json_data, prefix=''):
 def addingNone(data_list):
     new_dict = {}
     for key,value in data_list.items():
-        if value == None:
+        if value == None or value == '':
             new_dict[key] = 'None'
         else:
             new_dict[key] = value
