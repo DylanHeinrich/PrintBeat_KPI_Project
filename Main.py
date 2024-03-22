@@ -1021,16 +1021,38 @@ def addingExtraFields(data_list):
             if s < sub_cout:
                     newdict[key] = value
                     s += 1
-            elif int(s/2) < 4:
+                    if s == sub_cout:
+                        while int(s/2) < 4:
+                            newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
+                            newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
+                            s += 2
+            elif sub_cout == 0 and s == 0:
                 while int(s/2) < 4:
-                    newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
-                    newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
-                    s += 2
+                            newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
+                            newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
+                            s += 2
             elif i < ink_count:
                     newdict[key] = value
                     i += 1
-            elif int(i/3) < 5:
+                    if i == ink_count:
+                        while int(i/3) < 5:
+                            newdict[f'inks_{int(i/3)+1}_color'] = 'None'
+                            newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
+                            newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
+                            i += 3
+            elif ink_count == 0 and i == 0:
                 while int(i/3) < 5:
+                            newdict[f'inks_{int(i/3)+1}_color'] = 'None'
+                            newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
+                            newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
+                            i += 3
+    
+    if len(newdict) <= 30:
+        while int(s/2) < 4:
+                    newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
+                    newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
+                    s += 2
+        while int(i/3) < 5:
                     newdict[f'inks_{int(i/3)+1}_color'] = 'None'
                     newdict[f'inks_{int(i/3)+1}_amountUsed'] = 'None'
                     newdict[f'inks_{int(i/3)+1}_inkSerialNumber'] = 'None'
