@@ -151,6 +151,7 @@ class NewWindow():
         self.job_key = tk.StringVar()
         self.job_secret = tk.StringVar()
         self.pressId = tk.StringVar()
+        self.newMarker = tk.StringVar()
         self.root = root
         windowHeight = 500
         windowWidth = 700
@@ -189,31 +190,39 @@ class NewWindow():
 
         tk.Label(self.newWin, text= 'Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
         tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 130)
+        
         tk.Label(self.newWin, text= 'Job\'s Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
         tk.Entry(self.newWin, textvariable = self.jobsSleepNumber, width = 5).place(x= 225, y = 165)
-        tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 200)
-        tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 200)
-        tk.Label(self.newWin, text= 'PrintBeat Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
-        tk.Entry(self.newWin, textvariable = self.secret, width = 35).place(x= 225, y = 235)
-        tk.Label(self.newWin, text= 'PrintBeat Job Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
-        tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 270)
-        tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 305)
-        tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 305)
+        
+        tk.Label(self.newWin, text='Marker', width= 25, font=('Arial', 10, 'bold')).place(x=25, y=200)
+        tk.Entry(self.newWin, textvariable=self.newMarker, width=35).place(x=225, y = 200)
+
+        tk.Label(self.newWin, text= 'PrintBeat Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 235)
+        tk.Entry(self.newWin, textvariable = self.key, width = 35).place(x= 225, y = 235)
+        
+        tk.Label(self.newWin, text= 'PrintBeat Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
+        tk.Entry(self.newWin, textvariable = self.secret, width = 35).place(x= 225, y = 270)
+        
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Key:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 305)
+        tk.Entry(self.newWin, textvariable = self.job_key, width = 35).place(x= 225, y = 305)
+        
+        tk.Label(self.newWin, text= 'PrintBeat Job Api Secret:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 340)
+        tk.Entry(self.newWin, textvariable = self.job_secret, width = 35).place(x= 225, y = 340)
         #tk.Label(self.newWin, text= 'Chicago Press:', width= 25, font=('Arial', 10, 'bold')).place(x=25, y= 270)
         plantLocation = tk.OptionMenu(self.newWin, self.plant, *plants, command= lambda e: self.pressChange(self.plant.get()))
-        plantLocation.place(x=80, y = 340)
+        plantLocation.place(x=80, y = 375)
         
         self.pressEntry = tk.Entry(self.newWin, textvariable = self.pressId, width = 20)
-        self.pressEntry.place(x= 320, y = 340)
+        self.pressEntry.place(x= 320, y = 375)
 
 
         self.savePressButton = ttk.Button(self.newWin, text= 'Save', command= lambda: self.savePress(self.plant.get()), bootstyle = 'outline')
-        self.savePressButton.place(x = 320, y = 365)
+        self.savePressButton.place(x = 320, y = 400)
         self.deletePressButton = ttk.Button(self.newWin, text= 'Delete', command= lambda: self.deletePress(self.plant.get()), bootstyle = 'outline')
-        self.deletePressButton.place(x = 380, y = 365)
+        self.deletePressButton.place(x = 380, y = 400)
         
         self.listBox = tk.Listbox(self.newWin, height=3)
-        self.listBox.place(x = 190, y =340)
+        self.listBox.place(x = 190, y =375)
         self.listBox.bind('<<ListboxSelect>>', self.setEntery)
         self.v.set(self.listBox.curselection())
 
@@ -319,7 +328,7 @@ class NewWindow():
         self.root.deiconify()
 
     def save(self, *args):
-        global mainPath, backUpPath, waitTime, key, secret, job_secret, job_key, jobs_main_path, job_wait_time
+        global mainPath, backUpPath, waitTime, key, secret, job_secret, job_key, jobs_main_path, job_wait_time, chi_last_marker
         try:
             mainPath = self.mainPath
         except AttributeError:
@@ -344,6 +353,8 @@ class NewWindow():
         api_job_key = str(self.job_key.get())
         api_job_secret = str(self.job_secret.get())
         job_wait_time = str(self.jobsSleepNumber.get())
+        chi_last_marker = str(self.newMarker.get())
+
 
 
 
@@ -678,6 +689,7 @@ def get_request_kpi():
 
 def get_request_jobs(pressName, marker):
     global job_data
+
     path = '/externalApi/jobs'
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
     headers  = create_headers_job("GET", path, timestamp) 
@@ -709,8 +721,8 @@ def get_request_jobs(pressName, marker):
         if response.status_code == 200:
             print("Job Api call...Seccesful")
             job_data = response.json()
-            pass
-            data_file = open('Jobs_Api_File.json', 'w')
+
+            data_file = open('Jobs_Api_File.json', 'a')
             json.dump(job_data, data_file, indent=4)
             #return True
         else:
@@ -1031,6 +1043,8 @@ def addingExtraFields(data_list):
                             newdict[f'substrates_{int(s/2)+1}_name'] = 'None'
                             newdict[f'substrates_{int(s/2)+1}_amountUsed'] = 'None'
                             s += 2
+                newdict[key] = value
+                i += 1
             elif i < ink_count:
                     newdict[key] = value
                     i += 1
@@ -1093,6 +1107,11 @@ def main():
         autoStartProcess()
     app.root.mainloop()
 
+
+def testing():
+    json_open = open('Test_File.json')
+    data_file = json.load(json_open)
+    jobs_data_processing(data_file)
 
 if __name__ == '__main__':
     startUpSettings()
