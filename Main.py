@@ -151,7 +151,7 @@ class NewWindow():
         self.job_key = tk.StringVar()
         self.job_secret = tk.StringVar()
         self.pressId = tk.StringVar()
-        self.newMarker = tk.StringVar()
+        self.newMarker = tk.StringVar(value= str(chi_last_marker))
         self.root = root
         windowHeight = 500
         windowWidth = 700
@@ -171,6 +171,9 @@ class NewWindow():
         self.newWin.geometry(f'{windowWidth}x{windowHeight}+{(int(postion[1]) +200)}+{postion[2]}')
         self.newWin.resizable(False, False)
         self.newWin.wm_iconbitmap(f'{programLocation}\\deluxe_logo.ico')
+
+
+
         tk.Label(self.newWin, text = 'Config settings').pack()
 
         self.landingLocationLabel = tk.Label(self.newWin, text= mainPath, width= 50, height=1, fg='white', bg='gray')
@@ -189,7 +192,7 @@ class NewWindow():
         self.cancelButton = ttk.Button(self.newWin, text= 'Cancel', command = self.cancel, bootstyle = 'outline').place(x = windowWidth - 130, y = windowHeight - 50)
 
         tk.Label(self.newWin, text= 'Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
-        tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 130)
+        tk.Entry(self.newWin, textvariable = self.sleepNumber, validate= 'all', validatecommand=(self.callback, '%P'), width = 5).place(x= 225, y = 130)
         
         tk.Label(self.newWin, text= 'Job\'s Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
         tk.Entry(self.newWin, textvariable = self.jobsSleepNumber, width = 5).place(x= 225, y = 165)
@@ -230,6 +233,12 @@ class NewWindow():
         self.newWin.bind('<Control-q>', self.quit)
         signal.signal(signal.SIGINT, self.quit)
 
+
+    def callback(self, P):
+        if str.isdigit(P) or P == '':
+            return True
+        else:
+            return False
 
     def pressChange(self, location):
         global press_list, ml_press_list, slc_press_list
@@ -347,16 +356,20 @@ class NewWindow():
             logger.log(logging.DEBUG, msg='A path was not seleted')
             pass
 
-        waitTime = str(self.sleepNumber.get())
         api_key = str(self.key.get())
         api_secret = str(self.secret.get())
         api_job_key = str(self.job_key.get())
         api_job_secret = str(self.job_secret.get())
         job_wait_time = str(self.jobsSleepNumber.get())
-        chi_last_marker = str(self.newMarker.get())
 
+        if str(self.sleepNumber.get()) != '':
+            waitTime = str(self.sleepNumber.get())
 
+        if str(self.newMarker.get()) != '':
+            chi_last_marker = str(self.newMarker.get())
 
+        if str(self.jobsSleepNumber.get()) != '':
+            job_wait_time = str(self.jobsSleepNumber.get())
 
         if api_key == '':
             pass
@@ -384,7 +397,9 @@ class NewWindow():
         
         logger.log(logging.DEBUG, msg= 'Wait Time = ' + waitTime)
         logger.log(logging.INFO, msg='Config settings saved')
+        
         saveConfig()
+
         self.newWin.destroy()
         self.root.deiconify()
     
