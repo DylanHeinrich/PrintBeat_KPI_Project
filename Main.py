@@ -32,7 +32,7 @@ import threading
 import tkinter as tk
 import ctypes
 from tkinter.scrolledtext import ScrolledText
-from tkinter import VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog, font, PhotoImage, END
+from tkinter import VERTICAL, HORIZONTAL, N, S, E, W, Menu, filedialog, font, PhotoImage, END, messagebox
 import ttkbootstrap as ttk
 import signal
 import logging
@@ -60,6 +60,15 @@ slc_press_list = {} #['47200304', '60001067', '60002010']
 chi_plant = None
 slc_plant = None
 ml_plant = None
+
+chi_kpi = None
+chi_jobs = None
+
+slc_kpi = None
+slc_jobs = None
+
+ml_kpi = None
+ml_jobs = None
 
 autoRun = None
 
@@ -191,10 +200,10 @@ class NewWindow():
         self.saveButton = ttk.Button(self.newWin, text= 'Save', command=self.save, bootstyle = 'outline').place(x = windowWidth - 65, y = windowHeight - 50)
         self.cancelButton = ttk.Button(self.newWin, text= 'Cancel', command = self.cancel, bootstyle = 'outline').place(x = windowWidth - 130, y = windowHeight - 50)
 
-        tk.Label(self.newWin, text= 'Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
-        tk.Entry(self.newWin, textvariable = self.sleepNumber, validate= 'all', validatecommand=(self.callback, '%P'), width = 5).place(x= 225, y = 130)
+        tk.Label(self.newWin, text= 'PrintBeat Timer (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 130)
+        tk.Entry(self.newWin, textvariable = self.sleepNumber, width = 5).place(x= 225, y = 130)
         
-        tk.Label(self.newWin, text= 'Job\'s Time interval (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
+        tk.Label(self.newWin, text= 'Job\'s Timer (Minutes):', width=25, font =('Arial', 10, 'bold')).place(x = 25, y = 165)
         tk.Entry(self.newWin, textvariable = self.jobsSleepNumber, width = 5).place(x= 225, y = 165)
         
         tk.Label(self.newWin, text='Marker', width= 25, font=('Arial', 10, 'bold')).place(x=25, y=200)
@@ -233,12 +242,6 @@ class NewWindow():
         self.newWin.bind('<Control-q>', self.quit)
         signal.signal(signal.SIGINT, self.quit)
 
-
-    def callback(self, P):
-        if str.isdigit(P) or P == '':
-            return True
-        else:
-            return False
 
     def pressChange(self, location):
         global press_list, ml_press_list, slc_press_list
@@ -360,17 +363,23 @@ class NewWindow():
         api_secret = str(self.secret.get())
         api_job_key = str(self.job_key.get())
         api_job_secret = str(self.job_secret.get())
-        job_wait_time = str(self.jobsSleepNumber.get())
-
-        if str(self.sleepNumber.get()) != '':
-            waitTime = str(self.sleepNumber.get())
+        
+        try:
+            if str(self.sleepNumber.get()) != '':
+                waitTime = str(self.sleepNumber.get())
+        except Exception:
+                messagebox.showerror(title= 'ERROR', message= "Please enter a number into PrintBeat timer")
+                return None
 
         if str(self.newMarker.get()) != '':
             chi_last_marker = str(self.newMarker.get())
-
-        if str(self.jobsSleepNumber.get()) != '':
-            job_wait_time = str(self.jobsSleepNumber.get())
-
+        try:
+            if str(self.jobsSleepNumber.get()) != '':
+                job_wait_time = str(self.jobsSleepNumber.get())
+        except Exception:
+                messagebox.showerror(title= 'ERROR', message= "Please enter a number into Job's timer")
+                return None
+        
         if api_key == '':
             pass
         else:
@@ -416,19 +425,29 @@ class ThirdUi:
         self.chi = tk.BooleanVar()
         self.ml = tk.BooleanVar()
         self.slc = tk.BooleanVar()
+        
         self.autoStart = tk.BooleanVar()
+        
+        self.chi_kpi = tk.BooleanVar()
+        self.chi_jobs = tk.BooleanVar()
+        
+        self.slc_kpi = tk.BooleanVar()
+        self.slc_jobs = tk.BooleanVar()
+        
+        self.ml_kpi = tk.BooleanVar()
+        self.ml_jobs = tk.BooleanVar()
 
         self.style.configure('W.TButton', font = ('calibri', 10, 'bold', 'underline'),foreground = 'red')
         button1 = ttk.Button(frame, text='Config Settings', width=25, bootstyle = 'outline')
         button1.bind("<Button>", lambda e: NewWindow(root))
         button1.pack()
-        self.printBeat_start_button = ttk.Button(frame, text='Start PrintBeat', width=25, command=buttonStart, state= 'disable', bootstyle = 'outline')
+        self.printBeat_start_button = ttk.Button(frame, text='Start PrintBeat', width=25, command=buttonStart, state= 'disable', name = 'start printBeat', bootstyle = 'outline')
         self.printBeat_start_button.pack()
 
         printBeat_stop_button = ttk.Button(frame, text='Stop PrintBeat', width=25, command=stopPrintBeat, bootstyle = 'outline')
         printBeat_stop_button.pack()
         
-        self.jobStartButton = ttk.Button(frame, text='Start Jobs', width=25, command=job_start_button, bootstyle = 'outline')
+        self.jobStartButton = ttk.Button(frame, text='Start Jobs', width=25, command=job_start_button, name = 'start jobs', bootstyle = 'outline')
         self.jobStartButton.pack()
 
         job_stop_button = ttk.Button(frame, text= 'Stop Jobs', width=25, command= stop_job, bootstyle = 'outline')
@@ -436,30 +455,62 @@ class ThirdUi:
 
         buttoon4 = ttk.Button(frame, text='Test Button', width=25, command=testButton, bootstyle = 'outline')
 
-        checkbox1 = ttk.Checkbutton(frame, text= 'Chicago', variable=self.chi, onvalue= True, offvalue= False, command= self.plant, bootstyle='round-toggle')
-        checkbox1.place(x = 550, y =2)
+        checkbox1 = ttk.Checkbutton(frame, text= 'Chicago', variable=self.chi, onvalue= True, offvalue= False, command= self.plant, name = 'chi', bootstyle='round-toggle')
+        checkbox1.place(x = 550, y =25)
         checkbox1.invoke()
-        ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, bootstyle="round-toggle").place(x = 550, y = 25)
-        ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, bootstyle="round-toggle").place(x = 550, y = 50)
+        
+        tk.Label(frame, text= "KPI").place(x = 700, y =0)
+        tk.Label(frame, text= "Jobs").place(x = 750, y =0)
+        ttk.Checkbutton(frame, variable= self.chi_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'chi kpi').place(x = 705, y = 25)
+        ttk.Checkbutton(frame, variable= self.chi_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'chi jobs').place(x = 755, y = 25)
+        
+        ttk.Checkbutton(frame, variable= self.slc_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'slc kpi').place(x = 705, y = 48)
+        ttk.Checkbutton(frame, variable= self.slc_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'slc jobs').place(x = 755, y = 48)
+        
+        ttk.Checkbutton(frame, variable= self.ml_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'ml kpi').place(x = 705, y = 73)
+        ttk.Checkbutton(frame, variable= self.ml_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'ml jobs').place(x = 755, y = 73)
+        
+        ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, name = 'ml', bootstyle="round-toggle").place(x = 550, y = 73)
+        ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, name = 'slc', bootstyle="round-toggle").place(x = 550, y = 48)
         autoStartCheck = ttk.Checkbutton(frame, text= 'Auto Start', variable=self.autoStart, onvalue=True, offvalue=False,command= self.autoCheck, bootstyle="round-toggle")
         autoStartCheck.place(x = 200, y=2)
         if autoRun:
             autoStartCheck.invoke()
             
-        #jobTimerFrame = tk.LabelFrame(root, text= 'Job Timer').place(x= 100, y=100)
-        ttk.Label(frame, text=None).place(x= 5, y=10)
-        ttk.Label(frame, text=None).place(x= 5, y=35)
+        ttk.Label(frame, text=None, name = 'kpi_time_lable').place(x= 5, y=10)
+
+        
+        ttk.Label(frame, text=None, name = 'jobs_time_lable').place(x= 5, y=35)
+        #jobs_time_lable['_name'] = 'jobs_time_lable'
             
 
+    
+    def plant(self):
+        global chi_plant, ml_plant, slc_plant
+        self.kpi()
+        self.jobs()
+        chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()
 
-    def plant(self, *args):
-        global chi_plant, ml_plant, slc_plants
+    def kpi(self, *args):
+        global chi_plant, ml_plant, slc_plant, chi_kpi, slc_kpi, ml_kpi
 
-        if self.chi.get() or self.slc.get() or self.ml.get():
+        if (self.chi.get() and self.chi_kpi.get()) or (self.slc.get() and self.slc_kpi.get()) or (self.ml.get() and self.ml_kpi.get()):
             self.printBeat_start_button['state'] = 'normal'
         else:
             self.printBeat_start_button['state'] = 'disable'
-        chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()
+        chi_kpi, slc_kpi, ml_kpi = self.chi_kpi.get(), self.slc_kpi.get(), self.ml_kpi.get()
+        
+    def jobs(self):
+        global chi_plant, ml_plant, slc_plant, chi_jobs, slc_jobs, ml_jobs
+        
+        if (self.chi.get() and self.chi_jobs.get()) or (self.slc.get() and self.slc_jobs.get()) or (self.ml.get() and self.ml_jobs.get()):
+            self.jobStartButton['state'] = 'normal'
+        else:
+            self.jobStartButton['state'] =  'disable'
+        
+        chi_plant, ml_plant, slc_plant = self.chi.get(), self.ml.get(), self.slc.get()    
+        chi_jobs, slc_jobs, ml_jobs = self.chi_jobs.get(), self.slc_jobs.get(), self.ml_jobs.get()
+        
     def autoCheck(self):
         global autoRun
         logger.log(logging.INFO, msg=f'Auto start is: {self.autoStart.get()}')
@@ -512,7 +563,7 @@ class App:
 
         self.console = ConsoleUi(console_frame)
         self.third = ThirdUi(third_frame, root)
-        self.menubar = MenuTest(root)
+        #self.menubar = MenuTest(root)
         self.root.protocol('WM_DELETE_WINDOW', self.quit)
         self.root.bind('<Control-q>', self.quit)
         signal.signal(signal.SIGINT, self.quit)
@@ -623,7 +674,11 @@ def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
         stopPrintBeat()
         
 
-
+def callback(text):
+    if str.isdigit(text) or text == "":
+        return True
+    else:
+        return False
 
 
 def get_request_real_data(press):
@@ -653,11 +708,24 @@ def get_request_real_data(press):
             RealTimeDataProcess(data)
             logger.log(logging.INFO,'Done')
             
-
         else:
             logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
             logger.log(logging.ERROR, f"Response content:{response.content}")
-            stopPrintBeat()
+            logger.log(logging.INFO, msg= 'Retrying......Attement 1 of 3')
+            i = 0
+            while i < 4:
+                time.sleep(5)
+                response = requests.get(url, headers= headers, params=parameters)
+                if response.status_code == 200:
+                    print("Succesfully called to the api")
+                    data = response.json()
+                    RealTimeDataProcess(data)
+                    logger.log(logging.INFO,'Done')
+                else:
+                    i += 1 
+                    logger.log(logging.ERROR,f"Request failed with status code:{response.status_code}")
+                    logger.log(logging.ERROR, f"Response content:{response.content}")
+                    logger.log(logging.INFO, msg= f'Retrying......Attement {i} of 3')
 
     except Exception as e:
         logger.log(logging.ERROR, msg= e)
@@ -842,13 +910,13 @@ def printBeatStart():
     timer = 0
     sleepTimer = int(waitTime) * 60
     combineList = []
-    if chi_plant:
+    if chi_plant and chi_kpi:
         for press in press_list:
             combineList.append(press_list[press])
-    if slc_plant:
+    if slc_plant and slc_kpi:
         for press in slc_press_list:
             combineList.append(slc_press_list[press])
-    if ml_plant:
+    if ml_plant and ml_kpi:
         for press in ml_press_list:
             combineList.append(ml_press_list[press])
 
@@ -859,7 +927,7 @@ def printBeatStart():
             sleepTimer = int(waitTime) * 60
         else:
             printbeat_minutes, printbeat_seconds = divmod(sleepTimer - timer, 60)
-            app.third.frame.children['!label']['text'] = f'PrintBeat Timer: %02d:%02d' % (printbeat_minutes, printbeat_seconds)
+            app.third.frame.children['kpi_time_lable']['text'] = f'PrintBeat Timer: %02d:%02d' % (printbeat_minutes, printbeat_seconds)
             time.sleep(1)
             timer += 1
 
@@ -870,21 +938,17 @@ def buttonStart():
     logger.log(logging.INFO, msg= msg)
     t2 = printBeat_thread_with_exception('PrintBeat Api')
     t2.start()
-    app.third.frame.children['!button2']['state'] = 'disable'
-    app.third.frame.children['!checkbutton']['state'] = 'disable'
-    app.third.frame.children['!checkbutton2']['state'] = 'disable'
-    app.third.frame.children['!checkbutton3']['state'] = 'disable'
+    app.third.frame.children['start printBeat']['state'] = 'disable'
+    
+    app.third.frame.children['chi kpi']['state'] = 'disable'
+    app.third.frame.children['slc kpi']['state'] = 'disable'
+    app.third.frame.children['ml kpi']['state'] = 'disable'
+    
+    app.third.frame.children['chi']['state'] = 'disable'
+    app.third.frame.children['slc']['state'] = 'disable'
+    app.third.frame.children['ml']['state'] = 'disable'
 
 def autoStartProcess():
-    #global t2, app, t3
-    #msg = 'Auto Starting the printBeat program'
-    #logger.log(logging.INFO, msg= msg)
-    #t2 = printBeat_thread_with_exception('PrintBeat Api')
-    #t2.start()
-    #pp.third.frame.children['printBeat_start_button']['state'] = 'disable'
-    #app.third.frame.children['!checkbutton']['state'] = 'disable'
-    #app.third.frame.children['!checkbutton2']['state'] = 'disable'
-    #app.third.frame.children['!checkbutton3']['state'] = 'disable'
     buttonStart()
     job_start_button()
 
@@ -895,7 +959,16 @@ def job_start_button():
     logger.log(logging.INFO, msg=msg)
     t3 = jobsApi_thread_with_exception('JobsApi')
     t3.start()
-    app.third.frame.children['!button4']['state'] = 'disable'
+    
+    app.third.frame.children['start jobs']['state'] = 'disable'
+    
+    app.third.frame.children['chi']['state'] = 'disable'
+    app.third.frame.children['slc']['state'] = 'disable'
+    app.third.frame.children['ml']['state'] = 'disable'
+    
+    app.third.frame.children['chi jobs']['state'] = 'disable'
+    app.third.frame.children['slc jobs']['state'] = 'disable'
+    app.third.frame.children['ml jobs']['state'] = 'disable'
 
 def testButton():
     global mainPath
@@ -907,9 +980,15 @@ def jobStart():
     job_timer = 0
     sleepTimer = int(job_wait_time) * 60
     combineList = []
-    if chi_plant:
+    if chi_plant and chi_jobs:
         for press in press_list:
             combineList.append(press_list[press])
+    if slc_plant and slc_jobs:
+        for press in slc_press_list:
+            combineList.append(slc_press_list[press])
+    if ml_plant and ml_jobs:
+        for press in ml_press_list:
+            combineList.append(ml_press_list[press])
     
     while True:
         if job_timer >= sleepTimer:
@@ -929,7 +1008,7 @@ def jobStart():
                         else:
                             time.sleep(1)
                             job_minutes, job_seconds = divmod(sleepTimer - job_timer, 60)
-                            app.third.frame.children['!label2']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
+                            app.third.frame.children['jobs_time_lable']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
                             job_timer += 1
 
                 sleepTimer = int(job_wait_time) * 60
@@ -937,26 +1016,48 @@ def jobStart():
         else:
             time.sleep(1)
             job_minutes, job_seconds = divmod(sleepTimer - job_timer, 60)
-            app.third.frame.children['!label2']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
+            app.third.frame.children['jobs_time_lable']['text'] = f'Job Timer: %02d:%02d' % (job_minutes, job_seconds)
             job_timer += 1
                 
 
 def stopPrintBeat():
     msg = 'Stop button has been press.....Stopping thread'
     logger.log(logging.INFO, msg = msg)
-    app.third.frame.children['!button2']['state'] = 'normal'
-    app.third.frame.children['!checkbutton']['state'] = 'normal'
-    app.third.frame.children['!checkbutton2']['state'] = 'normal'
-    app.third.frame.children['!checkbutton3']['state'] = 'normal'
+    app.third.frame.children['start printBeat']['state'] = 'normal'
+    reenableButtons()
     t2.raise_exception()
     t2.join()
 
 def stop_job():
     msg = 'Jobs stop button has been press.....Stopping......'
     logger.log(logging.INFO, msg = msg)
-    app.third.frame.children['!button4']['state'] = 'normal'
+    app.third.frame.children['start jobs']['state'] = 'normal'
+    reenableButtons()
     t3.raise_exception()
     t3.join()
+    
+def reenableButtons():
+    print_beat = str(app.third.frame.children['start printBeat']['state'])
+    jobs = str(app.third.frame.children['start jobs']['state'])
+    
+    if print_beat == 'normal':
+        app.third.frame.children['chi kpi']['state'] = 'normal'
+        app.third.frame.children['slc kpi']['state'] = 'normal'
+        app.third.frame.children['ml kpi']['state'] = 'normal'
+        
+        app.third.frame.children['chi']['state'] = 'normal'
+        app.third.frame.children['slc']['state'] = 'normal'
+        app.third.frame.children['ml']['state'] = 'normal'
+    
+    if jobs == 'normal':
+        app.third.frame.children['chi jobs']['state'] = 'normal'
+        app.third.frame.children['slc jobs']['state'] = 'normal'
+        app.third.frame.children['ml jobs']['state'] = 'normal'
+        
+        app.third.frame.children['chi']['state'] = 'normal'
+        app.third.frame.children['slc']['state'] = 'normal'
+        app.third.frame.children['ml']['state'] = 'normal'
+        
 
 def startUpSettings():
     global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, jobs_main_path, chi_last_marker, autoRun, job_wait_time
@@ -1111,6 +1212,10 @@ def addingNone(data_list):
             new_dict[key] = value
     return new_dict
 
+def logTest():
+    while True:
+        time.sleep(5)
+        logger.log(logging.INFO, msg= 'Test')
 
 def main():
     global app
