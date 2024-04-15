@@ -461,14 +461,21 @@ class ThirdUi:
         
         tk.Label(frame, text= "KPI").place(x = 700, y =0)
         tk.Label(frame, text= "Jobs").place(x = 750, y =0)
-        ttk.Checkbutton(frame, variable= self.chi_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'chi kpi').place(x = 705, y = 25)
-        ttk.Checkbutton(frame, variable= self.chi_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'chi jobs').place(x = 755, y = 25)
+
+        self.chiKpiCheck = ttk.Checkbutton(frame, variable= self.chi_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'chi kpi')
+        self.chiKpiCheck.place(x = 705, y = 25)
+        self.chiJobsCheck = ttk.Checkbutton(frame, variable= self.chi_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'chi jobs')
+        self.chiJobsCheck.place(x = 755, y = 25)
         
-        ttk.Checkbutton(frame, variable= self.slc_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'slc kpi').place(x = 705, y = 48)
-        ttk.Checkbutton(frame, variable= self.slc_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'slc jobs').place(x = 755, y = 48)
+        self.slcKpiCheck = ttk.Checkbutton(frame, variable= self.slc_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'slc kpi')
+        self.slcKpiCheck.place(x = 705, y = 48)
+        self.slcJobsCheck = ttk.Checkbutton(frame, variable= self.slc_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'slc jobs')
+        self.slcJobsCheck.place(x = 755, y = 48)
         
-        ttk.Checkbutton(frame, variable= self.ml_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'ml kpi').place(x = 705, y = 73)
-        ttk.Checkbutton(frame, variable= self.ml_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'ml jobs').place(x = 755, y = 73)
+        self.mlKpiCheck = ttk.Checkbutton(frame, variable= self.ml_kpi, command = self.kpi, onvalue= True, offvalue = False, name = 'ml kpi')
+        self.mlKpiCheck.place(x = 705, y = 73)
+        self.mlJobsCheck = ttk.Checkbutton(frame, variable= self.ml_jobs, command = self.jobs, onvalue= True, offvalue= False, name = 'ml jobs')
+        self.mlJobsCheck.place(x = 755, y = 73)
         
         ttk.Checkbutton(frame, text= 'Mountain Lakes', variable=self.ml, onvalue= True, offvalue= False,command=self.plant, name = 'ml', bootstyle="round-toggle").place(x = 550, y = 73)
         ttk.Checkbutton(frame, text= 'Salt Lake City', variable=self.slc, onvalue= True, offvalue= False, command= self.plant, name = 'slc', bootstyle="round-toggle").place(x = 550, y = 48)
@@ -476,6 +483,8 @@ class ThirdUi:
         autoStartCheck.place(x = 200, y=2)
         if autoRun:
             autoStartCheck.invoke()
+        
+        self.kpiAndJobsCheck()
             
         ttk.Label(frame, text=None, name = 'kpi_time_lable').place(x= 5, y=10)
 
@@ -484,7 +493,10 @@ class ThirdUi:
         #jobs_time_lable['_name'] = 'jobs_time_lable'
             
 
-    
+    def kpiAndJobsCheck(self):
+        if chi_jobs:
+            self.chiJobsCheck.invoke()
+
     def plant(self):
         global chi_plant, ml_plant, slc_plant
         self.kpi()
@@ -601,6 +613,14 @@ def saveConfig():
     config['jobsSetting']['marker'] = str(chi_last_marker)
     config['jobsSetting']['file_path'] = jobs_main_path
     config['jobsSetting']['wait_time'] = job_wait_time
+
+    config['jobsSelected']['chi'] = str(chi_jobs)
+    config['jobsSelected']['slc'] = str(slc_jobs)
+    config['jobsSelected']['ml'] = str(ml_jobs)
+
+    config['kpiSelected']['chi'] = str(chi_kpi)
+    config['kpiSelected']['slc'] = str(slc_kpi)
+    config['kpiSelected']['ml'] = str(ml_kpi)
 
     i = 0
     i2 = 0 
@@ -1060,7 +1080,8 @@ def reenableButtons():
         
 
 def startUpSettings():
-    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, jobs_main_path, chi_last_marker, autoRun, job_wait_time
+    global key, secret, api_url, job_key, job_secret, mainPath, waitTime, backUpPath, jobs_main_path, chi_last_marker, autoRun, job_wait_time, chi_jobs, chi_kpi, slc_jobs, slc_kpi, ml_jobs, ml_kpi
+
     #config.read(f'{programLocation}\\config_2.ini')
     key = config['printBeatAPI']['key']
     secret = config['printBeatAPI']['secret']
@@ -1072,6 +1093,15 @@ def startUpSettings():
     mainPath = config['configSettings']['main_location']
     backUpPath = config['configSettings']['back-up_location']
     waitTime = config['configSettings']['wait_time']
+
+    chi_jobs = bool(config['jobsSelected']['chi'])
+    slc_jobs = bool(config['jobsSelected']['slc'])
+    ml_jobs = bool(config['jobsSelected']['ml'])
+
+    chi_kpi = bool(config['kpiSelected']['chi'])
+    slc_kpi = bool(config['kpiSelected']['slc'])
+    ml_kpi = bool(config['kpiSelected']['ml'])
+
 
     autoRun = config['autoStartOnBootUp']['autoStart']
     if autoRun == 'False':
