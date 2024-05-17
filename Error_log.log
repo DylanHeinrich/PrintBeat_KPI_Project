@@ -1,0 +1,114 @@
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 932, in run
+    printBeatStart()
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 980, in printBeatStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 898, in run
+    jobStart()
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 1058, in jobStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 350, in save
+    mainPath = self.mainPath
+               ^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'mainPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 358, in save
+    backUpPath = self.backUpPath
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'backUpPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 366, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "C:\Users\t451821\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 592, in get
+    return self._tk.getint(value)
+           ^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected integer but got "dfa"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 379, in save
+    if str(self.sleepNumber.get()) != '':
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\t451821\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 594, in get
+    return int(self._tk.getdouble(value))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected floating-point number but got "dfa"
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 350, in save
+    mainPath = self.mainPath
+               ^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'mainPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 358, in save
+    backUpPath = self.backUpPath
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'backUpPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 366, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "C:\Users\t451821\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 592, in get
+    return self._tk.getint(value)
+           ^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected integer but got "dafd"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 390, in save
+    if str(self.jobsSleepNumber.get()) != '':
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\t451821\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 594, in get
+    return int(self._tk.getdouble(value))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected floating-point number but got "dafd"
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 350, in save
+    mainPath = self.mainPath
+               ^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'mainPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 358, in save
+    backUpPath = self.backUpPath
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'backUpPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 366, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 368, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 368, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 352, in save
+    mainPath = self.mainPath
+               ^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'mainPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 360, in save
+    backUpPath = self.backUpPath
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'backUpPath'
+Traceback (most recent call last):
+  File "c:\DylanH\VSC_Projects\PrintBeat_KPI_Project\Main.py", line 368, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
