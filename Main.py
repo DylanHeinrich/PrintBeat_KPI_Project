@@ -38,6 +38,7 @@ import signal
 import logging
 import queue
 from configparser import ConfigParser
+import traceback
 
 
 key = None
@@ -88,6 +89,8 @@ app = None
 programLocation = os.getcwd()
 
 logger = logging.getLogger(__name__)
+
+LOGERRORFILE = f'{programLocation}/Error_log.log'
 
 config = ConfigParser()
 config.read('config.ini')
@@ -152,7 +155,7 @@ class NewWindow():
     
     def __init__(self, root):
         #Grabbing global variables
-        global key, secret, api_url, job_key, job_secret, waitTime, plants, job_wait_time
+        global key, secret, api_url, job_key, job_secret, waitTime, plants, job_wait_time, mainPath, backUpPath
         self.sleepNumber = tk.IntVar(value= int(waitTime))
         self.jobsSleepNumber = tk.IntVar(value= int(job_wait_time))
         self.key = tk.StringVar()
@@ -161,6 +164,8 @@ class NewWindow():
         self.job_secret = tk.StringVar()
         self.pressId = tk.StringVar()
         self.newMarker = tk.StringVar(value= str(chi_last_marker))
+        #self.mainPath = tk.StringVar(value = str(mainPath))
+        #self.backUpPath = tk.StringVar(value = str(backUpPath))
         self.root = root
         windowHeight = 500
         windowWidth = 700
@@ -305,6 +310,8 @@ class NewWindow():
                 self.v.set(self.slc_option['menu'].entrycget(0,'label'))
                 self.setEntery(slc_press_list[self.v.get()])
         except KeyError:
+            with open(LOGERRORFILE, 'a') as logfile:
+                traceback.print_exc(file=logfile)
             logger.log(logging.ERROR, msg= 'You have deleted all the options')
             pass
     def setEntery(self, event):
@@ -344,18 +351,24 @@ class NewWindow():
         try:
             mainPath = self.mainPath
         except AttributeError:
+            with open(LOGERRORFILE, 'a') as logfile:
+                traceback.print_exc(file=logfile)
             logger.log(logging.DEBUG, msg='A path was not seleted')
             pass
 
         try:
             backUpPath = self.backUpPath
         except AttributeError:
+            with open(LOGERRORFILE, 'a') as logfile:
+                traceback.print_exc(file=logfile)
             logger.log(logging.DEBUG, msg='A path was not seleted')
             pass
 
         try:
             jobs_main_path = self.jobs_main_path
         except AttributeError:
+            with open(LOGERRORFILE, 'a') as logfile:
+                traceback.print_exc(file=logfile)
             logger.log(logging.DEBUG, msg='A path was not seleted')
             pass
 
@@ -368,6 +381,8 @@ class NewWindow():
             if str(self.sleepNumber.get()) != '':
                 waitTime = str(self.sleepNumber.get())
         except Exception:
+                with open(LOGERRORFILE, 'a') as logfile:
+                    traceback.print_exc(file=logfile)
                 messagebox.showerror(title= 'ERROR', message= "Please enter a number into PrintBeat timer")
                 return None
 
@@ -377,6 +392,8 @@ class NewWindow():
             if str(self.jobsSleepNumber.get()) != '':
                 job_wait_time = str(self.jobsSleepNumber.get())
         except Exception:
+                with open(LOGERRORFILE, 'a') as logfile:
+                    traceback.print_exc(file=logfile)
                 messagebox.showerror(title= 'ERROR', message= "Please enter a number into Job's timer")
                 return None
         
@@ -690,6 +707,8 @@ def createCsvFile(filePath, csvFilePath, csvFileName, pressData):
                 log = f'File did not exists at {filePath}...Creating file at {filePath}'
                 logger.log(logging.INFO, log)
     except FileNotFoundError or PermissionError:
+        with open(LOGERRORFILE, 'a') as logfile:
+            traceback.print_exc(file=logfile)
         logger.log(logging.ERROR, msg= f'Sorry the path {filePath}....Could not be accessed or does not exist. Please enter in another path.')
         stopPrintBeat()
         
@@ -748,6 +767,8 @@ def get_request_real_data(press):
                     logger.log(logging.INFO, msg= f'Retrying......Attement {i} of 3')
 
     except Exception as e:
+        with open(LOGERRORFILE, 'a') as logfile:
+            traceback.print_exc(file=logfile)
         logger.log(logging.ERROR, msg= e)
         logger.log(logging.INFO, msg= 'Stopping')
 
@@ -788,6 +809,8 @@ def get_request_kpi():
             print("Response content:", response.content)
 
     except Exception as e:
+        with open(LOGERRORFILE, 'a') as logfile:
+            traceback.print_exc(file=logfile)
         print("An error occurred:", e)
 
 def get_request_jobs(pressName, marker):
@@ -833,6 +856,8 @@ def get_request_jobs(pressName, marker):
             print("Response content:", response.content)
 
     except Exception as e:
+        with open(LOGERRORFILE, 'a') as logfile:
+            traceback.print_exc(file=logfile)
         print("An error occurred:", e)
 # Creating as describe on the hp developers website
 def create_headers(method, path, timestamp):
@@ -873,6 +898,9 @@ class jobsApi_thread_with_exception(threading.Thread):
         try:
             while True:
                 jobStart()
+        except:
+            with open(LOGERRORFILE, "a") as logfile:
+                traceback.print_exc(file = logfile)
         finally:
             logger.log(logging.WARNING, 'Jobs process has been stopped')
           
@@ -904,6 +932,9 @@ class printBeat_thread_with_exception(threading.Thread):
         try:
             while True:
                 printBeatStart()
+        except:
+            with open(LOGERRORFILE, 'a') as logfile:
+                traceback.print_exc(file=logfile)
         finally:
             logger.log(logging.WARNING, 'Print Beat process has been stopped')
           
@@ -1017,8 +1048,8 @@ def jobStart():
                 data_size = len(job_data['attempts'])
                 if data_size >= 100:
                     job_timer = 0
-                    logger.log(logging.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
                     while data_size >= 100:
+                        logger.log(logging.INFO, msg= 'Jobs pull had over 100 records doing another pull in 2 minutes')
                         data_size = len(job_data['attempts'])
                         if job_timer >= sleepTimer:
                             sleepTimer = 120
@@ -1156,6 +1187,8 @@ def jobs_data_processing(data_file):
             chi_last_marker = final_data[len(final_data)-1]['marker']
         print(chi_last_marker)
     except FileNotFoundError or PermissionError:
+        with open(LOGERRORFILE, 'a') as logfile:
+            traceback.print_exc(file=logfile)
         logger.log(logging.ERROR, msg= f'Sorry the path {jobs_main_path}....Could not be accessed or does not exist. Please enter in another path.')
         stop_job()
     
