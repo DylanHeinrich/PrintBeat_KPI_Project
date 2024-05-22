@@ -112,3 +112,64 @@ Traceback (most recent call last):
     jobs_main_path = self.jobs_main_path
                      ^^^^^^^^^^^^^^^^^^^
 AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 951, in run
+    printBeatStart()
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 999, in printBeatStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 917, in run
+    jobStart()
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 1085, in jobStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 917, in run
+    jobStart()
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 1096, in jobStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 951, in run
+    printBeatStart()
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 999, in printBeatStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 917, in run
+    jobStart()
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 1096, in jobStart
+    time.sleep(1)
+SystemExit
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 352, in save
+    mainPath = self.mainPath
+               ^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'mainPath'
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 360, in save
+    backUpPath = self.backUpPath
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'backUpPath'
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 368, in save
+    jobs_main_path = self.jobs_main_path
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewWindow' object has no attribute 'jobs_main_path'
+Traceback (most recent call last):
+  File "C:\Users\harly\AppData\Local\Programs\Python\Python311\Lib\tkinter\__init__.py", line 592, in get
+    return self._tk.getint(value)
+           ^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected integer but got "fgfx"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\harly\Desktop\python_work\PrintBeat_KPI_Project\Main.py", line 392, in save
+    if str(self.jobsSleepNumber.get()) != '':
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\harly\AppData\Local\Programs\Python\Python311\Lib\tkinter\__init__.py", line 594, in get
+    return int(self._tk.getdouble(value))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+_tkinter.TclError: expected floating-point number but got "fgfx"
